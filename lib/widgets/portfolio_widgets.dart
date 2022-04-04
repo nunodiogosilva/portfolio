@@ -3,48 +3,63 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Header extends StatelessWidget {
   final String image;
+  final double imageSize;
   final String name;
+  final double nameSize;
   final String jobTitle;
+  final double jobTitleSize;
+  final double jobTitleSpacing;
+  final double spacerSize;
 
-  const Header({Key? key, required this.image, required this.name, required this.jobTitle}) : super(key: key);
+  const Header(
+      {Key? key,
+      required this.image,
+      required this.imageSize,
+      required this.name,
+      required this.nameSize,
+      required this.jobTitle,
+      required this.jobTitleSize,
+      required this.jobTitleSpacing,
+      required this.spacerSize})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children:  [
+      children: [
         CircleAvatar(
-          radius: 100.0,
+          radius: imageSize,
           backgroundImage: AssetImage(image),
         ),
         Text(
           name,
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: "Righteous",
-            fontSize: 80.0,
+            fontSize: nameSize,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
           jobTitle,
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: "OpenSans",
-            fontSize: 40.0,
-            letterSpacing: 2.5,
+            fontSize: jobTitleSize,
+            letterSpacing: jobTitleSpacing,
             color: Colors.white70,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(
-          height: 50.0,
+        SizedBox(
+          height: spacerSize,
           width: double.infinity,
-          child: Divider(
+          child: const Divider(
             color: Colors.white70,
           ),
         ),
-        const SizedBox(
-          height: 50.0,
+        SizedBox(
+          height: spacerSize,
         ),
       ],
     );
@@ -53,8 +68,17 @@ class Header extends StatelessWidget {
 
 class SectionTitle extends StatelessWidget {
   final String title;
+  final double titleSize;
+  final double titleUnderlineSize;
+  final double spacerSize;
 
-  const SectionTitle({Key? key, required this.title}) : super(key: key);
+  const SectionTitle(
+      {Key? key,
+      required this.title,
+      required this.titleSize,
+      required this.titleUnderlineSize,
+      required this.spacerSize})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,20 +87,20 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: "OpenSans",
-            fontSize: 30.0,
+            fontSize: titleSize,
             color: Colors.white70,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(
-            width: 100.0,
-            child: Divider(
+        SizedBox(
+            width: titleUnderlineSize,
+            child: const Divider(
               color: Colors.white70,
             )),
-        const SizedBox(
-          height: 30.0,
+        SizedBox(
+          height: spacerSize,
         ),
       ],
     );
@@ -84,9 +108,16 @@ class SectionTitle extends StatelessWidget {
 }
 
 class JobTitle extends StatelessWidget {
+  final double iconSize;
   final String jobTitle;
+  final double labelFontSize;
 
-  const JobTitle({Key? key, required this.jobTitle}) : super(key: key);
+  const JobTitle(
+      {Key? key,
+      required this.iconSize,
+      required this.jobTitle,
+      required this.labelFontSize})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -96,22 +127,21 @@ class JobTitle extends StatelessWidget {
         RichText(
           text: TextSpan(
             children: [
-              const WidgetSpan(
+              WidgetSpan(
                 child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 15.0),
                   child: Icon(
                     Icons.work_outline,
                     color: Colors.white,
-                    size: 25,
+                    size: iconSize,
                   ),
                 ),
               ),
               TextSpan(
-                text:
-                jobTitle,
-                style: const TextStyle(
+                text: jobTitle,
+                style: TextStyle(
                   fontFamily: "Righteous",
-                  fontSize: 25.0,
+                  fontSize: labelFontSize,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -129,7 +159,15 @@ class JobTitle extends StatelessWidget {
 
 class JobDescription extends StatelessWidget {
   final String jobDescription;
-  const JobDescription({Key? key, required this.jobDescription}) : super(key: key);
+  final double labelFontSize;
+  final double spacerSize;
+
+  const JobDescription(
+      {Key? key,
+      required this.jobDescription,
+      required this.labelFontSize,
+      required this.spacerSize})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -137,14 +175,14 @@ class JobDescription extends StatelessWidget {
       children: [
         Text(
           jobDescription,
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: "OpenSans",
-            fontSize: 20.0,
+            fontSize: labelFontSize,
             color: Colors.white70,
           ),
         ),
-        const SizedBox(
-          height: 50.0,
+        SizedBox(
+          height: spacerSize,
         ),
       ],
     );
@@ -153,9 +191,15 @@ class JobDescription extends StatelessWidget {
 
 class ProgressionBar extends StatelessWidget {
   final String label;
+  final double labelFontSize;
   final double progression;
 
-  const ProgressionBar({Key? key, required this.label, required this.progression}) : super(key: key);
+  const ProgressionBar(
+      {Key? key,
+      required this.label,
+      required this.labelFontSize,
+      required this.progression})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -164,9 +208,9 @@ class ProgressionBar extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: "OpenSans",
-            fontSize: 20.0,
+            fontSize: labelFontSize,
             color: Colors.white70,
           ),
         ),
@@ -178,7 +222,7 @@ class ProgressionBar extends StatelessWidget {
           child: LinearProgressIndicator(
             backgroundColor: Colors.white30,
             color: Colors.white,
-            minHeight: 20.0,
+            minHeight: labelFontSize,
             value: progression,
           ),
         ),
@@ -190,12 +234,17 @@ class ProgressionBar extends StatelessWidget {
   }
 }
 
-class PersonalInfoItem extends StatelessWidget {
-  final IconData icon;
+class PersonalInfoNationality extends StatelessWidget {
+  final double iconSize;
   final String label;
-  final String info;
+  final double labelFontSize;
 
-  const PersonalInfoItem({Key? key, required this.icon, required this.label, required this.info}) : super(key: key);
+  const PersonalInfoNationality(
+      {Key? key,
+      required this.iconSize,
+      required this.label,
+      required this.labelFontSize})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -207,16 +256,16 @@ class PersonalInfoItem extends StatelessWidget {
               WidgetSpan(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 15.0),
-                  child: Icon(icon,
-                      color: Colors.white),
+                  child: Icon(Icons.flag_outlined,
+                      color: Colors.white, size: iconSize),
                 ),
               ),
               WidgetSpan(
                 child: Text(
-                  label,
-                  style: const TextStyle(
+                  "Nationality: ",
+                  style: TextStyle(
                     fontFamily: "Righteous",
-                    fontSize: 20.0,
+                    fontSize: labelFontSize,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -224,10 +273,10 @@ class PersonalInfoItem extends StatelessWidget {
               ),
               WidgetSpan(
                 child: Text(
-                  info,
-                  style: const TextStyle(
+                  label,
+                  style: TextStyle(
                     fontFamily: "OpenSans",
-                    fontSize: 20.0,
+                    fontSize: labelFontSize,
                     color: Colors.white70,
                   ),
                 ),
@@ -244,16 +293,22 @@ class PersonalInfoItem extends StatelessWidget {
 }
 
 class PersonalInfoEmail extends StatefulWidget {
+  final double iconSize;
+  final double labelFontSize;
   final String email;
 
-  const PersonalInfoEmail({Key? key, required this.email}) : super(key: key);
+  const PersonalInfoEmail(
+      {Key? key,
+      required this.iconSize,
+      required this.labelFontSize,
+      required this.email})
+      : super(key: key);
 
   @override
   State<PersonalInfoEmail> createState() => _PersonalInfoEmailState();
 }
 
 class _PersonalInfoEmailState extends State<PersonalInfoEmail> {
-
   _launchEmail(String email) async {
     launch("mailto:$email");
   }
@@ -265,32 +320,32 @@ class _PersonalInfoEmailState extends State<PersonalInfoEmail> {
         RichText(
           text: TextSpan(
             children: [
-              const WidgetSpan(
+              WidgetSpan(
                 child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 15.0),
                   child: Icon(Icons.email_outlined,
-                      color: Colors.white),
+                      color: Colors.white, size: widget.iconSize),
                 ),
               ),
-              const TextSpan(
+              TextSpan(
                 text: "Email: ",
                 style: TextStyle(
                   fontFamily: "Righteous",
-                  fontSize: 20.0,
+                  fontSize: widget.labelFontSize,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               WidgetSpan(
-                child: TextButton(
-                  onPressed: () {
+                child: GestureDetector(
+                  onTap: () {
                     _launchEmail(widget.email);
                   },
                   child: Text(
                     widget.email,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: "OpenSans",
-                      fontSize: 20.0,
+                      fontSize: widget.labelFontSize,
                       color: Colors.white70,
                     ),
                   ),
@@ -308,17 +363,24 @@ class _PersonalInfoEmailState extends State<PersonalInfoEmail> {
 }
 
 class PersonalInfoLinkedIn extends StatefulWidget {
+  final double iconSize;
+  final double labelFontSize;
   final String url;
   final String urlLabel;
 
-  const PersonalInfoLinkedIn({Key? key, required this.url, required this.urlLabel}) : super(key: key);
+  const PersonalInfoLinkedIn(
+      {Key? key,
+      required this.iconSize,
+      required this.labelFontSize,
+      required this.url,
+      required this.urlLabel})
+      : super(key: key);
 
   @override
   State<PersonalInfoLinkedIn> createState() => _PersonalInfoLinkedInState();
 }
 
 class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
-
   _launchURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -334,32 +396,32 @@ class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
         RichText(
           text: TextSpan(
             children: [
-              const WidgetSpan(
+              WidgetSpan(
                 child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 15.0),
                   child: Icon(Icons.people_outline,
-                      color: Colors.white),
+                      color: Colors.white, size: widget.iconSize),
                 ),
               ),
-              const TextSpan(
+              TextSpan(
                 text: "LinkedIn: ",
                 style: TextStyle(
                   fontFamily: "Righteous",
-                  fontSize: 20.0,
+                  fontSize: widget.labelFontSize,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               WidgetSpan(
-                child: TextButton(
-                  onPressed: () {
+                child: GestureDetector(
+                  onTap: () {
                     _launchURL(widget.url);
                   },
                   child: Text(
                     widget.urlLabel,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: "OpenSans",
-                      fontSize: 20.0,
+                      fontSize: widget.labelFontSize,
                       color: Colors.white70,
                     ),
                   ),
@@ -377,16 +439,23 @@ class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
 }
 
 class PersonalInfoPhoneNumber extends StatefulWidget {
+  final double iconSize;
+  final double labelFontSize;
   final String phoneNumber;
 
-  const PersonalInfoPhoneNumber({Key? key, required this.phoneNumber}) : super(key: key);
+  const PersonalInfoPhoneNumber(
+      {Key? key,
+      required this.iconSize,
+      required this.labelFontSize,
+      required this.phoneNumber})
+      : super(key: key);
 
   @override
-  State<PersonalInfoPhoneNumber> createState() => _PersonalInfoPhoneNumberState();
+  State<PersonalInfoPhoneNumber> createState() =>
+      _PersonalInfoPhoneNumberState();
 }
 
 class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
-
   Future<void> _makePhoneCall(String phoneNumber) async {
     if (await canLaunch("tel:$phoneNumber")) {
       await launch("tel:$phoneNumber");
@@ -402,32 +471,32 @@ class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
         RichText(
           text: TextSpan(
             children: [
-              const WidgetSpan(
+              WidgetSpan(
                 child: Padding(
-                  padding: EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 15.0),
                   child: Icon(Icons.phone_outlined,
-                      color: Colors.white),
+                      color: Colors.white, size: widget.iconSize),
                 ),
               ),
-              const TextSpan(
+              TextSpan(
                 text: "Phone Number: ",
                 style: TextStyle(
                   fontFamily: "Righteous",
-                  fontSize: 20.0,
+                  fontSize: widget.labelFontSize,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               WidgetSpan(
-                child: TextButton(
-                  onPressed: () => setState(() {
+                child: GestureDetector(
+                  onTap: () => setState(() {
                     _makePhoneCall(widget.phoneNumber);
                   }),
                   child: Text(
                     widget.phoneNumber,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: "OpenSans",
-                      fontSize: 20.0,
+                      fontSize: widget.labelFontSize,
                       color: Colors.white70,
                     ),
                   ),
