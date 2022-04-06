@@ -4,14 +4,8 @@ import 'package:portfolio/widgets/body/mobile_body.dart';
 import 'package:portfolio/widgets/body/tablet_body.dart';
 import 'package:portfolio/widgets/body/desktop_body.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {

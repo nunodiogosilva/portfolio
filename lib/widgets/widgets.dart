@@ -366,14 +366,14 @@ class PersonalInfoLinkedIn extends StatefulWidget {
   final double iconSize;
   final double labelFontSize;
   final String url;
-  final String urlLabel;
+  final String label;
 
   const PersonalInfoLinkedIn(
       {Key? key,
       required this.iconSize,
       required this.labelFontSize,
       required this.url,
-      required this.urlLabel})
+      required this.label})
       : super(key: key);
 
   @override
@@ -418,7 +418,7 @@ class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
                     _launchURL(widget.url);
                   },
                   child: Text(
-                    widget.urlLabel,
+                    widget.label,
                     style: TextStyle(
                       fontFamily: "OpenSans",
                       fontSize: widget.labelFontSize,
