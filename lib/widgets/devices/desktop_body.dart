@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/body/body_background.dart';
+import 'package:portfolio/widgets/background.dart';
 import 'package:portfolio/widgets/widgets.dart';
 import 'package:portfolio/breakpoints.dart';
 
@@ -18,13 +18,13 @@ class _DesktopBodyState extends State<DesktopBody> {
         stream: FirebaseFirestore.instance.collection('Person').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const BodyBackground(
+            return const Background(
                 child: Center(
                     child: CircularProgressIndicator(color: Colors.white70)));
           } else {
             List<dynamic>? person =
                 snapshot.data?.docs.map((document) => document.data()).toList();
-            return BodyBackground(
+            return Background(
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Padding(
@@ -34,13 +34,14 @@ class _DesktopBodyState extends State<DesktopBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Header(
-                            image: "images/nunosilva.jpg",
+                            image: person![0]["image"],
                             imageSize: desktopHeaderImageSize,
-                            name: person![0]["name"],
+                            name: person[0]["name"],
                             nameSize: desktopHeaderNameSize,
                             jobTitle: person[0]["jobTitle"].toUpperCase(),
                             jobTitleSize: desktopHeaderJobTitleSize,
                             jobTitleSpacing: desktopHeaderJobTitleSpacing,
+                            iconButtonSize: desktopHeaderIconButtonSize,
                             spacerSize: desktopSpacerSize),
                         IntrinsicHeight(
                           child: Row(
@@ -75,6 +76,10 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     PersonalInfoPhoneNumber(
                                         iconSize: desktopIconSize,
                                         phoneNumber: person[0]["phoneNumber"],
+                                        labelFontSize: desktopLabelFontSize),
+                                    PersonalInfoLocation(
+                                        iconSize: desktopIconSize,
+                                        label: person[0]["location"],
                                         labelFontSize: desktopLabelFontSize),
                                     const SizedBox(
                                       height: 40.0,
@@ -139,26 +144,14 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             desktopSectionTitleTitleUnderlineSize,
                                         spacerSize:
                                             desktopSectionTitleSpacerSize),
-                                    JobTitle(
-                                        iconSize: desktopIconSize,
-                                        jobTitle:
-                                            "Google Search Feature Quality Specialist & Developer via Qualitest",
-                                        labelFontSize: desktopIconSize),
-                                    JobDescription(
-                                        jobDescription:
-                                            "Member of a sub-group of Search Language Specialists (trusted team partner to Google Search and other Google engineering teams) who leverage end-to-end i18n experience to provide scaled defect triage, release reviews and approval and real-time production feature monitoring.",
-                                        labelFontSize: desktopLabelFontSize,
-                                        spacerSize: desktopSpacerSize),
-                                    JobTitle(
-                                        iconSize: desktopIconSize,
-                                        jobTitle:
-                                            "Nokia SoftWare - FullStack Developer",
-                                        labelFontSize: desktopIconSize),
-                                    JobDescription(
-                                        jobDescription:
-                                            "My ultimate goal was to develop a tool that would replace MS Excel from being our day to day tool. Alongside another co-worker we've created a platform where all team's workflows were available. This tool increased work reliability, performance and generated monthly reports and performance statistics for team leaders.",
-                                        labelFontSize: desktopLabelFontSize,
-                                        spacerSize: desktopSpacerSize),
+                                    for (var job in person[0]["jobs"])
+                                      Job(
+                                          iconSize: desktopIconSize,
+                                          title: job["title"],
+                                          time: "(${job["time"]["start"]} - ${job["time"]["end"]})",
+                                          description: job["description"],
+                                          labelFontSize: desktopLabelFontSize,
+                                          spacerSize: desktopSpacerSize),
                                     const SizedBox(
                                       height: 40.0,
                                     ),

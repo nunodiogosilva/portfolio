@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Header extends StatelessWidget {
+class Header extends StatefulWidget {
   final String image;
   final double imageSize;
   final String name;
@@ -9,6 +9,7 @@ class Header extends StatelessWidget {
   final String jobTitle;
   final double jobTitleSize;
   final double jobTitleSpacing;
+  final double iconButtonSize;
   final double spacerSize;
 
   const Header(
@@ -20,8 +21,22 @@ class Header extends StatelessWidget {
       required this.jobTitle,
       required this.jobTitleSize,
       required this.jobTitleSpacing,
+      required this.iconButtonSize,
       required this.spacerSize})
       : super(key: key);
+
+  @override
+  State<Header> createState() => _HeaderState();
+}
+
+class _HeaderState extends State<Header> {
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw "Couldn't redirect to $url";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,37 +44,67 @@ class Header extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CircleAvatar(
-          radius: imageSize,
-          backgroundImage: AssetImage(image),
+          radius: widget.imageSize,
+          backgroundImage: AssetImage(widget.image),
         ),
         Text(
-          name,
+          widget.name,
           style: TextStyle(
             fontFamily: "Righteous",
-            fontSize: nameSize,
+            fontSize: widget.nameSize,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
-          jobTitle,
+          widget.jobTitle,
           style: TextStyle(
             fontFamily: "OpenSans",
-            fontSize: jobTitleSize,
-            letterSpacing: jobTitleSpacing,
+            fontSize: widget.jobTitleSize,
+            letterSpacing: widget.jobTitleSpacing,
             color: Colors.white70,
             fontWeight: FontWeight.bold,
           ),
         ),
         SizedBox(
-          height: spacerSize,
+          height: widget.spacerSize,
           width: double.infinity,
           child: const Divider(
             color: Colors.white70,
           ),
         ),
+        Row(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Image.asset("images/pdf.png"),
+              iconSize: widget.iconButtonSize,
+              tooltip: "Download CV PDF",
+            ),
+            const SizedBox(
+              width: 15.0,
+            ),
+            IconButton(
+              onPressed: () {
+                _launchURL("https://github.com/nunodiogosilva/portfolio");
+              },
+              icon: Image.asset("images/github.png"),
+              iconSize: widget.iconButtonSize,
+              tooltip: "Github Repository",
+            ),
+            const SizedBox(
+              width: 15.0,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Image.asset("images/admin.png"),
+              iconSize: widget.iconButtonSize,
+              tooltip: "Admin View",
+            ),
+          ],
+        ),
         SizedBox(
-          height: spacerSize,
+          height: widget.spacerSize,
         ),
       ],
     );
@@ -107,133 +152,7 @@ class SectionTitle extends StatelessWidget {
   }
 }
 
-class JobTitle extends StatelessWidget {
-  final double iconSize;
-  final String jobTitle;
-  final double labelFontSize;
-
-  const JobTitle(
-      {Key? key,
-      required this.iconSize,
-      required this.jobTitle,
-      required this.labelFontSize})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              WidgetSpan(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
-                  child: Icon(
-                    Icons.work_outline,
-                    color: Colors.white,
-                    size: iconSize,
-                  ),
-                ),
-              ),
-              TextSpan(
-                text: jobTitle,
-                style: TextStyle(
-                  fontFamily: "Righteous",
-                  fontSize: labelFontSize,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 20.0,
-        ),
-      ],
-    );
-  }
-}
-
-class JobDescription extends StatelessWidget {
-  final String jobDescription;
-  final double labelFontSize;
-  final double spacerSize;
-
-  const JobDescription(
-      {Key? key,
-      required this.jobDescription,
-      required this.labelFontSize,
-      required this.spacerSize})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          jobDescription,
-          style: TextStyle(
-            fontFamily: "OpenSans",
-            fontSize: labelFontSize,
-            color: Colors.white70,
-          ),
-        ),
-        SizedBox(
-          height: spacerSize,
-        ),
-      ],
-    );
-  }
-}
-
-class ProgressionBar extends StatelessWidget {
-  final String label;
-  final double labelFontSize;
-  final double progression;
-
-  const ProgressionBar(
-      {Key? key,
-      required this.label,
-      required this.labelFontSize,
-      required this.progression})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontFamily: "OpenSans",
-            fontSize: labelFontSize,
-            color: Colors.white70,
-          ),
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-        SizedBox(
-          width: 300.0,
-          child: LinearProgressIndicator(
-            backgroundColor: Colors.white30,
-            color: Colors.white,
-            minHeight: labelFontSize,
-            value: progression,
-          ),
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
-      ],
-    );
-  }
-}
-
+/// Personal Information
 class PersonalInfoNationality extends StatelessWidget {
   final double iconSize;
   final String label;
@@ -507,6 +426,189 @@ class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
         ),
         const SizedBox(
           height: 10.0,
+        ),
+      ],
+    );
+  }
+}
+
+class PersonalInfoLocation extends StatelessWidget {
+  final double iconSize;
+  final String label;
+  final double labelFontSize;
+
+  const PersonalInfoLocation(
+      {Key? key,
+      required this.iconSize,
+      required this.label,
+      required this.labelFontSize})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        RichText(
+          text: TextSpan(
+            children: [
+              WidgetSpan(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15.0),
+                  child: Icon(Icons.room_outlined,
+                      color: Colors.white, size: iconSize),
+                ),
+              ),
+              WidgetSpan(
+                child: Text(
+                  "Location: ",
+                  style: TextStyle(
+                    fontFamily: "Righteous",
+                    fontSize: labelFontSize,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              WidgetSpan(
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: labelFontSize,
+                    color: Colors.white70,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+      ],
+    );
+  }
+}
+
+/// Job
+class Job extends StatelessWidget {
+  final double iconSize;
+  final String title;
+  final String time;
+  final String description;
+  final double labelFontSize;
+  final double spacerSize;
+
+  const Job(
+      {Key? key,
+      required this.iconSize,
+      required this.title,
+      required this.time,
+      required this.description,
+      required this.labelFontSize,
+      required this.spacerSize})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RichText(
+          text: TextSpan(
+            children: [
+              WidgetSpan(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15.0),
+                  child: Icon(
+                    Icons.work_outline,
+                    color: Colors.white,
+                    size: iconSize,
+                  ),
+                ),
+              ),
+              TextSpan(
+                text: title,
+                style: TextStyle(
+                  fontFamily: "Righteous",
+                  fontSize: iconSize,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          time,
+          style: TextStyle(
+            fontFamily: "OpenSans",
+            fontSize: labelFontSize,
+            color: Colors.white70,
+          ),
+        ),
+        SizedBox(
+          height: labelFontSize,
+        ),
+        Text(
+          description,
+          style: TextStyle(
+            fontFamily: "OpenSans",
+            fontSize: labelFontSize,
+            color: Colors.white70,
+          ),
+        ),
+        SizedBox(
+          height: spacerSize,
+        ),
+      ],
+    );
+  }
+}
+
+/// Skills / Languages
+class ProgressionBar extends StatelessWidget {
+  final String label;
+  final double labelFontSize;
+  final double progression;
+
+  const ProgressionBar(
+      {Key? key,
+      required this.label,
+      required this.labelFontSize,
+      required this.progression})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontFamily: "OpenSans",
+            fontSize: labelFontSize,
+            color: Colors.white70,
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        SizedBox(
+          width: 300.0,
+          child: LinearProgressIndicator(
+            backgroundColor: Colors.white30,
+            color: Colors.white,
+            minHeight: labelFontSize,
+            value: progression,
+          ),
+        ),
+        const SizedBox(
+          height: 30.0,
         ),
       ],
     );

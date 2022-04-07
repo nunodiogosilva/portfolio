@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/body/body_background.dart';
+import 'package:portfolio/widgets/background.dart';
 import 'package:portfolio/widgets/widgets.dart';
 import 'package:portfolio/breakpoints.dart';
 
@@ -13,13 +13,13 @@ class TabletBody extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('Person').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const BodyBackground(
+            return const Background(
                 child: Center(
                     child: CircularProgressIndicator(color: Colors.white70)));
           } else {
             List<dynamic>? person =
             snapshot.data?.docs.map((document) => document.data()).toList();
-            return BodyBackground(
+            return Background(
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: SafeArea(
@@ -37,6 +37,7 @@ class TabletBody extends StatelessWidget {
                               jobTitle: person[0]["jobTitle"].toUpperCase(),
                               jobTitleSize: tabletHeaderJobTitleSize,
                               jobTitleSpacing: tabletHeaderJobTitleSpacing,
+                              iconButtonSize: tabletHeaderIconButtonSize,
                               spacerSize: tabletSpacerSize),
                           SectionTitle(
                               title: "PERSONAL INFORMATION",
@@ -61,8 +62,12 @@ class TabletBody extends StatelessWidget {
                               iconSize: tabletIconSize,
                               phoneNumber: person[0]["phoneNumber"],
                               labelFontSize: tabletLabelFontSize),
+                          PersonalInfoLocation(
+                              iconSize: tabletIconSize,
+                              label: person[0]["location"],
+                              labelFontSize: tabletLabelFontSize),
                           const SizedBox(
-                            height: 40.0,
+                            height: 30.0,
                           ),
                           SectionTitle(
                               title: "SKILLS",
@@ -76,7 +81,7 @@ class TabletBody extends StatelessWidget {
                                 labelFontSize: tabletLabelFontSize,
                                 progression: skill["percentage"]),
                           const SizedBox(
-                            height: 40.0,
+                            height: 30.0,
                           ),
                           SectionTitle(
                               title: "LANGUAGES",
@@ -91,7 +96,7 @@ class TabletBody extends StatelessWidget {
                                 labelFontSize: tabletLabelFontSize,
                                 progression: language["percentage"]),
                           const SizedBox(
-                            height: 40.0,
+                            height: 30.0,
                           ),
                           SectionTitle(
                               title: "PROFESSIONAL EXPERIENCE",
@@ -99,25 +104,14 @@ class TabletBody extends StatelessWidget {
                               titleUnderlineSize:
                               tabletSectionTitleTitleUnderlineSize,
                               spacerSize: tabletSectionTitleSpacerSize),
-                          JobTitle(
-                              iconSize: tabletIconSize,
-                              jobTitle:
-                              "Google Search Feature Quality Specialist & Developer via Qualitest",
-                              labelFontSize: tabletIconSize),
-                          JobDescription(
-                              jobDescription:
-                              "Member of a sub-group of Search Language Specialists (trusted team partner to Google Search and other Google engineering teams) who leverage end-to-end i18n experience to provide scaled defect triage, release reviews and approval and real-time production feature monitoring.",
-                              labelFontSize: tabletLabelFontSize,
-                              spacerSize: tabletSpacerSize),
-                          JobTitle(
-                              iconSize: tabletIconSize,
-                              jobTitle: "Nokia SoftWare - FullStack Developer",
-                              labelFontSize: tabletIconSize),
-                          JobDescription(
-                              jobDescription:
-                              "My ultimate goal was to develop a tool that would replace MS Excel from being our day to day tool. Alongside another co-worker we've created a platform where all team's workflows were available. This tool increased work reliability, performance and generated monthly reports and performance statistics for team leaders.",
-                              labelFontSize: tabletLabelFontSize,
-                              spacerSize: tabletSpacerSize),
+                          for (var job in person[0]["jobs"])
+                            Job(
+                                iconSize: tabletIconSize,
+                                title: job["title"],
+                                time: "(${job["time"]["start"]} - ${job["time"]["end"]})",
+                                description: job["description"],
+                                labelFontSize: tabletLabelFontSize,
+                                spacerSize: tabletSpacerSize),
                           const SizedBox(
                             height: 100.0,
                           ),

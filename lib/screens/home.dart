@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/responsive.dart';
-import 'package:portfolio/widgets/body/mobile_body.dart';
-import 'package:portfolio/widgets/body/tablet_body.dart';
-import 'package:portfolio/widgets/body/desktop_body.dart';
+import 'package:portfolio/widgets/devices/mobile_body.dart';
+import 'package:portfolio/widgets/devices/tablet_body.dart';
+import 'package:portfolio/widgets/devices/desktop_body.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

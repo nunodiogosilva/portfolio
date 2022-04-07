@@ -23,6 +23,10 @@ double desktopHeaderJobTitleSpacing = 2.5;
 double tabletHeaderJobTitleSpacing = 2.0;
 double mobileHeaderJobTitleSpacing = 1.5;
 
+double desktopHeaderIconButtonSize = 40.0;
+double tabletHeaderIconButtonSize = 35.0;
+double mobileHeaderIconButtonSize = 30.0;
+
 /// SectionTitle Sizes
 double desktopSectionTitleTitleSize = 30.0;
 double tabletSectionTitleTitleSize = 25.0;

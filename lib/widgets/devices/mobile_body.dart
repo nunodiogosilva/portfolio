@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/body/body_background.dart';
+import 'package:portfolio/widgets/background.dart';
 import 'package:portfolio/widgets/widgets.dart';
 import 'package:portfolio/breakpoints.dart';
 
@@ -13,13 +13,13 @@ class MobileBody extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('Person').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const BodyBackground(
+            return const Background(
                 child: Center(
                     child: CircularProgressIndicator(color: Colors.white70)));
           } else {
             List<dynamic>? person =
                 snapshot.data?.docs.map((document) => document.data()).toList();
-            return BodyBackground(
+            return Background(
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: SafeArea(
@@ -37,6 +37,7 @@ class MobileBody extends StatelessWidget {
                               jobTitle: person[0]["jobTitle"].toUpperCase(),
                               jobTitleSize: mobileHeaderJobTitleSize,
                               jobTitleSpacing: mobileHeaderJobTitleSpacing,
+                              iconButtonSize: mobileHeaderIconButtonSize,
                               spacerSize: mobileSpacerSize),
                           SectionTitle(
                               title: "PERSONAL INFORMATION",
@@ -60,6 +61,10 @@ class MobileBody extends StatelessWidget {
                           PersonalInfoPhoneNumber(
                               iconSize: mobileIconSize,
                               phoneNumber: person[0]["phoneNumber"],
+                              labelFontSize: mobileLabelFontSize),
+                          PersonalInfoLocation(
+                              iconSize: mobileIconSize,
+                              label: person[0]["location"],
                               labelFontSize: mobileLabelFontSize),
                           const SizedBox(
                             height: 20.0,
@@ -99,25 +104,14 @@ class MobileBody extends StatelessWidget {
                               titleUnderlineSize:
                                   mobileSectionTitleTitleUnderlineSize,
                               spacerSize: mobileSectionTitleSpacerSize),
-                          JobTitle(
-                              iconSize: mobileIconSize,
-                              jobTitle:
-                                  "Google Search Feature Quality Specialist & Developer via Qualitest",
-                              labelFontSize: mobileIconSize),
-                          JobDescription(
-                              jobDescription:
-                                  "Member of a sub-group of Search Language Specialists (trusted team partner to Google Search and other Google engineering teams) who leverage end-to-end i18n experience to provide scaled defect triage, release reviews and approval and real-time production feature monitoring.",
-                              labelFontSize: mobileLabelFontSize,
-                              spacerSize: mobileSpacerSize),
-                          JobTitle(
-                              iconSize: mobileIconSize,
-                              jobTitle: "Nokia SoftWare - FullStack Developer",
-                              labelFontSize: mobileIconSize),
-                          JobDescription(
-                              jobDescription:
-                                  "My ultimate goal was to develop a tool that would replace MS Excel from being our day to day tool. Alongside another co-worker we've created a platform where all team's workflows were available. This tool increased work reliability, performance and generated monthly reports and performance statistics for team leaders.",
-                              labelFontSize: mobileLabelFontSize,
-                              spacerSize: mobileSpacerSize),
+                          for (var job in person[0]["jobs"])
+                            Job(
+                                iconSize: mobileIconSize,
+                                title: job["title"],
+                                time: "(${job["time"]["start"]} - ${job["time"]["end"]})",
+                                description: job["description"],
+                                labelFontSize: mobileLabelFontSize,
+                                spacerSize: mobileSpacerSize),
                           const SizedBox(
                             height: 50.0,
                           ),
