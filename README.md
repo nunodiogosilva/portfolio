@@ -1,16 +1,17 @@
-# portfolio
+# Portfolio
 
-A new Flutter project.
+My portfolio made with Flutter and Firebase.
 
-## Getting Started
+## :dart: Goals
 
-This project is a starting point for a Flutter application.
+The main goal of this project was to create a place where I could easily manage my personal and professional information and at the same time being able to convert it into a .pdf file that I could then forward to IT Recruiters or simply share my portfolio application url.
 
-A few resources to get you started if this is your first Flutter project:
+## :wrench: Tools
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+To do this whole app I've recurred to a few tools and frameworks.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* :computer::iphone::watch: Flutter and Dart
+  * I've used [Flutter](https://flutter.dev/) and [Dart](https://dart.dev/) because I've decided to learn more about Flutter's framework since it has the ability  to create multiplaform applications and I've been looking forward to this for the longest time because I don't like to feel limited to which platform I'm programming to.
+
+* :fire: Firebase
+  * I've also used [Firebase](https://firebase.google.com/) due to the non-SQL database format that I actually love (similar to [MongoDB](https://www.mongodb.com/) Collection / Document structure) and due to the amount of available resources ([Firebase Auth](https://firebase.google.com/products/auth), [Firestore Database](https://firebase.google.com/products/firestore), [Firebase Hosting](https://firebase.google.com/products/hosting), etc.) and compability since both Flutter and Firebase belong to Google.
