@@ -1,4 +1,4 @@
-# Portfolio
+# :page_with_curl: Portfolio
 
 My portfolio made with Flutter and Firebase.
 
