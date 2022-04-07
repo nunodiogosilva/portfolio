@@ -58,12 +58,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBMyqFbzr8rvQ-uBR9PoZinGD4ORIIkMaU',
-    appId: '1:1000601178029:ios:1782508ba9c0218aaf9b24',
+    appId: '1:1000601178029:ios:c1f46210f7c951d9af9b24',
     messagingSenderId: '1000601178029',
     projectId: 'portfolio-nunosilva',
     databaseURL: 'https://portfolio-nunosilva-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'portfolio-nunosilva.appspot.com',
-    iosClientId: '1000601178029-roa9dldepd30nakur2mc7pkggqs0fen9.apps.googleusercontent.com',
-    iosBundleId: 'portfolio',
+    iosClientId: '1000601178029-sdi5bo55l7hsb71jkv9ih0bhslkrdu8k.apps.googleusercontent.com',
+    iosBundleId: 'com.portfolio.app',
   );
 }
