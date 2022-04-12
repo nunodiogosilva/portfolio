@@ -28,7 +28,7 @@ class _DesktopBodyState extends State<DesktopBody> {
               child: Scaffold(
                 backgroundColor: Colors.transparent,
                 body: Padding(
-                  padding: const EdgeInsets.fromLTRB(150.0, 50.0, 150.0, 50.0),
+                  padding: const EdgeInsets.fromLTRB(80.0, 30.0, 80.0, 30.0),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,6 +42,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                             jobTitleSize: desktopHeaderJobTitleSize,
                             jobTitleSpacing: desktopHeaderJobTitleSpacing,
                             iconButtonSize: desktopHeaderIconButtonSize,
+                            iconButtonSpacerSize: desktopHeaderIconButtonSpacerSize,
                             spacerSize: desktopSpacerSize),
                         IntrinsicHeight(
                           child: Row(
@@ -55,11 +56,11 @@ class _DesktopBodyState extends State<DesktopBody> {
                                   children: [
                                     SectionTitle(
                                         title: "PERSONAL INFORMATION",
-                                        titleSize: desktopSectionTitleTitleSize,
+                                        titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
-                                            desktopSectionTitleTitleUnderlineSize,
+                                            desktopSectionTitleUnderlineSize,
                                         spacerSize:
-                                            desktopSectionTitleSpacerSize),
+                                            desktopSpacerSize),
                                     PersonalInfoNationality(
                                         iconSize: desktopIconSize,
                                         label: person[0]["nationality"],
@@ -86,14 +87,15 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     ),
                                     SectionTitle(
                                         title: "SKILLS",
-                                        titleSize: desktopSectionTitleTitleSize,
+                                        titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
-                                            desktopSectionTitleTitleUnderlineSize,
+                                            desktopSectionTitleUnderlineSize,
                                         spacerSize:
-                                            desktopSectionTitleSpacerSize),
+                                            desktopSpacerSize),
                                     for (var skill in person[0]["skills"])
                                       ProgressionBar(
                                           label: skill["skill"],
+                                          progressionBarWidth: desktopProgressionBarWidth,
                                           labelFontSize: desktopLabelFontSize,
                                           progression: skill["percentage"]),
                                     const SizedBox(
@@ -101,22 +103,23 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     ),
                                     SectionTitle(
                                         title: "LANGUAGES",
-                                        titleSize: desktopSectionTitleTitleSize,
+                                        titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
-                                            desktopSectionTitleTitleUnderlineSize,
+                                            desktopSectionTitleUnderlineSize,
                                         spacerSize:
-                                            desktopSectionTitleSpacerSize),
+                                            desktopSpacerSize),
                                     for (var language in person[0]["languages"])
                                       ProgressionBar(
                                           label:
                                               "${language["language"]} (${language["fluency"]})",
+                                          progressionBarWidth: desktopProgressionBarWidth,
                                           labelFontSize: desktopLabelFontSize,
                                           progression: language["percentage"]),
                                   ],
                                 ),
                               ),
                               const Padding(
-                                padding: EdgeInsets.only(right: 15.0),
+                                padding: EdgeInsets.only(right: 10.0),
                                 child: VerticalDivider(
                                   thickness: 2,
                                   color: Colors.white70,
@@ -129,21 +132,21 @@ class _DesktopBodyState extends State<DesktopBody> {
                                   children: [
                                     SectionTitle(
                                         title: "PROFILE",
-                                        titleSize: desktopSectionTitleTitleSize,
+                                        titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
-                                            desktopSectionTitleTitleUnderlineSize,
+                                            desktopSectionTitleUnderlineSize,
                                         spacerSize:
-                                            desktopSectionTitleSpacerSize),
+                                            desktopSpacerSize),
                                     const SizedBox(
                                       height: 40.0,
                                     ),
                                     SectionTitle(
                                         title: "PROFESSIONAL EXPERIENCE",
-                                        titleSize: desktopSectionTitleTitleSize,
+                                        titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
-                                            desktopSectionTitleTitleUnderlineSize,
+                                            desktopSectionTitleUnderlineSize,
                                         spacerSize:
-                                            desktopSectionTitleSpacerSize),
+                                            desktopSpacerSize),
                                     for (var job in person[0]["jobs"])
                                       Job(
                                           iconSize: desktopIconSize,
@@ -157,11 +160,11 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     ),
                                     SectionTitle(
                                         title: "EDUCATION",
-                                        titleSize: desktopSectionTitleTitleSize,
+                                        titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
-                                            desktopSectionTitleTitleUnderlineSize,
+                                            desktopSectionTitleUnderlineSize,
                                         spacerSize:
-                                            desktopSectionTitleSpacerSize),
+                                            desktopSpacerSize),
                                   ],
                                 ),
                               ),

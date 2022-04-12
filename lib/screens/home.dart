@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/responsive.dart';
 import 'package:portfolio/widgets/devices/mobile_body.dart';
 import 'package:portfolio/widgets/devices/tablet_body.dart';
+import 'package:portfolio/widgets/devices/phablet_body.dart';
 import 'package:portfolio/widgets/devices/desktop_body.dart';
 
 class Home extends StatelessWidget {
@@ -12,6 +13,7 @@ class Home extends StatelessWidget {
     return const Scaffold(
       body: ResponsiveLayout(
         mobile: MobileBody(),
+        phablet: PhabletBody(),
         tablet: TabletBody(),
         desktop: DesktopBody(),
       ),

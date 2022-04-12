@@ -10,6 +10,7 @@ class Header extends StatefulWidget {
   final double jobTitleSize;
   final double jobTitleSpacing;
   final double iconButtonSize;
+  final double iconButtonSpacerSize;
   final double spacerSize;
 
   const Header(
@@ -22,6 +23,7 @@ class Header extends StatefulWidget {
       required this.jobTitleSize,
       required this.jobTitleSpacing,
       required this.iconButtonSize,
+      required this.iconButtonSpacerSize,
       required this.spacerSize})
       : super(key: key);
 
@@ -81,8 +83,8 @@ class _HeaderState extends State<Header> {
               iconSize: widget.iconButtonSize,
               tooltip: "Download CV PDF",
             ),
-            const SizedBox(
-              width: 15.0,
+            SizedBox(
+              width: widget.iconButtonSpacerSize,
             ),
             IconButton(
               onPressed: () {
@@ -92,8 +94,8 @@ class _HeaderState extends State<Header> {
               iconSize: widget.iconButtonSize,
               tooltip: "Github Repository",
             ),
-            const SizedBox(
-              width: 15.0,
+            SizedBox(
+              width: widget.iconButtonSpacerSize,
             ),
             IconButton(
               onPressed: () {},
@@ -572,12 +574,14 @@ class Job extends StatelessWidget {
 /// Skills / Languages
 class ProgressionBar extends StatelessWidget {
   final String label;
+  final double progressionBarWidth;
   final double labelFontSize;
   final double progression;
 
   const ProgressionBar(
       {Key? key,
       required this.label,
+      required this.progressionBarWidth,
       required this.labelFontSize,
       required this.progression})
       : super(key: key);
@@ -599,7 +603,7 @@ class ProgressionBar extends StatelessWidget {
           height: 10.0,
         ),
         SizedBox(
-          width: 300.0,
+          width: progressionBarWidth,
           child: LinearProgressIndicator(
             backgroundColor: Colors.white30,
             color: Colors.white,

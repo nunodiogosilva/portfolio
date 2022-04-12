@@ -24,7 +24,7 @@ class MobileBody extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 body: SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(50.0, 50.0, 50.0, 50.0),
+                    padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,13 +38,14 @@ class MobileBody extends StatelessWidget {
                               jobTitleSize: mobileHeaderJobTitleSize,
                               jobTitleSpacing: mobileHeaderJobTitleSpacing,
                               iconButtonSize: mobileHeaderIconButtonSize,
+                              iconButtonSpacerSize: mobileHeaderIconButtonSpacerSize,
                               spacerSize: mobileSpacerSize),
                           SectionTitle(
                               title: "PERSONAL INFORMATION",
-                              titleSize: mobileSectionTitleTitleSize,
+                              titleSize: mobileSectionTitleSize,
                               titleUnderlineSize:
-                                  mobileSectionTitleTitleUnderlineSize,
-                              spacerSize: mobileSectionTitleSpacerSize),
+                                  mobileSectionTitleUnderlineSize,
+                              spacerSize: mobileSpacerSize),
                           PersonalInfoNationality(
                               iconSize: mobileIconSize,
                               label: person[0]["nationality"],
@@ -70,40 +71,35 @@ class MobileBody extends StatelessWidget {
                             height: 20.0,
                           ),
                           SectionTitle(
-                              title: "SKILLS",
-                              titleSize: mobileSectionTitleTitleSize,
+                              title: "PROFILE",
+                              titleSize: mobileSectionTitleSize,
                               titleUnderlineSize:
-                                  mobileSectionTitleTitleUnderlineSize,
-                              spacerSize: mobileSectionTitleSpacerSize),
+                              mobileSectionTitleUnderlineSize,
+                              spacerSize: mobileSpacerSize),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          SectionTitle(
+                              title: "SKILLS",
+                              titleSize: mobileSectionTitleSize,
+                              titleUnderlineSize:
+                              mobileSectionTitleUnderlineSize,
+                              spacerSize: mobileSpacerSize),
                           for (var skill in person[0]["skills"])
                             ProgressionBar(
                                 label: skill["skill"],
+                                progressionBarWidth: mobileProgressionBarWidth,
                                 labelFontSize: mobileLabelFontSize,
                                 progression: skill["percentage"]),
                           const SizedBox(
                             height: 20.0,
                           ),
                           SectionTitle(
-                              title: "LANGUAGES",
-                              titleSize: mobileSectionTitleTitleSize,
-                              titleUnderlineSize:
-                                  mobileSectionTitleTitleUnderlineSize,
-                              spacerSize: mobileSectionTitleSpacerSize),
-                          for (var language in person[0]["languages"])
-                            ProgressionBar(
-                                label:
-                                "${language["language"]} (${language["fluency"]})",
-                                labelFontSize: mobileLabelFontSize,
-                                progression: language["percentage"]),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          SectionTitle(
                               title: "PROFESSIONAL EXPERIENCE",
-                              titleSize: mobileSectionTitleTitleSize,
+                              titleSize: mobileSectionTitleSize,
                               titleUnderlineSize:
-                                  mobileSectionTitleTitleUnderlineSize,
-                              spacerSize: mobileSectionTitleSpacerSize),
+                              mobileSectionTitleUnderlineSize,
+                              spacerSize: mobileSpacerSize),
                           for (var job in person[0]["jobs"])
                             Job(
                                 iconSize: mobileIconSize,
@@ -112,6 +108,31 @@ class MobileBody extends StatelessWidget {
                                 description: job["description"],
                                 labelFontSize: mobileLabelFontSize,
                                 spacerSize: mobileSpacerSize),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          SectionTitle(
+                              title: "EDUCATION",
+                              titleSize: mobileSectionTitleSize,
+                              titleUnderlineSize:
+                              mobileSectionTitleUnderlineSize,
+                              spacerSize: mobileSpacerSize),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          SectionTitle(
+                              title: "LANGUAGES",
+                              titleSize: mobileSectionTitleSize,
+                              titleUnderlineSize:
+                                  mobileSectionTitleUnderlineSize,
+                              spacerSize: mobileSpacerSize),
+                          for (var language in person[0]["languages"])
+                            ProgressionBar(
+                                label:
+                                "${language["language"]} (${language["fluency"]})",
+                                progressionBarWidth: mobileProgressionBarWidth,
+                                labelFontSize: mobileLabelFontSize,
+                                progression: language["percentage"]),
                           const SizedBox(
                             height: 50.0,
                           ),

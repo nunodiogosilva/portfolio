@@ -4,8 +4,8 @@ import 'package:portfolio/widgets/background.dart';
 import 'package:portfolio/widgets/widgets.dart';
 import 'package:portfolio/breakpoints.dart';
 
-class TabletBody extends StatelessWidget {
-  const TabletBody({Key? key}) : super(key: key);
+class PhabletBody extends StatelessWidget {
+  const PhabletBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,22 +24,22 @@ class TabletBody extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 body: SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(50.0, 20.0, 50.0, 20.0),
+                    padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Header(
                               image: "images/nunosilva.jpg",
-                              imageSize: tabletHeaderImageSize,
+                              imageSize: mobileHeaderImageSize,
                               name: person![0]["name"],
-                              nameSize: tabletHeaderNameSize,
+                              nameSize: mobileHeaderNameSize,
                               jobTitle: person[0]["jobTitle"].toUpperCase(),
-                              jobTitleSize: tabletHeaderJobTitleSize,
-                              jobTitleSpacing: tabletHeaderJobTitleSpacing,
-                              iconButtonSize: tabletHeaderIconButtonSize,
-                              iconButtonSpacerSize: tabletHeaderIconButtonSpacerSize,
-                              spacerSize: tabletSpacerSize),
+                              jobTitleSize: mobileHeaderJobTitleSize,
+                              jobTitleSpacing: mobileHeaderJobTitleSpacing,
+                              iconButtonSize: mobileHeaderIconButtonSize,
+                              iconButtonSpacerSize: mobileHeaderIconButtonSpacerSize,
+                              spacerSize: mobileSpacerSize),
                           IntrinsicHeight(
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,68 +48,66 @@ class TabletBody extends StatelessWidget {
                                   flex: 4,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       SectionTitle(
                                           title: "PERSONAL INFORMATION",
-                                          titleSize: tabletSectionTitleSize,
+                                          titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
-                                          tabletSectionTitleUnderlineSize,
-                                          spacerSize: tabletSpacerSize),
+                                          mobileSectionTitleUnderlineSize,
+                                          spacerSize: mobileSpacerSize),
                                       PersonalInfoNationality(
-                                          iconSize: tabletIconSize,
+                                          iconSize: mobileIconSize,
                                           label: person[0]["nationality"],
-                                          labelFontSize: tabletLabelFontSize),
+                                          labelFontSize: mobileLabelFontSize),
                                       PersonalInfoEmail(
-                                          iconSize: tabletIconSize,
+                                          iconSize: mobileIconSize,
                                           email: person[0]["email"],
-                                          labelFontSize: tabletLabelFontSize),
+                                          labelFontSize: mobileLabelFontSize),
                                       PersonalInfoLinkedIn(
-                                          iconSize: tabletIconSize,
+                                          iconSize: mobileIconSize,
                                           url: person[0]["linkedIn"]["url"],
                                           label: person[0]["linkedIn"]["label"],
-                                          labelFontSize: tabletLabelFontSize),
+                                          labelFontSize: mobileLabelFontSize),
                                       PersonalInfoPhoneNumber(
-                                          iconSize: tabletIconSize,
+                                          iconSize: mobileIconSize,
                                           phoneNumber: person[0]["phoneNumber"],
-                                          labelFontSize: tabletLabelFontSize),
+                                          labelFontSize: mobileLabelFontSize),
                                       PersonalInfoLocation(
-                                          iconSize: tabletIconSize,
+                                          iconSize: mobileIconSize,
                                           label: person[0]["location"],
-                                          labelFontSize: tabletLabelFontSize),
+                                          labelFontSize: mobileLabelFontSize),
                                       const SizedBox(
-                                        height: 30.0,
+                                        height: 20.0,
                                       ),
                                       SectionTitle(
                                           title: "SKILLS",
-                                          titleSize: tabletSectionTitleSize,
+                                          titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
-                                          tabletSectionTitleUnderlineSize,
-                                          spacerSize: tabletSpacerSize),
+                                          mobileSectionTitleUnderlineSize,
+                                          spacerSize: mobileSpacerSize),
                                       for (var skill in person[0]["skills"])
                                         ProgressionBar(
                                             label: skill["skill"],
-                                            progressionBarWidth: tabletProgressionBarWidth,
-                                            labelFontSize: tabletLabelFontSize,
+                                            progressionBarWidth: mobileProgressionBarWidth,
+                                            labelFontSize: mobileLabelFontSize,
                                             progression: skill["percentage"]),
                                       const SizedBox(
-                                        height: 30.0,
+                                        height: 20.0,
                                       ),
                                       SectionTitle(
                                           title: "LANGUAGES",
-                                          titleSize: tabletSectionTitleSize,
+                                          titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
-                                          tabletSectionTitleUnderlineSize,
-                                          spacerSize: tabletSpacerSize),
+                                          mobileSectionTitleUnderlineSize,
+                                          spacerSize: mobileSpacerSize),
                                       for (var language in person[0]["languages"])
                                         ProgressionBar(
                                             label:
                                             "${language["language"]} (${language["fluency"]})",
-                                            progressionBarWidth: tabletProgressionBarWidth,
-                                            labelFontSize: tabletLabelFontSize,
+                                            progressionBarWidth: mobileProgressionBarWidth,
+                                            labelFontSize: mobileLabelFontSize,
                                             progression: language["percentage"]),
-                                      const SizedBox(
-                                        height: 30.0,
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -127,29 +125,29 @@ class TabletBody extends StatelessWidget {
                                     children: [
                                       SectionTitle(
                                           title: "PROFILE",
-                                          titleSize: tabletSectionTitleSize,
+                                          titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
-                                          tabletSectionTitleUnderlineSize,
+                                          mobileSectionTitleUnderlineSize,
                                           spacerSize: mobileSpacerSize),
                                       const SizedBox(
-                                        height: 30.0,
+                                        height: 20.0,
                                       ),
                                       SectionTitle(
                                           title: "PROFESSIONAL EXPERIENCE",
-                                          titleSize: tabletSectionTitleSize,
+                                          titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
-                                          tabletSectionTitleUnderlineSize,
-                                          spacerSize: tabletSpacerSize),
+                                          mobileSectionTitleUnderlineSize,
+                                          spacerSize: mobileSpacerSize),
                                       for (var job in person[0]["jobs"])
                                         Job(
-                                            iconSize: tabletIconSize,
+                                            iconSize: mobileIconSize,
                                             title: job["title"],
                                             time: "(${job["time"]["start"]} - ${job["time"]["end"]})",
                                             description: job["description"],
-                                            labelFontSize: tabletLabelFontSize,
-                                            spacerSize: tabletSpacerSize),
+                                            labelFontSize: mobileLabelFontSize,
+                                            spacerSize: mobileSpacerSize),
                                       const SizedBox(
-                                        height: 30.0,
+                                        height: 20.0,
                                       ),
                                       SectionTitle(
                                           title: "EDUCATION",
@@ -164,7 +162,7 @@ class TabletBody extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 100.0,
+                            height: 50.0,
                           ),
                         ],
                       ),
