@@ -248,13 +248,15 @@ class _PersonalInfoEmailState extends State<PersonalInfoEmail> {
                       color: Colors.white, size: widget.iconSize),
                 ),
               ),
-              TextSpan(
-                text: "Email: ",
-                style: TextStyle(
-                  fontFamily: "Righteous",
-                  fontSize: widget.labelFontSize,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+              WidgetSpan(
+                child: Text(
+                  "Email: ",
+                  style: TextStyle(
+                    fontFamily: "Righteous",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               WidgetSpan(
@@ -324,13 +326,15 @@ class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
                       color: Colors.white, size: widget.iconSize),
                 ),
               ),
-              TextSpan(
-                text: "LinkedIn: ",
-                style: TextStyle(
-                  fontFamily: "Righteous",
-                  fontSize: widget.labelFontSize,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+              WidgetSpan(
+                child: Text(
+                  "LinkedIn: ",
+                  style: TextStyle(
+                    fontFamily: "Righteous",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               WidgetSpan(
@@ -399,14 +403,16 @@ class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
                       color: Colors.white, size: widget.iconSize),
                 ),
               ),
-              TextSpan(
-                text: "Phone Number: ",
-                style: TextStyle(
-                  fontFamily: "Righteous",
-                  fontSize: widget.labelFontSize,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+              WidgetSpan(
+                  child: Text(
+                    "Phone Number: ",
+                    style: TextStyle(
+                      fontFamily: "Righteous",
+                      fontSize: widget.labelFontSize,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
               ),
               WidgetSpan(
                 child: GestureDetector(
@@ -434,7 +440,7 @@ class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
   }
 }
 
-class PersonalInfoLocation extends StatelessWidget {
+class PersonalInfoLocation extends StatefulWidget {
   final double iconSize;
   final String label;
   final double labelFontSize;
@@ -447,6 +453,19 @@ class PersonalInfoLocation extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<PersonalInfoLocation> createState() => _PersonalInfoLocationState();
+}
+
+class _PersonalInfoLocationState extends State<PersonalInfoLocation> {
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw "Couldn't redirect to $url";
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -457,7 +476,7 @@ class PersonalInfoLocation extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Icon(Icons.room_outlined,
-                      color: Colors.white, size: iconSize),
+                      color: Colors.white, size: widget.iconSize),
                 ),
               ),
               WidgetSpan(
@@ -465,19 +484,24 @@ class PersonalInfoLocation extends StatelessWidget {
                   "Location: ",
                   style: TextStyle(
                     fontFamily: "Righteous",
-                    fontSize: labelFontSize,
+                    fontSize: widget.labelFontSize,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               WidgetSpan(
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    fontFamily: "OpenSans",
-                    fontSize: labelFontSize,
-                    color: Colors.white70,
+                child: GestureDetector(
+                  onTap: () {
+                    _launchURL("https://www.google.pt/maps/place/Set%C3%BAbal+Municipality/@38.5237045,-8.8641017,12z");
+                  },
+                  child: Text(
+                    widget.label,
+                    style: TextStyle(
+                      fontFamily: "OpenSans",
+                      fontSize: widget.labelFontSize,
+                      color: Colors.white70,
+                    ),
                   ),
                 ),
               ),

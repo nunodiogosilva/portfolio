@@ -17,10 +17,13 @@ class Portfolio extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Portfolio',
+    return MaterialApp(
+      title: 'Nuno Silva - Portfolio',
+      theme: ThemeData(
+        primaryColor: const Color(0xff151518),
+      ),
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: const Home(),
     );
   }
 }
