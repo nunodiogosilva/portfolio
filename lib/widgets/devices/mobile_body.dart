@@ -117,6 +117,14 @@ class MobileBody extends StatelessWidget {
                               titleUnderlineSize:
                               mobileSectionTitleUnderlineSize,
                               spacerSize: mobileSpacerSize),
+                          for (var education in person[0]["education"])
+                            Education(
+                                iconSize: mobileIconSize,
+                                academy: education["academy"],
+                                course: education["course"],
+                                time: "(${education["time"]["start"]} - ${education["time"]["end"]})",
+                                labelFontSize: mobileLabelFontSize,
+                                spacerSize: mobileSpacerSize),
                           const SizedBox(
                             height: 20.0,
                           ),

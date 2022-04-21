@@ -16,7 +16,7 @@ class _BackgroundState extends State<Background> {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xff28282a),
+            Color(0xff151518),
             Color(0xff151518),
           ],
           begin: Alignment.bottomLeft,

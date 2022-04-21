@@ -45,13 +45,13 @@ double tabletProgressionBarWidth = 250.0;
 double mobileProgressionBarWidth = 200.0;
 
 /// General Sizes
-double desktopIconSize = 23.0;
-double tabletIconSize = 21.0;
-double mobileIconSize = 19.0;
+double desktopIconSize = 21.0;
+double tabletIconSize = 19.0;
+double mobileIconSize = 17.0;
 
-double desktopLabelFontSize = 18.0;
-double tabletLabelFontSize = 16.0;
-double mobileLabelFontSize = 14.0;
+double desktopLabelFontSize = 19.0;
+double tabletLabelFontSize = 17.0;
+double mobileLabelFontSize = 15.0;
 
 double desktopSpacerSize = 25.0;
 double tabletSpacerSize = 20.0;

@@ -20,6 +20,11 @@ class Portfolio extends StatelessWidget {
     return MaterialApp(
       title: 'Nuno Silva - Portfolio',
       theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: const Color(0xff151518),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
         primaryColor: const Color(0xff151518),
       ),
       debugShowCheckedModeBanner: false,

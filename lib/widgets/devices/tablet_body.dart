@@ -130,7 +130,7 @@ class TabletBody extends StatelessWidget {
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
-                                          spacerSize: mobileSpacerSize),
+                                          spacerSize: tabletSpacerSize),
                                       const SizedBox(
                                         height: 30.0,
                                       ),
@@ -153,10 +153,18 @@ class TabletBody extends StatelessWidget {
                                       ),
                                       SectionTitle(
                                           title: "EDUCATION",
-                                          titleSize: mobileSectionTitleSize,
+                                          titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
-                                          mobileSectionTitleUnderlineSize,
-                                          spacerSize: mobileSpacerSize),
+                                          tabletSectionTitleUnderlineSize,
+                                          spacerSize: tabletSpacerSize),
+                                      for (var education in person[0]["education"])
+                                        Education(
+                                            iconSize: tabletIconSize,
+                                            academy: education["academy"],
+                                            course: education["course"],
+                                            time: "(${education["time"]["start"]} - ${education["time"]["end"]})",
+                                            labelFontSize: tabletLabelFontSize,
+                                            spacerSize: tabletSpacerSize),
                                     ],
                                   ),
                                 ),

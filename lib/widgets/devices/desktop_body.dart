@@ -165,6 +165,14 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             desktopSectionTitleUnderlineSize,
                                         spacerSize:
                                             desktopSpacerSize),
+                                    for (var education in person[0]["education"])
+                                      Education(
+                                          iconSize: desktopIconSize,
+                                          academy: education["academy"],
+                                          course: education["course"],
+                                          time: "(${education["time"]["start"]} - ${education["time"]["end"]})",
+                                          labelFontSize: desktopLabelFontSize,
+                                          spacerSize: desktopSpacerSize),
                                   ],
                                 ),
                               ),

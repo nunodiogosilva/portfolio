@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// Header
 class Header extends StatefulWidget {
   final String image;
   final double imageSize;
@@ -73,6 +74,7 @@ class _HeaderState extends State<Header> {
           width: double.infinity,
           child: const Divider(
             color: Colors.white70,
+            thickness: 1.0,
           ),
         ),
         Row(
@@ -113,6 +115,7 @@ class _HeaderState extends State<Header> {
   }
 }
 
+/// Section Title
 class SectionTitle extends StatelessWidget {
   final String title;
   final double titleSize;
@@ -145,6 +148,7 @@ class SectionTitle extends StatelessWidget {
             width: titleUnderlineSize,
             child: const Divider(
               color: Colors.white70,
+              thickness: 1.0,
             )),
         SizedBox(
           height: spacerSize,
@@ -176,7 +180,7 @@ class PersonalInfoNationality extends StatelessWidget {
             children: [
               WidgetSpan(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Icon(Icons.flag_outlined,
                       color: Colors.white, size: iconSize),
                 ),
@@ -243,7 +247,7 @@ class _PersonalInfoEmailState extends State<PersonalInfoEmail> {
             children: [
               WidgetSpan(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Icon(Icons.email_outlined,
                       color: Colors.white, size: widget.iconSize),
                 ),
@@ -321,7 +325,7 @@ class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
             children: [
               WidgetSpan(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Icon(Icons.people_outline,
                       color: Colors.white, size: widget.iconSize),
                 ),
@@ -398,7 +402,7 @@ class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
             children: [
               WidgetSpan(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Icon(Icons.phone_outlined,
                       color: Colors.white, size: widget.iconSize),
                 ),
@@ -474,7 +478,7 @@ class _PersonalInfoLocationState extends State<PersonalInfoLocation> {
             children: [
               WidgetSpan(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Icon(Icons.room_outlined,
                       color: Colors.white, size: widget.iconSize),
                 ),
@@ -545,7 +549,7 @@ class Job extends StatelessWidget {
             children: [
               WidgetSpan(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: Icon(
                     Icons.work_outline,
                     color: Colors.white,
@@ -581,6 +585,85 @@ class Job extends StatelessWidget {
         ),
         Text(
           description,
+          style: TextStyle(
+            fontFamily: "OpenSans",
+            fontSize: labelFontSize,
+            color: Colors.white70,
+          ),
+        ),
+        SizedBox(
+          height: spacerSize,
+        ),
+      ],
+    );
+  }
+}
+
+/// Education
+class Education extends StatelessWidget {
+  final double iconSize;
+  final String academy;
+  final String course;
+  final String time;
+  final double labelFontSize;
+  final double spacerSize;
+
+  const Education(
+      {Key? key,
+        required this.iconSize,
+        required this.academy,
+        required this.course,
+        required this.time,
+        required this.labelFontSize,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RichText(
+          text: TextSpan(
+            children: [
+              WidgetSpan(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Icon(
+                    Icons.domain_outlined,
+                    color: Colors.white,
+                    size: iconSize,
+                  ),
+                ),
+              ),
+              TextSpan(
+                text: academy,
+                style: TextStyle(
+                  fontFamily: "Righteous",
+                  fontSize: iconSize,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          course,
+          style: TextStyle(
+            fontFamily: "OpenSans",
+            fontSize: iconSize,
+            color: Colors.white70,
+          ),
+        ),
+        const SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          time,
           style: TextStyle(
             fontFamily: "OpenSans",
             fontSize: labelFontSize,
