@@ -11,7 +11,7 @@ The main goal of this project was to create a place where I could easily manage 
 To do this whole app I've recurred to a few tools and frameworks.
 
 * :computer::iphone::watch: Flutter and Dart
-  * I've used [Flutter](https://flutter.dev/) and [Dart](https://dart.dev/) because I've decided to learn more about Flutter's framework since it has the ability  to create multiplaform applications and I've been looking forward to this for the longest time because I don't like to feel limited to which platform I'm programming to.
+  * I've used [Flutter](https://flutter.dev/) and [Dart](https://dart.dev/) because I've decided to learn more about Flutter's framework since it has the ability  to create multiplatform applications and I've been looking forward to this for the longest time because I don't like to feel limited to which platform I'm programming to.
 
 * :fire: Firebase
   * I've also used [Firebase](https://firebase.google.com/) due to the non-SQL database format that I actually love (similar to [MongoDB](https://www.mongodb.com/) Collection / Document structure) and due to the amount of available resources ([Firebase Auth](https://firebase.google.com/products/auth), [Firestore Database](https://firebase.google.com/products/firestore), [Firebase Hosting](https://firebase.google.com/products/hosting), etc.) and compability since both Flutter and Firebase belong to Google.
