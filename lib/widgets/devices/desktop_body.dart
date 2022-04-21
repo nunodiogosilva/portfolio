@@ -137,6 +137,11 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             desktopSectionTitleUnderlineSize,
                                         spacerSize:
                                             desktopSpacerSize),
+                                    Profile(
+                                      profile: person[0]["profile"],
+                                      labelFontSize: desktopLabelFontSize,
+                                      spacerSize: desktopSpacerSize,
+                                    ),
                                     const SizedBox(
                                       height: 40.0,
                                     ),

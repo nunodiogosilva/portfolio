@@ -131,6 +131,11 @@ class TabletBody extends StatelessWidget {
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
                                           spacerSize: tabletSpacerSize),
+                                      Profile(
+                                          profile: person[0]["profile"],
+                                          labelFontSize: tabletLabelFontSize,
+                                          spacerSize: tabletSpacerSize,
+                                      ),
                                       const SizedBox(
                                         height: 30.0,
                                       ),

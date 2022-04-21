@@ -76,6 +76,11 @@ class MobileBody extends StatelessWidget {
                               titleUnderlineSize:
                               mobileSectionTitleUnderlineSize,
                               spacerSize: mobileSpacerSize),
+                          Profile(
+                            profile: person[0]["profile"],
+                            labelFontSize: mobileLabelFontSize,
+                            spacerSize: mobileSpacerSize,
+                          ),
                           const SizedBox(
                             height: 20.0,
                           ),

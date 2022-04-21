@@ -271,6 +271,7 @@ class _PersonalInfoEmailState extends State<PersonalInfoEmail> {
                   child: Text(
                     widget.email,
                     style: TextStyle(
+                      decoration: TextDecoration.underline,
                       fontFamily: "OpenSans",
                       fontSize: widget.labelFontSize,
                       color: Colors.white70,
@@ -349,6 +350,7 @@ class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
                   child: Text(
                     widget.label,
                     style: TextStyle(
+                      decoration: TextDecoration.underline,
                       fontFamily: "OpenSans",
                       fontSize: widget.labelFontSize,
                       color: Colors.white70,
@@ -426,6 +428,7 @@ class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
                   child: Text(
                     widget.phoneNumber,
                     style: TextStyle(
+                      decoration: TextDecoration.underline,
                       fontFamily: "OpenSans",
                       fontSize: widget.labelFontSize,
                       color: Colors.white70,
@@ -502,6 +505,7 @@ class _PersonalInfoLocationState extends State<PersonalInfoLocation> {
                   child: Text(
                     widget.label,
                     style: TextStyle(
+                      decoration: TextDecoration.underline,
                       fontFamily: "OpenSans",
                       fontSize: widget.labelFontSize,
                       color: Colors.white70,
@@ -519,6 +523,40 @@ class _PersonalInfoLocationState extends State<PersonalInfoLocation> {
     );
   }
 }
+
+/// Profile
+class Profile extends StatelessWidget {
+  final String profile;
+  final double labelFontSize;
+  final double spacerSize;
+
+  const Profile(
+      {Key? key,
+        required this.profile,
+        required this.labelFontSize,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          profile,
+          style: TextStyle(
+            fontFamily: "OpenSans",
+            fontSize: labelFontSize,
+            color: Colors.white70,
+          ),
+        ),
+        SizedBox(
+          height: spacerSize,
+        ),
+      ],
+    );
+  }
+}
+
 
 /// Job
 class Job extends StatelessWidget {
