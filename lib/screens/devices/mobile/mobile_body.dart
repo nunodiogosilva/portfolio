@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/widgets/background.dart';
 import 'package:portfolio/widgets/widgets.dart';
 import 'package:portfolio/breakpoints.dart';
 
@@ -65,7 +64,8 @@ class MobileBody extends StatelessWidget {
                               labelFontSize: mobileLabelFontSize),
                           PersonalInfoLocation(
                               iconSize: mobileIconSize,
-                              label: person[0]["location"],
+                              url: person[0]["location"]["url"],
+                              label: person[0]["location"]["label"],
                               labelFontSize: mobileLabelFontSize),
                           const SizedBox(
                             height: 20.0,

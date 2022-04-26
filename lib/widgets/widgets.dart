@@ -2,7 +2,34 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'background.dart';
+/// Background
+class Background extends StatefulWidget {
+  final Widget child;
+
+  const Background({Key? key, required this.child}) : super(key: key);
+
+  @override
+  State<Background> createState() => _BackgroundState();
+}
+
+class _BackgroundState extends State<Background> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xff151518),
+            Color(0xff151518),
+          ],
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+        ),
+      ),
+      child: widget.child,
+    );
+  }
+}
 
 /// Header
 class Header extends StatefulWidget {
@@ -272,36 +299,11 @@ class _HeaderState extends State<Header> {
                     thickness: 1.0,
                   ),
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Image.asset("images/pdf.png"),
-                      iconSize: widget.iconButtonSize,
-                      tooltip: "Download CV PDF",
-                    ),
-                    SizedBox(
-                      width: widget.iconButtonSpacerSize,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        _launchURL(
-                            "https://github.com/nunodiogosilva/portfolio");
-                      },
-                      icon: Image.asset("images/github.png"),
-                      iconSize: widget.iconButtonSize,
-                      tooltip: "Github Repository",
-                    ),
-                    SizedBox(
-                      width: widget.iconButtonSpacerSize,
-                    ),
-                    IconButton(
-                      onPressed: () => FirebaseAuth.instance.signOut(),
-                      icon: Image.asset("images/admin_unlocked.png"),
-                      iconSize: widget.iconButtonSize,
-                      tooltip: "Admin View",
-                    ),
-                  ],
+                IconButton(
+                  onPressed: () => FirebaseAuth.instance.signOut(),
+                  icon: Image.asset("images/admin_unlocked.png"),
+                  iconSize: widget.iconButtonSize,
+                  tooltip: "Admin View",
                 ),
                 SizedBox(
                   height: widget.spacerSize,
@@ -452,6 +454,12 @@ class _PersonalInfoNationalityState extends State<PersonalInfoNationality> {
   final labelController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    labelController.text = widget.label;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
@@ -464,98 +472,53 @@ class _PersonalInfoNationalityState extends State<PersonalInfoNationality> {
             // Admin View
             return Column(
               children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      WidgetSpan(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Icon(Icons.flag_outlined,
-                              color: Colors.white, size: widget.iconSize),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Icon(Icons.flag_outlined,
+                          color: Colors.white, size: widget.iconSize),
+                    ),
+                    Text(
+                      "Nationality: ",
+                      style: TextStyle(
+                        fontFamily: "Righteous",
+                        fontSize: widget.labelFontSize,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: labelController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "Nationality",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
                         ),
                       ),
-                      WidgetSpan(
-                        child: Text(
-                          "Nationality: ",
-                          style: TextStyle(
-                            fontFamily: "Righteous",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      WidgetSpan(
-                        child: Text(
-                          widget.label,
-                          style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 10.0,
                 ),
               ],
-            );/*Column(
-              children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      WidgetSpan(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Icon(Icons.flag_outlined,
-                              color: Colors.white, size: widget.iconSize),
-                        ),
-                      ),
-                      WidgetSpan(
-                        child: Text(
-                          "Nationality: ",
-                          style: TextStyle(
-                            fontFamily: "Righteous",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      WidgetSpan(
-                        child: TextField(
-                          controller: labelController,
-                          cursorColor: Colors.white,
-                          textInputAction: TextInputAction.next,
-                          decoration: InputDecoration(
-                            hintText: widget.label,
-                            border: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                              color: Colors.white70,
-                            )),
-                            focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                              color: Colors.white70,
-                            )),
-                          ),
-                          style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-              ],
-            );*/
+            );
           } else {
             // Normal View
             return Column(
@@ -625,55 +588,125 @@ class _PersonalInfoEmailState extends State<PersonalInfoEmail> {
     launch("mailto:$email");
   }
 
+  final emailController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    emailController.text = widget.email;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              WidgetSpan(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.email_outlined,
-                      color: Colors.white, size: widget.iconSize),
-                ),
-              ),
-              WidgetSpan(
-                child: Text(
-                  "Email: ",
-                  style: TextStyle(
-                    fontFamily: "Righteous",
-                    fontSize: widget.labelFontSize,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              WidgetSpan(
-                child: GestureDetector(
-                  onTap: () {
-                    _launchEmail(widget.email);
-                  },
-                  child: Text(
-                    widget.email,
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontFamily: "OpenSans",
-                      fontSize: widget.labelFontSize,
-                      color: Colors.white70,
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Icon(Icons.email_outlined,
+                          color: Colors.white, size: widget.iconSize),
                     ),
+                    Text(
+                      "Email: ",
+                      style: TextStyle(
+                        fontFamily: "Righteous",
+                        fontSize: widget.labelFontSize,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: emailController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "Email",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      WidgetSpan(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Icon(Icons.email_outlined,
+                              color: Colors.white, size: widget.iconSize),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: Text(
+                          "Email: ",
+                          style: TextStyle(
+                            fontFamily: "Righteous",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: GestureDetector(
+                          onTap: () {
+                            _launchEmail(widget.email);
+                          },
+                          child: Text(
+                            widget.email,
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontFamily: "OpenSans",
+                              fontSize: widget.labelFontSize,
+                              color: Colors.white70,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-      ],
-    );
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          }
+        });
   }
 }
 
@@ -704,55 +737,154 @@ class _PersonalInfoLinkedInState extends State<PersonalInfoLinkedIn> {
     }
   }
 
+  final labelController = TextEditingController();
+  final urlController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    labelController.text = widget.label;
+    urlController.text = widget.url;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              WidgetSpan(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.people_outline,
-                      color: Colors.white, size: widget.iconSize),
-                ),
-              ),
-              WidgetSpan(
-                child: Text(
-                  "LinkedIn: ",
-                  style: TextStyle(
-                    fontFamily: "Righteous",
-                    fontSize: widget.labelFontSize,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              WidgetSpan(
-                child: GestureDetector(
-                  onTap: () {
-                    _launchURL(widget.url);
-                  },
-                  child: Text(
-                    widget.label,
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontFamily: "OpenSans",
-                      fontSize: widget.labelFontSize,
-                      color: Colors.white70,
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Icon(Icons.people_outline,
+                          color: Colors.white, size: widget.iconSize),
                     ),
+                    Text(
+                      "LinkedIn: ",
+                      style: TextStyle(
+                        fontFamily: "Righteous",
+                        fontSize: widget.labelFontSize,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: labelController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "Label",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: urlController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "Url",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      WidgetSpan(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Icon(Icons.people_outline,
+                              color: Colors.white, size: widget.iconSize),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: Text(
+                          "LinkedIn: ",
+                          style: TextStyle(
+                            fontFamily: "Righteous",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: GestureDetector(
+                          onTap: () {
+                            _launchURL(widget.url);
+                          },
+                          child: Text(
+                            widget.label,
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontFamily: "OpenSans",
+                              fontSize: widget.labelFontSize,
+                              color: Colors.white70,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-      ],
-    );
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          }
+        });
   }
 }
 
@@ -782,67 +914,140 @@ class _PersonalInfoPhoneNumberState extends State<PersonalInfoPhoneNumber> {
     }
   }
 
+  final phoneNumberController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    phoneNumberController.text = widget.phoneNumber;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              WidgetSpan(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.phone_outlined,
-                      color: Colors.white, size: widget.iconSize),
-                ),
-              ),
-              WidgetSpan(
-                child: Text(
-                  "Phone Number: ",
-                  style: TextStyle(
-                    fontFamily: "Righteous",
-                    fontSize: widget.labelFontSize,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              WidgetSpan(
-                child: GestureDetector(
-                  onTap: () => setState(() {
-                    _makePhoneCall(widget.phoneNumber);
-                  }),
-                  child: Text(
-                    widget.phoneNumber,
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontFamily: "OpenSans",
-                      fontSize: widget.labelFontSize,
-                      color: Colors.white70,
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Icon(Icons.phone_outlined,
+                          color: Colors.white, size: widget.iconSize),
                     ),
+                    Text(
+                      "Phone Number: ",
+                      style: TextStyle(
+                        fontFamily: "Righteous",
+                        fontSize: widget.labelFontSize,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: phoneNumberController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "Phone Number",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      WidgetSpan(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Icon(Icons.phone_outlined,
+                              color: Colors.white, size: widget.iconSize),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: Text(
+                          "Phone Number: ",
+                          style: TextStyle(
+                            fontFamily: "Righteous",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: GestureDetector(
+                          onTap: () => setState(() {
+                            _makePhoneCall(widget.phoneNumber);
+                          }),
+                          child: Text(
+                            widget.phoneNumber,
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontFamily: "OpenSans",
+                              fontSize: widget.labelFontSize,
+                              color: Colors.white70,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-      ],
-    );
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          }
+        });
+    /**/
   }
 }
 
 class PersonalInfoLocation extends StatefulWidget {
   final double iconSize;
   final String label;
+  final String url;
   final double labelFontSize;
 
   const PersonalInfoLocation(
       {Key? key,
       required this.iconSize,
       required this.label,
+      required this.url,
       required this.labelFontSize})
       : super(key: key);
 
@@ -859,56 +1064,155 @@ class _PersonalInfoLocationState extends State<PersonalInfoLocation> {
     }
   }
 
+  final labelController = TextEditingController();
+  final urlController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    labelController.text = widget.label;
+    urlController.text = widget.url;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        RichText(
-          text: TextSpan(
-            children: [
-              WidgetSpan(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
-                  child: Icon(Icons.room_outlined,
-                      color: Colors.white, size: widget.iconSize),
-                ),
-              ),
-              WidgetSpan(
-                child: Text(
-                  "Location: ",
-                  style: TextStyle(
-                    fontFamily: "Righteous",
-                    fontSize: widget.labelFontSize,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              WidgetSpan(
-                child: GestureDetector(
-                  onTap: () {
-                    _launchURL(
-                        "https://www.google.pt/maps/place/Set%C3%BAbal+Municipality/@38.5237045,-8.8641017,12z");
-                  },
-                  child: Text(
-                    widget.label,
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontFamily: "OpenSans",
-                      fontSize: widget.labelFontSize,
-                      color: Colors.white70,
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Icon(Icons.room_outlined,
+                          color: Colors.white, size: widget.iconSize),
                     ),
+                    Text(
+                      "Location: ",
+                      style: TextStyle(
+                        fontFamily: "Righteous",
+                        fontSize: widget.labelFontSize,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: labelController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "Label",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: urlController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "Url",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      WidgetSpan(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Icon(Icons.room_outlined,
+                              color: Colors.white, size: widget.iconSize),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: Text(
+                          "Location: ",
+                          style: TextStyle(
+                            fontFamily: "Righteous",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: GestureDetector(
+                          onTap: () {
+                            _launchURL(
+                                "https://www.google.pt/maps/place/Set%C3%BAbal+Municipality/@38.5237045,-8.8641017,12z");
+                          },
+                          child: Text(
+                            widget.label,
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontFamily: "OpenSans",
+                              fontSize: widget.labelFontSize,
+                              color: Colors.white70,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-      ],
-    );
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            );
+          }
+        });
   }
 }
 
@@ -1025,12 +1329,14 @@ class Job extends StatefulWidget {
 }
 
 class _JobState extends State<Job> {
+  final titleController = TextEditingController();
   final timeController = TextEditingController();
   final descriptionController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    titleController.text = widget.title;
     timeController.text = widget.time;
     descriptionController.text = widget.description;
   }
@@ -1049,21 +1355,34 @@ class _JobState extends State<Job> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    WidgetSpan(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Icon(
-                          Icons.work_outline,
-                          color: Colors.white,
-                          size: widget.iconSize,
-                        ),
-                      ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Icon(
+                      Icons.work_outline,
+                      color: Colors.white,
+                      size: widget.iconSize,
                     ),
-                    TextSpan(
-                      text: widget.title,
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: TextField(
+                      controller: titleController,
+                      maxLines: 3,
+                      cursorColor: Colors.white,
+                      textInputAction: TextInputAction.next,
+                      decoration: const InputDecoration(
+                        hintText: "Job Title",
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                      ),
                       style: TextStyle(
                         fontFamily: "Righteous",
                         fontSize: widget.iconSize,
@@ -1071,8 +1390,8 @@ class _JobState extends State<Job> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 5.0,
@@ -1202,11 +1521,13 @@ class Education extends StatefulWidget {
 }
 
 class _EducationState extends State<Education> {
+  final academyController = TextEditingController();
   final courseController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    academyController.text = widget.academy;
     courseController.text = widget.course;
   }
 
@@ -1224,21 +1545,34 @@ class _EducationState extends State<Education> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    WidgetSpan(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Icon(
-                          Icons.domain_outlined,
-                          color: Colors.white,
-                          size: widget.iconSize,
-                        ),
-                      ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10.0),
+                    child: Icon(
+                      Icons.domain_outlined,
+                      color: Colors.white,
+                      size: widget.iconSize,
                     ),
-                    TextSpan(
-                      text: widget.academy,
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: TextField(
+                      controller: academyController,
+                      maxLines: 2,
+                      cursorColor: Colors.white,
+                      textInputAction: TextInputAction.next,
+                      decoration: const InputDecoration(
+                        hintText: "Academy",
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                      ),
                       style: TextStyle(
                         fontFamily: "Righteous",
                         fontSize: widget.iconSize,
@@ -1246,8 +1580,8 @@ class _EducationState extends State<Education> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 5.0,
@@ -1354,11 +1688,11 @@ class _EducationState extends State<Education> {
 }
 
 /// Skills / Languages
-class ProgressionBar extends StatelessWidget {
+class ProgressionBar extends StatefulWidget {
   final String label;
   final double progressionBarWidth;
   final double labelFontSize;
-  final double progression;
+  final String progression;
 
   const ProgressionBar(
       {Key? key,
@@ -1369,34 +1703,135 @@ class ProgressionBar extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<ProgressionBar> createState() => _ProgressionBarState();
+}
+
+class _ProgressionBarState extends State<ProgressionBar> {
+  final labelController = TextEditingController();
+  final progressionController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    labelController.text = widget.label;
+    progressionController.text = widget.progression;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontFamily: "OpenSans",
-            fontSize: labelFontSize,
-            color: Colors.white70,
-          ),
-        ),
-        const SizedBox(
-          height: 10.0,
-        ),
-        SizedBox(
-          width: progressionBarWidth,
-          child: LinearProgressIndicator(
-            backgroundColor: Colors.white30,
-            color: Colors.white,
-            minHeight: labelFontSize,
-            value: progression,
-          ),
-        ),
-        const SizedBox(
-          height: 30.0,
-        ),
-      ],
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: labelController,
+                  cursorColor: Colors.white,
+                  textInputAction: TextInputAction.next,
+                  decoration: const InputDecoration(
+                    hintText: "Skill",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                  ),
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: widget.progressionBarWidth,
+                      child: LinearProgressIndicator(
+                        backgroundColor: Colors.white30,
+                        color: Colors.white,
+                        minHeight: widget.labelFontSize,
+                        value: double.parse(progressionController.text),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: TextField(
+                        controller: progressionController,
+                        cursorColor: Colors.white,
+                        textInputAction: TextInputAction.next,
+                        decoration: const InputDecoration(
+                          hintText: "%",
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.white70,
+                              )),
+                        ),
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          fontSize: widget.labelFontSize,
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 30.0,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.label,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                SizedBox(
+                  width: widget.progressionBarWidth,
+                  child: LinearProgressIndicator(
+                    backgroundColor: Colors.white30,
+                    color: Colors.white,
+                    minHeight: widget.labelFontSize,
+                    value: double.parse(widget.progression),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30.0,
+                ),
+              ],
+            );
+          }
+        }
     );
   }
 }
