@@ -55,27 +55,15 @@ class PhabletBody extends StatelessWidget {
                                           titleUnderlineSize:
                                           mobileSectionTitleUnderlineSize,
                                           spacerSize: mobileSpacerSize),
-                                      PersonalInfoNationality(
-                                          iconSize: mobileIconSize,
-                                          label: person[0]["nationality"],
-                                          labelFontSize: mobileLabelFontSize),
-                                      PersonalInfoEmail(
-                                          iconSize: mobileIconSize,
+                                      PersonalInfo(
+                                          iconSize: desktopIconSize,
+                                          nationality: person[0]["nationality"],
                                           email: person[0]["email"],
-                                          labelFontSize: mobileLabelFontSize),
-                                      PersonalInfoLinkedIn(
-                                          iconSize: mobileIconSize,
-                                          url: person[0]["linkedIn"]["url"],
-                                          label: person[0]["linkedIn"]["label"],
-                                          labelFontSize: mobileLabelFontSize),
-                                      PersonalInfoPhoneNumber(
-                                          iconSize: mobileIconSize,
+                                          linkedInUrl: person[0]["linkedIn"]["url"],
+                                          linkedInLabel: person[0]["linkedIn"]["label"],
                                           phoneNumber: person[0]["phoneNumber"],
-                                          labelFontSize: mobileLabelFontSize),
-                                      PersonalInfoLocation(
-                                          iconSize: mobileIconSize,
-                                          url: person[0]["location"]["url"],
-                                          label: person[0]["location"]["label"],
+                                          locationLabel: person[0]["location"]["label"],
+                                          locationUrl: person[0]["location"]["url"],
                                           labelFontSize: mobileLabelFontSize),
                                       const SizedBox(
                                         height: 20.0,

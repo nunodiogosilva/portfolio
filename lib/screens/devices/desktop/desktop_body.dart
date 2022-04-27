@@ -41,7 +41,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                             jobTitleSize: desktopHeaderJobTitleSize,
                             jobTitleSpacing: desktopHeaderJobTitleSpacing,
                             iconButtonSize: desktopHeaderIconButtonSize,
-                            iconButtonSpacerSize: desktopHeaderIconButtonSpacerSize,
+                            iconButtonSpacerSize:
+                                desktopHeaderIconButtonSpacerSize,
                             spacerSize: desktopSpacerSize),
                         IntrinsicHeight(
                           child: Row(
@@ -58,29 +59,16 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
-                                        spacerSize:
-                                            desktopSpacerSize),
-                                    PersonalInfoNationality(
+                                        spacerSize: desktopSpacerSize),
+                                    PersonalInfo(
                                         iconSize: desktopIconSize,
-                                        label: person[0]["nationality"],
-                                        labelFontSize: desktopLabelFontSize),
-                                    PersonalInfoEmail(
-                                        iconSize: desktopIconSize,
+                                        nationality: person[0]["nationality"],
                                         email: person[0]["email"],
-                                        labelFontSize: desktopLabelFontSize),
-                                    PersonalInfoLinkedIn(
-                                        iconSize: desktopIconSize,
-                                        url: person[0]["linkedIn"]["url"],
-                                        label: person[0]["linkedIn"]["label"],
-                                        labelFontSize: desktopLabelFontSize),
-                                    PersonalInfoPhoneNumber(
-                                        iconSize: desktopIconSize,
+                                        linkedInUrl: person[0]["linkedIn"]["url"],
+                                        linkedInLabel: person[0]["linkedIn"]["label"],
                                         phoneNumber: person[0]["phoneNumber"],
-                                        labelFontSize: desktopLabelFontSize),
-                                    PersonalInfoLocation(
-                                        iconSize: desktopIconSize,
-                                        url: person[0]["location"]["url"],
-                                        label: person[0]["location"]["label"],
+                                        locationLabel: person[0]["location"]["label"],
+                                        locationUrl: person[0]["location"]["url"],
                                         labelFontSize: desktopLabelFontSize),
                                     const SizedBox(
                                       height: 40.0,
@@ -90,12 +78,12 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
-                                        spacerSize:
-                                            desktopSpacerSize),
+                                        spacerSize: desktopSpacerSize),
                                     for (var skill in person[0]["skills"])
                                       ProgressionBar(
                                           label: skill["skill"],
-                                          progressionBarWidth: desktopProgressionBarWidth,
+                                          progressionBarWidth:
+                                              desktopProgressionBarWidth,
                                           labelFontSize: desktopLabelFontSize,
                                           progression: skill["percentage"]),
                                     const SizedBox(
@@ -106,13 +94,13 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
-                                        spacerSize:
-                                            desktopSpacerSize),
+                                        spacerSize: desktopSpacerSize),
                                     for (var language in person[0]["languages"])
                                       ProgressionBar(
                                           label:
                                               "${language["language"]} (${language["fluency"]})",
-                                          progressionBarWidth: desktopProgressionBarWidth,
+                                          progressionBarWidth:
+                                              desktopProgressionBarWidth,
                                           labelFontSize: desktopLabelFontSize,
                                           progression: language["percentage"]),
                                   ],
@@ -135,8 +123,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
-                                        spacerSize:
-                                            desktopSpacerSize),
+                                        spacerSize: desktopSpacerSize),
                                     Profile(
                                       profile: person[0]["profile"],
                                       labelFontSize: desktopLabelFontSize,
@@ -150,13 +137,13 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
-                                        spacerSize:
-                                            desktopSpacerSize),
+                                        spacerSize: desktopSpacerSize),
                                     for (var job in person[0]["jobs"])
                                       Job(
                                           iconSize: desktopIconSize,
                                           title: job["title"],
-                                          time: "(${job["time"]["start"]} - ${job["time"]["end"]})",
+                                          time:
+                                              "(${job["time"]["start"]} - ${job["time"]["end"]})",
                                           description: job["description"],
                                           labelFontSize: desktopLabelFontSize,
                                           spacerSize: desktopSpacerSize),
@@ -168,14 +155,15 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
-                                        spacerSize:
-                                            desktopSpacerSize),
-                                    for (var education in person[0]["education"])
+                                        spacerSize: desktopSpacerSize),
+                                    for (var education in person[0]
+                                        ["education"])
                                       Education(
                                           iconSize: desktopIconSize,
                                           academy: education["academy"],
                                           course: education["course"],
-                                          time: "(${education["time"]["start"]} - ${education["time"]["end"]})",
+                                          time:
+                                              "(${education["time"]["start"]} - ${education["time"]["end"]})",
                                           labelFontSize: desktopLabelFontSize,
                                           spacerSize: desktopSpacerSize),
                                   ],

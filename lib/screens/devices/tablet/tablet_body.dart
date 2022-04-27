@@ -54,27 +54,15 @@ class TabletBody extends StatelessWidget {
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
                                           spacerSize: tabletSpacerSize),
-                                      PersonalInfoNationality(
-                                          iconSize: tabletIconSize,
-                                          label: person[0]["nationality"],
-                                          labelFontSize: tabletLabelFontSize),
-                                      PersonalInfoEmail(
-                                          iconSize: tabletIconSize,
+                                      PersonalInfo(
+                                          iconSize: desktopIconSize,
+                                          nationality: person[0]["nationality"],
                                           email: person[0]["email"],
-                                          labelFontSize: tabletLabelFontSize),
-                                      PersonalInfoLinkedIn(
-                                          iconSize: tabletIconSize,
-                                          url: person[0]["linkedIn"]["url"],
-                                          label: person[0]["linkedIn"]["label"],
-                                          labelFontSize: tabletLabelFontSize),
-                                      PersonalInfoPhoneNumber(
-                                          iconSize: tabletIconSize,
+                                          linkedInUrl: person[0]["linkedIn"]["url"],
+                                          linkedInLabel: person[0]["linkedIn"]["label"],
                                           phoneNumber: person[0]["phoneNumber"],
-                                          labelFontSize: tabletLabelFontSize),
-                                      PersonalInfoLocation(
-                                          iconSize: tabletIconSize,
-                                          url: person[0]["location"]["url"],
-                                          label: person[0]["location"]["label"],
+                                          locationLabel: person[0]["location"]["label"],
+                                          locationUrl: person[0]["location"]["url"],
                                           labelFontSize: tabletLabelFontSize),
                                       const SizedBox(
                                         height: 30.0,
