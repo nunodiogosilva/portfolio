@@ -48,13 +48,15 @@ class TabletBody extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      SectionTitle(
+                                      /*SectionTitle(
                                           title: "PERSONAL INFORMATION",
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
-                                          spacerSize: tabletSpacerSize),
+                                          spacerSize: tabletSpacerSize),*/
                                       PersonalInfo(
+                                          titleSize: tabletSectionTitleSize,
+                                          titleUnderlineSize: tabletSectionTitleUnderlineSize,
                                           iconSize: desktopIconSize,
                                           nationality: person[0]["nationality"],
                                           email: person[0]["email"],
@@ -63,12 +65,12 @@ class TabletBody extends StatelessWidget {
                                           phoneNumber: person[0]["phoneNumber"],
                                           locationLabel: person[0]["location"]["label"],
                                           locationUrl: person[0]["location"]["url"],
-                                          labelFontSize: tabletLabelFontSize),
+                                          labelFontSize: tabletLabelFontSize,
+                                          spacerSize: tabletSpacerSize),
                                       const SizedBox(
                                         height: 30.0,
                                       ),
-                                      SectionTitle(
-                                          title: "SKILLS",
+                                      SkillsSectionTitle(
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
@@ -82,8 +84,7 @@ class TabletBody extends StatelessWidget {
                                       const SizedBox(
                                         height: 30.0,
                                       ),
-                                      SectionTitle(
-                                          title: "LANGUAGES",
+                                      LanguagesSectionTitle(
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
@@ -113,22 +114,18 @@ class TabletBody extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      SectionTitle(
-                                          title: "PROFILE",
-                                          titleSize: tabletSectionTitleSize,
-                                          titleUnderlineSize:
-                                          tabletSectionTitleUnderlineSize,
-                                          spacerSize: tabletSpacerSize),
                                       Profile(
-                                          profile: person[0]["profile"],
-                                          labelFontSize: tabletLabelFontSize,
-                                          spacerSize: tabletSpacerSize,
+                                        titleSize: tabletSectionTitleSize,
+                                        titleUnderlineSize: tabletSectionTitleUnderlineSize,
+                                        profile: person[0]["profile"],
+                                        labelFontSize: tabletLabelFontSize,
+                                        spacerSize: tabletSpacerSize,
                                       ),
                                       const SizedBox(
                                         height: 30.0,
                                       ),
-                                      SectionTitle(
-                                          title: "PROFESSIONAL EXPERIENCE",
+                                      JobSectionTitle(
+                                          iconButtonSize: tabletHeaderIconButtonSize,
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
@@ -144,8 +141,7 @@ class TabletBody extends StatelessWidget {
                                       const SizedBox(
                                         height: 30.0,
                                       ),
-                                      SectionTitle(
-                                          title: "EDUCATION",
+                                      EducationSectionTitle(
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,

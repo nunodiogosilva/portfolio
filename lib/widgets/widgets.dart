@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -98,7 +99,7 @@ class _HeaderState extends State<Header> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-                e.toString().split("]")[1],
+              e.toString().split("]")[1],
             ),
           ),
         );
@@ -106,129 +107,143 @@ class _HeaderState extends State<Header> {
     }
 
     Future signInDialog() => showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            backgroundColor: const Color(0xff151518),
-            title: Column(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xff0d0d0f),
+        title: Column(
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Image.asset("images/admin_unlocked.png", height: widget.iconButtonSize),
-                    ),
-                    const Text(
-                      "Sign In",
-                      style: TextStyle(
-                        fontFamily: "Righteous",
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Image.asset("images/admin_unlocked.png",
+                      height: widget.iconButtonSize),
                 ),
-                const SizedBox(
-                  width: double.infinity,
-                  child: Divider(
-                    color: Colors.white70,
-                    thickness: 1.0,
+                const Text(
+                  "Sign In",
+                  style: TextStyle(
+                    fontFamily: "Righteous",
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ],
             ),
-            content: SizedBox(
-              height: 200,
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: 300,
-                    child: Column(
-                      children: const [
-                        Text(
-                          "If you're not Nuno Silva, you shouldn't be here!",
-                          style: TextStyle(
-                            fontFamily: "OpenSans",
-                            color: Colors.white70,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Curious on what's behind this? Here is a sneak peak!",
-                          style: TextStyle(
-                            fontFamily: "OpenSans",
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    controller: emailController,
-                    cursorColor: Colors.white70,
-                    textInputAction: TextInputAction.next,
-                    autofocus: true,
-                    decoration: const InputDecoration(
-                      fillColor: Color(0xff151518),
-                      filled: true,
-                      hintText: "Email",
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                    ),
-                    style: const TextStyle(
-                      fontFamily: "Righteous",
-                      color: Colors.white70,
-                    ),
-                  ),
-                  TextField(
-                    controller: passwordController,
-                    cursorColor: Colors.white70,
-                    textInputAction: TextInputAction.done,
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    decoration: const InputDecoration(
-                      fillColor: Color(0xff151518),
-                      filled: true,
-                      hintText: "Password",
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                    ),
-                    style: const TextStyle(
-                      fontFamily: "Righteous",
-                      color: Colors.white70,
-                    ),
-                  ),
-                ],
+            const SizedBox(
+              width: double.infinity,
+              child: Divider(
+                color: Colors.white70,
+                thickness: 1.0,
               ),
             ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                  ),
-                  onPressed: signIn,
-                  child: const Text(
-                    "Sign In",
-                    style: TextStyle(
-                      fontFamily: "Righteous",
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff151518),
+          ],
+        ),
+        content: SizedBox(
+          height: 210,
+          child: Column(
+            children: [
+              SizedBox(
+                width: 300,
+                child: Column(
+                  children: const [
+                    Text(
+                      "If you're not Nuno Silva, you shouldn't be here!",
+                      style: TextStyle(
+                        fontFamily: "OpenSans",
+                        color: Colors.white70,
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Curious on what's behind this? Here is a sneak peak!",
+                      style: TextStyle(
+                        fontFamily: "OpenSans",
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              TextField(
+                controller: emailController,
+                cursorColor: Colors.white70,
+                textInputAction: TextInputAction.next,
+                autofocus: true,
+                decoration: const InputDecoration(
+                  fillColor: Color(0xff151518),
+                  filled: true,
+                  hintText: "Email",
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Colors.white70,
+                  )),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Colors.white70,
+                  )),
+                ),
+                style: const TextStyle(
+                  fontFamily: "Righteous",
+                  color: Colors.white70,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              TextField(
+                controller: passwordController,
+                cursorColor: Colors.white70,
+                textInputAction: TextInputAction.done,
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration: const InputDecoration(
+                  fillColor: Color(0xff151518),
+                  filled: true,
+                  hintText: "Password",
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Colors.white70,
+                  )),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Colors.white70,
+                  )),
+                ),
+                style: const TextStyle(
+                  fontFamily: "Righteous",
+                  color: Colors.white70,
                 ),
               ),
             ],
           ),
-        );
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+              ),
+              onPressed: signIn,
+              child: const Text(
+                "Sign In",
+                style: TextStyle(
+                  fontFamily: "Righteous",
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff151518),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
 
     return StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
@@ -269,7 +284,8 @@ class _HeaderState extends State<Header> {
                             Flexible(
                               child: ElevatedButton(
                                 onPressed: () async {
-                                  final results = await FilePicker.platform.pickFiles(
+                                  final results =
+                                      await FilePicker.platform.pickFiles(
                                     allowMultiple: false,
                                     type: FileType.any,
                                   );
@@ -277,9 +293,7 @@ class _HeaderState extends State<Header> {
                                   if (results == null) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        content: Text(
-                                            "No image selected."
-                                        ),
+                                        content: Text("No image selected."),
                                       ),
                                     );
                                     return;
@@ -319,12 +333,12 @@ class _HeaderState extends State<Header> {
                             hintText: "Name",
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.white70,
-                                )),
+                              color: Colors.white70,
+                            )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.white70,
-                                )),
+                              color: Colors.white70,
+                            )),
                           ),
                           style: TextStyle(
                             fontFamily: "Righteous",
@@ -346,12 +360,12 @@ class _HeaderState extends State<Header> {
                             hintText: "Job Title",
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.white70,
-                                )),
+                              color: Colors.white70,
+                            )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.white70,
-                                )),
+                              color: Colors.white70,
+                            )),
                           ),
                           style: TextStyle(
                             fontFamily: "Righteous",
@@ -377,7 +391,10 @@ class _HeaderState extends State<Header> {
                             style: ElevatedButton.styleFrom(
                               primary: Colors.white,
                             ),
-                            child: const Icon(Icons.save_outlined, color: Color(0xff151518),),
+                            child: const Icon(
+                              Icons.save_outlined,
+                              color: Color(0xff151518),
+                            ),
                           ),
                         ),
                       ],
@@ -394,7 +411,11 @@ class _HeaderState extends State<Header> {
                 ),
                 IconButton(
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Signed out!"),),);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Signed out!"),
+                      ),
+                    );
                     FirebaseAuth.instance.signOut();
                   },
                   icon: Image.asset("images/admin_unlocked.png"),
@@ -485,51 +506,10 @@ class _HeaderState extends State<Header> {
   }
 }
 
-/// Section Title
-class SectionTitle extends StatelessWidget {
-  final String title;
-  final double titleSize;
-  final double titleUnderlineSize;
-  final double spacerSize;
-
-  const SectionTitle(
-      {Key? key,
-      required this.title,
-      required this.titleSize,
-      required this.titleUnderlineSize,
-      required this.spacerSize})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-            fontFamily: "OpenSans",
-            fontSize: titleSize,
-            color: Colors.white70,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(
-            width: titleUnderlineSize,
-            child: const Divider(
-              color: Colors.white70,
-              thickness: 1.0,
-            )),
-        SizedBox(
-          height: spacerSize,
-        ),
-      ],
-    );
-  }
-}
-
 /// Personal Information
 class PersonalInfo extends StatefulWidget {
+  final double titleSize;
+  final double titleUnderlineSize;
   final double iconSize;
   final String nationality;
   final String email;
@@ -539,18 +519,22 @@ class PersonalInfo extends StatefulWidget {
   final String locationLabel;
   final String locationUrl;
   final double labelFontSize;
+  final double spacerSize;
 
   const PersonalInfo(
       {Key? key,
-        required this.iconSize,
-        required this.nationality,
-        required this.email,
-        required this.linkedInUrl,
-        required this.linkedInLabel,
-        required this.phoneNumber,
-        required this.locationLabel,
-        required this.locationUrl,
-        required this.labelFontSize})
+      required this.titleSize,
+      required this.titleUnderlineSize,
+      required this.iconSize,
+      required this.nationality,
+      required this.email,
+      required this.linkedInUrl,
+      required this.linkedInLabel,
+      required this.phoneNumber,
+      required this.locationLabel,
+      required this.locationUrl,
+      required this.labelFontSize,
+      required this.spacerSize})
       : super(key: key);
 
   @override
@@ -576,6 +560,37 @@ class _PersonalInfoState extends State<PersonalInfo> {
     } else {
       throw "Couldn't call $phoneNumber";
     }
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> updatePersonalInfo(nationality, email, linkedInLabel,
+      linkedInUrl, phoneNumber, locationLabel, locationUrl) {
+    return person
+        .doc('personDetails')
+        .update({
+          'nationality': nationality,
+          'email': email,
+          'linkedIn.label': linkedInLabel,
+          'linkedIn.url': linkedInUrl,
+          'phoneNumber': phoneNumber,
+          'location.label': locationLabel,
+          'location.url': locationUrl
+        })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  "Personal Info successfully updated!",
+                ),
+              ),
+            ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  "Unable to update Personal Info!",
+                ),
+              ),
+            ));
   }
 
   final nationalityController = TextEditingController();
@@ -609,359 +624,412 @@ class _PersonalInfoState extends State<PersonalInfo> {
                     child: CircularProgressIndicator(color: Colors.white70)));
           } else if (snapshot.hasData) {
             // Admin View
-            return Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff0d0d0f),
-                border: Border.all(
-                  color: Colors.white70,
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "PERSONAL INFORMATION",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff0d0d0f),
+                    border: Border.all(
+                      color: Colors.white70,
+                    ),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Icon(Icons.flag_outlined,
-                              color: Colors.white, size: widget.iconSize),
-                        ),
-                        Text(
-                          "Nationality: ",
-                          style: TextStyle(
-                            fontFamily: "Righteous",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 350,
-                            child: TextField(
-                              controller: nationalityController,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Nationality",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                              ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(Icons.flag_outlined,
+                                  color: Colors.white, size: widget.iconSize),
+                            ),
+                            Text(
+                              "Nationality: ",
                               style: TextStyle(
-                                fontFamily: "OpenSans",
+                                fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white70,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Icon(Icons.email_outlined,
-                              color: Colors.white, size: widget.iconSize),
-                        ),
-                        Text(
-                          "Email: ",
-                          style: TextStyle(
-                            fontFamily: "Righteous",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 350,
-                            child: TextField(
-                              controller: emailController,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Email",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                width: 350,
+                                child: TextField(
+                                  controller: nationalityController,
+                                  cursorColor: Colors.white,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: const InputDecoration(
+                                    fillColor: Color(0xff151518),
+                                    filled: true,
+                                    hintText: "Nationality",
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
                                       color: Colors.white70,
                                     )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
                                       color: Colors.white70,
                                     )),
-                              ),
-                              style: TextStyle(
-                                fontFamily: "OpenSans",
-                                fontSize: widget.labelFontSize,
-                                color: Colors.white70,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Icon(Icons.people_outline,
-                              color: Colors.white, size: widget.iconSize),
-                        ),
-                        Text(
-                          "LinkedIn: ",
-                          style: TextStyle(
-                            fontFamily: "Righteous",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 175,
-                            child: TextField(
-                              controller: linkedInLabelController,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Label",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                              ),
-                              style: TextStyle(
-                                fontFamily: "OpenSans",
-                                fontSize: widget.labelFontSize,
-                                color: Colors.white70,
-                              ),
-                            ),
-                          ),
+                          ],
                         ),
                         const SizedBox(
-                          width: 5,
+                          height: 10.0,
                         ),
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 175,
-                            child: TextField(
-                              controller: linkedInUrlController,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Url",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                              ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(Icons.email_outlined,
+                                  color: Colors.white, size: widget.iconSize),
+                            ),
+                            Text(
+                              "Email: ",
                               style: TextStyle(
-                                fontFamily: "OpenSans",
+                                fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white70,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Icon(Icons.phone_outlined,
-                              color: Colors.white, size: widget.iconSize),
-                        ),
-                        Text(
-                          "Phone Number: ",
-                          style: TextStyle(
-                            fontFamily: "Righteous",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 350,
-                            child: TextField(
-                              controller: phoneNumberController,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Phone Number",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                width: 350,
+                                child: TextField(
+                                  controller: emailController,
+                                  cursorColor: Colors.white,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: const InputDecoration(
+                                    fillColor: Color(0xff151518),
+                                    filled: true,
+                                    hintText: "Email",
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
                                       color: Colors.white70,
                                     )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
                                       color: Colors.white70,
                                     )),
-                              ),
-                              style: TextStyle(
-                                fontFamily: "OpenSans",
-                                fontSize: widget.labelFontSize,
-                                color: Colors.white70,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10.0),
-                          child: Icon(Icons.room_outlined,
-                              color: Colors.white, size: widget.iconSize),
-                        ),
-                        Text(
-                          "Location: ",
-                          style: TextStyle(
-                            fontFamily: "Righteous",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 175,
-                            child: TextField(
-                              controller: locationLabelController,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Label",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                              ),
-                              style: TextStyle(
-                                fontFamily: "OpenSans",
-                                fontSize: widget.labelFontSize,
-                                color: Colors.white70,
-                              ),
-                            ),
-                          ),
+                          ],
                         ),
                         const SizedBox(
-                          width: 5,
+                          height: 10.0,
                         ),
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: 175,
-                            child: TextField(
-                              controller: locationUrlController,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Url",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                              ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(Icons.people_outline,
+                                  color: Colors.white, size: widget.iconSize),
+                            ),
+                            Text(
+                              "LinkedIn: ",
                               style: TextStyle(
-                                fontFamily: "OpenSans",
+                                fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white70,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                width: 175,
+                                child: TextField(
+                                  controller: linkedInLabelController,
+                                  cursorColor: Colors.white,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: const InputDecoration(
+                                    fillColor: Color(0xff151518),
+                                    filled: true,
+                                    hintText: "Label",
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                width: 175,
+                                child: TextField(
+                                  controller: linkedInUrlController,
+                                  cursorColor: Colors.white,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: const InputDecoration(
+                                    fillColor: Color(0xff151518),
+                                    filled: true,
+                                    hintText: "Url",
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(Icons.phone_outlined,
+                                  color: Colors.white, size: widget.iconSize),
+                            ),
+                            Text(
+                              "Phone Number: ",
+                              style: TextStyle(
+                                fontFamily: "Righteous",
+                                fontSize: widget.labelFontSize,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                width: 350,
+                                child: TextField(
+                                  controller: phoneNumberController,
+                                  cursorColor: Colors.white,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: const InputDecoration(
+                                    fillColor: Color(0xff151518),
+                                    filled: true,
+                                    hintText: "Phone Number",
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(Icons.room_outlined,
+                                  color: Colors.white, size: widget.iconSize),
+                            ),
+                            Text(
+                              "Location: ",
+                              style: TextStyle(
+                                fontFamily: "Righteous",
+                                fontSize: widget.labelFontSize,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                width: 175,
+                                child: TextField(
+                                  controller: locationLabelController,
+                                  cursorColor: Colors.white,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: const InputDecoration(
+                                    fillColor: Color(0xff151518),
+                                    filled: true,
+                                    hintText: "Label",
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Flexible(
+                              flex: 1,
+                              child: SizedBox(
+                                width: 175,
+                                child: TextField(
+                                  controller: locationUrlController,
+                                  cursorColor: Colors.white,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: const InputDecoration(
+                                    fillColor: Color(0xff151518),
+                                    filled: true,
+                                    hintText: "Url",
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                      color: Colors.white70,
+                                    )),
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Divider(
+                              color: Colors.white70,
+                              thickness: 1.0,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              updatePersonalInfo(
+                                  nationalityController.text,
+                                  emailController.text,
+                                  linkedInLabelController.text,
+                                  linkedInUrlController.text,
+                                  phoneNumberController.text,
+                                  locationLabelController.text,
+                                  locationUrlController.text);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            child: const Icon(
+                              Icons.save_outlined,
+                              color: Color(0xff151518),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 10.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: Divider(
-                          color: Colors.white70,
-                          thickness: 1.0,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.white,
-                        ),
-                        child: const Icon(Icons.save_outlined, color: Color(0xff151518),),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             );
           } else {
             // Normal View
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  "PERSONAL INFORMATION",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
                 RichText(
                   text: TextSpan(
                     children: [
@@ -1152,8 +1220,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       WidgetSpan(
                         child: GestureDetector(
                           onTap: () {
-                            _launchURL(
-                                widget.locationUrl);
+                            _launchURL(widget.locationUrl);
                           },
                           child: Text(
                             widget.locationLabel,
@@ -1181,12 +1248,16 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
 /// Profile
 class Profile extends StatefulWidget {
+  final double titleSize;
+  final double titleUnderlineSize;
   final String profile;
   final double labelFontSize;
   final double spacerSize;
 
   const Profile(
       {Key? key,
+      required this.titleSize,
+      required this.titleUnderlineSize,
       required this.profile,
       required this.labelFontSize,
       required this.spacerSize})
@@ -1208,128 +1279,438 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Background(
-              child: Center(
-                  child: CircularProgressIndicator(color: Colors.white70)));
-        } else if (snapshot.hasData) {
-          // Admin View
-          return Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xff0d0d0f),
-                  border: Border.all(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "PROFILE",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
                     color: Colors.white70,
+                    fontWeight: FontWeight.bold,
                   ),
-                  borderRadius: BorderRadius.circular(5.0),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      TextField(
-                        controller: profileController,
-                        maxLines: 6,
-                        cursorColor: Colors.white,
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                          fillColor: Color(0xff151518),
-                          filled: true,
-                          hintText: "Profile description",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
-                        ),
-                        style: TextStyle(
-                          fontFamily: "OpenSans",
-                          fontSize: widget.labelFontSize,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Divider(
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff0d0d0f),
+                    border: Border.all(
+                      color: Colors.white70,
+                    ),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        TextField(
+                          controller: profileController,
+                          maxLines: 6,
+                          cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                            fillColor: Color(0xff151518),
+                            filled: true,
+                            hintText: "Profile description",
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                          ),
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: widget.labelFontSize,
                             color: Colors.white70,
-                            thickness: 1.0,
                           ),
                         ),
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              ),
-                              child: const Icon(Icons.save_outlined, color: Color(0xff151518),),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Divider(
+                              color: Colors.white70,
+                              thickness: 1.0,
                             ),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.red,
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                ),
+                                child: const Icon(
+                                  Icons.save_outlined,
+                                  color: Color(0xff151518),
+                                ),
                               ),
-                              child: const Icon(Icons.delete_forever_outlined, color: Colors.white,),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.red,
+                                ),
+                                child: const Icon(
+                                  Icons.delete_forever_outlined,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: widget.spacerSize,
-              ),
-            ],
-          );
-        } else {
-          // Normal View
-          return Column(
-            children: [
-              Text(
-                widget.profile,
-                style: TextStyle(
-                  fontFamily: "OpenSans",
-                  fontSize: widget.labelFontSize,
-                  color: Colors.white70,
+                SizedBox(
+                  height: widget.spacerSize,
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Divider(
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "PROFILE",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
                     color: Colors.white70,
-                    thickness: 1.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+                Text(
+                  widget.profile,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white70,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
+  }
+}
+
+/// Job Section Title
+class JobSectionTitle extends StatefulWidget {
+  final double iconButtonSize;
+  final double titleSize;
+  final double titleUnderlineSize;
+  final double spacerSize;
+
+  const JobSectionTitle(
+      {Key? key,
+        required this.iconButtonSize,
+        required this.titleSize,
+        required this.titleUnderlineSize,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  State<JobSectionTitle> createState() => _JobSectionTitleState();
+}
+
+class _JobSectionTitleState extends State<JobSectionTitle> {
+  final titleController = TextEditingController();
+  final startController = TextEditingController();
+  final endController = TextEditingController();
+  final descriptionController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    titleController.text = "";
+    startController.text = "";
+    endController.text = "";
+    descriptionController.text = "";
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> addJob(job) {
+    return person
+        .doc('personDetails')
+        .set({
+      'jobs': FieldValue.arrayUnion(job),
+    },
+      SetOptions(merge: true),
+    )
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Professional Experience successfully added!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to add Professional Experience!",
+        ),
+      ),
+    ));
+  }
+
+  Future addJobDialog() => showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      backgroundColor: const Color(0xff0d0d0f),
+      title: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Icon(
+                  Icons.work_outline,
+                  color: Colors.white,
+                  size: widget.iconButtonSize,
+                ),
               ),
-              SizedBox(
-                height: widget.spacerSize,
+              const Text(
+                "Add Job",
+                style: TextStyle(
+                  fontFamily: "Righteous",
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ],
-          );
-        }
-      }
-    );
+          ),
+          const SizedBox(
+            width: double.infinity,
+            child: Divider(
+              color: Colors.white70,
+              thickness: 1.0,
+            ),
+          ),
+        ],
+      ),
+      content: SizedBox(
+        height: 210,
+        child: Column(
+          children: [
+            TextField(
+              controller: titleController,
+              cursorColor: Colors.white70,
+              textInputAction: TextInputAction.next,
+              autofocus: true,
+              decoration: const InputDecoration(
+                fillColor: Color(0xff151518),
+                filled: true,
+                hintText: "Job Title",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white70,
+                    )),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white70,
+                    )),
+              ),
+              style: const TextStyle(
+                fontFamily: "Righteous",
+                color: Colors.white70,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            TextField(
+              controller: descriptionController,
+              cursorColor: Colors.white70,
+              textInputAction: TextInputAction.done,
+              decoration: const InputDecoration(
+                fillColor: Color(0xff151518),
+                filled: true,
+                hintText: "Job Description",
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white70,
+                    )),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.white70,
+                    )),
+              ),
+              style: const TextStyle(
+                fontFamily: "Righteous",
+                color: Colors.white70,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.white,
+            ),
+            onPressed: () async{
+              List<dynamic> job = [
+                {
+                  'title': titleController.text,
+                  'time':
+                  {
+                    'start': "02/1999",
+                    'end': "02/1999"
+                  },
+                  'description': descriptionController.text
+                }
+              ];
+              addJob(job);
+            },
+            child: const Text(
+              "Add",
+              style: TextStyle(
+                fontFamily: "Righteous",
+                fontWeight: FontWeight.bold,
+                color: Color(0xff151518),
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "PROFESSIONAL EXPERIENCE",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      addJobDialog();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "PROFESSIONAL EXPERIENCE",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
   }
 }
 
@@ -1372,224 +1753,324 @@ class _JobState extends State<Job> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Background(
-              child: Center(
-                  child: CircularProgressIndicator(color: Colors.white70)));
-        } else if (snapshot.hasData) {
-          // Admin View
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xff0d0d0f),
-                  border: Border.all(
-                    color: Colors.white70,
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff0d0d0f),
+                    border: Border.all(
+                      color: Colors.white70,
+                    ),
+                    borderRadius: BorderRadius.circular(5.0),
                   ),
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: Icon(
-                              Icons.work_outline,
-                              color: Colors.white,
-                              size: widget.iconSize,
-                            ),
-                          ),
-                          Flexible(
-                            flex: 1,
-                            child: TextField(
-                              controller: titleController,
-                              maxLines: 3,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Job Title",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                              ),
-                              style: TextStyle(
-                                fontFamily: "Righteous",
-                                fontSize: widget.iconSize,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(
+                                Icons.work_outline,
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                                size: widget.iconSize,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 5.0,
-                      ),
-                      Text(
-                        widget.time,
-                        style: TextStyle(
-                          fontFamily: "OpenSans",
-                          fontSize: widget.labelFontSize,
-                          color: Colors.white70,
+                            Flexible(
+                              flex: 1,
+                              child: TextField(
+                                controller: titleController,
+                                maxLines: 3,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Job Title",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "Righteous",
+                                  fontSize: widget.iconSize,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        height: widget.labelFontSize,
-                      ),
-                      TextField(
-                        controller: descriptionController,
-                        maxLines: 6,
-                        cursorColor: Colors.white,
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                          fillColor: Color(0xff151518),
-                          filled: true,
-                          hintText: "Job description",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
+                        const SizedBox(
+                          height: 5.0,
                         ),
-                        style: TextStyle(
-                          fontFamily: "OpenSans",
-                          fontSize: widget.labelFontSize,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Divider(
+                        Text(
+                          widget.time,
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: widget.labelFontSize,
                             color: Colors.white70,
-                            thickness: 1.0,
+                          ),
+                        ),
+                        SizedBox(
+                          height: widget.labelFontSize,
+                        ),
+                        TextField(
+                          controller: descriptionController,
+                          maxLines: 6,
+                          cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                            fillColor: Color(0xff151518),
+                            filled: true,
+                            hintText: "Job description",
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                          ),
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white70,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Divider(
+                              color: Colors.white70,
+                              thickness: 1.0,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                ),
+                                child: const Icon(
+                                  Icons.save_outlined,
+                                  color: Color(0xff151518),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.red,
+                                ),
+                                child: const Icon(
+                                  Icons.delete_forever_outlined,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      WidgetSpan(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Icon(
+                            Icons.work_outline,
+                            color: Colors.white,
+                            size: widget.iconSize,
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              ),
-                              child: const Icon(Icons.save_outlined, color: Color(0xff151518),),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.red,
-                              ),
-                              child: const Icon(Icons.delete_forever_outlined, color: Colors.white,),
-                            ),
-                          ),
-                        ],
+                      TextSpan(
+                        text: widget.title,
+                        style: TextStyle(
+                          fontFamily: "Righteous",
+                          fontSize: widget.iconSize,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(
-                height: widget.spacerSize,
-              ),
-            ],
-          );
-        } else {
-          // Normal View
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    WidgetSpan(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Icon(
-                          Icons.work_outline,
-                          color: Colors.white,
-                          size: widget.iconSize,
-                        ),
-                      ),
-                    ),
-                    TextSpan(
-                      text: widget.title,
-                      style: TextStyle(
-                        fontFamily: "Righteous",
-                        fontSize: widget.iconSize,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                const SizedBox(
+                  height: 5.0,
                 ),
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                widget.time,
-                style: TextStyle(
-                  fontFamily: "OpenSans",
-                  fontSize: widget.labelFontSize,
-                  color: Colors.white70,
-                ),
-              ),
-              SizedBox(
-                height: widget.labelFontSize,
-              ),
-              Text(
-                widget.description,
-                style: TextStyle(
-                  fontFamily: "OpenSans",
-                  fontSize: widget.labelFontSize,
-                  color: Colors.white70,
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Divider(
+                Text(
+                  widget.time,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
                     color: Colors.white70,
-                    thickness: 1.0,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: widget.spacerSize,
-              ),
-            ],
-          );
-        }
-      }
-    );
+                SizedBox(
+                  height: widget.labelFontSize,
+                ),
+                Text(
+                  widget.description,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white70,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
+  }
+}
+
+/// Education Section Title
+class EducationSectionTitle extends StatefulWidget {
+  final double titleSize;
+  final double titleUnderlineSize;
+  final double spacerSize;
+
+  const EducationSectionTitle(
+      {Key? key,
+        required this.titleSize,
+        required this.titleUnderlineSize,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  State<EducationSectionTitle> createState() => _EducationSectionTitleState();
+}
+
+class _EducationSectionTitleState extends State<EducationSectionTitle> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "EDUCATION",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "EDUCATION",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
   }
 }
 
@@ -1630,224 +2111,419 @@ class _EducationState extends State<Education> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Background(
-              child: Center(
-                  child: CircularProgressIndicator(color: Colors.white70)));
-        } else if (snapshot.hasData) {
-          // Admin View
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xff0d0d0f),
-                  border: Border.all(
-                    color: Colors.white70,
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff0d0d0f),
+                    border: Border.all(
+                      color: Colors.white70,
+                    ),
+                    borderRadius: BorderRadius.circular(5.0),
                   ),
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: Icon(
-                              Icons.domain_outlined,
-                              color: Colors.white,
-                              size: widget.iconSize,
-                            ),
-                          ),
-                          Flexible(
-                            flex: 1,
-                            child: TextField(
-                              controller: academyController,
-                              maxLines: 2,
-                              cursorColor: Colors.white,
-                              textInputAction: TextInputAction.next,
-                              decoration: const InputDecoration(
-                                fillColor: Color(0xff151518),
-                                filled: true,
-                                hintText: "Academy",
-                                border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                              ),
-                              style: TextStyle(
-                                fontFamily: "Righteous",
-                                fontSize: widget.iconSize,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10.0),
+                              child: Icon(
+                                Icons.domain_outlined,
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                                size: widget.iconSize,
                               ),
                             ),
+                            Flexible(
+                              flex: 1,
+                              child: TextField(
+                                controller: academyController,
+                                maxLines: 2,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Academy",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "Righteous",
+                                  fontSize: widget.iconSize,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 5.0,
+                        ),
+                        TextField(
+                          controller: courseController,
+                          maxLines: 2,
+                          cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                            fillColor: Color(0xff151518),
+                            filled: true,
+                            hintText: "Course",
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
                           ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 5.0,
-                      ),
-                      TextField(
-                        controller: courseController,
-                        maxLines: 2,
-                        cursorColor: Colors.white,
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                          fillColor: Color(0xff151518),
-                          filled: true,
-                          hintText: "Course",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
-                        ),
-                        style: TextStyle(
-                          fontFamily: "OpenSans",
-                          fontSize: widget.iconSize,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 5.0,
-                      ),
-                      Text(
-                        widget.time,
-                        style: TextStyle(
-                          fontFamily: "OpenSans",
-                          fontSize: widget.labelFontSize,
-                          color: Colors.white70,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Divider(
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: widget.iconSize,
                             color: Colors.white70,
-                            thickness: 1.0,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5.0,
+                        ),
+                        Text(
+                          widget.time,
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white70,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Divider(
+                              color: Colors.white70,
+                              thickness: 1.0,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                ),
+                                child: const Icon(
+                                  Icons.save_outlined,
+                                  color: Color(0xff151518),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.red,
+                                ),
+                                child: const Icon(
+                                  Icons.delete_forever_outlined,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      WidgetSpan(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: Icon(
+                            Icons.domain_outlined,
+                            color: Colors.white,
+                            size: widget.iconSize,
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              ),
-                              child: const Icon(Icons.save_outlined, color: Color(0xff151518),),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.red,
-                              ),
-                              child: const Icon(Icons.delete_forever_outlined, color: Colors.white,),
-                            ),
-                          ),
-                        ],
+                      TextSpan(
+                        text: widget.academy,
+                        style: TextStyle(
+                          fontFamily: "Righteous",
+                          fontSize: widget.iconSize,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(
-                height: widget.spacerSize,
-              ),
-            ],
-          );
-        } else {
-          // Normal View
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: TextSpan(
-                  children: [
-                    WidgetSpan(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Icon(
-                          Icons.domain_outlined,
-                          color: Colors.white,
-                          size: widget.iconSize,
-                        ),
-                      ),
-                    ),
-                    TextSpan(
-                      text: widget.academy,
-                      style: TextStyle(
-                        fontFamily: "Righteous",
-                        fontSize: widget.iconSize,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                const SizedBox(
+                  height: 5.0,
                 ),
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                widget.course,
-                style: TextStyle(
-                  fontFamily: "OpenSans",
-                  fontSize: widget.iconSize,
-                  color: Colors.white70,
-                ),
-              ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                widget.time,
-                style: TextStyle(
-                  fontFamily: "OpenSans",
-                  fontSize: widget.labelFontSize,
-                  color: Colors.white70,
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Divider(
+                Text(
+                  widget.course,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.iconSize,
                     color: Colors.white70,
-                    thickness: 1.0,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: widget.spacerSize,
-              ),
-            ],
-          );
-        }
-      }
-    );
+                const SizedBox(
+                  height: 5.0,
+                ),
+                Text(
+                  widget.time,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white70,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
+  }
+}
+
+/// Skills Section Title
+class SkillsSectionTitle extends StatefulWidget {
+  final double titleSize;
+  final double titleUnderlineSize;
+  final double spacerSize;
+
+  const SkillsSectionTitle(
+      {Key? key,
+        required this.titleSize,
+        required this.titleUnderlineSize,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  State<SkillsSectionTitle> createState() => _SkillsSectionTitleState();
+}
+
+class _SkillsSectionTitleState extends State<SkillsSectionTitle> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "SKILLS",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "SKILLS",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
+  }
+}
+
+/// Languages Section Title
+class LanguagesSectionTitle extends StatefulWidget {
+  final double titleSize;
+  final double titleUnderlineSize;
+  final double spacerSize;
+
+  const LanguagesSectionTitle(
+      {Key? key,
+        required this.titleSize,
+        required this.titleUnderlineSize,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  State<LanguagesSectionTitle> createState() => _LanguagesSectionTitleState();
+}
+
+class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white70)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "LANGUAGES",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "LANGUAGES",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white70,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
   }
 }
 
@@ -1920,12 +2596,12 @@ class _ProgressionBarState extends State<ProgressionBar> {
                               hintText: "Label",
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.white70,
-                                  )),
+                                color: Colors.white70,
+                              )),
                               focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.white70,
-                                  )),
+                                color: Colors.white70,
+                              )),
                             ),
                             style: TextStyle(
                               fontFamily: "OpenSans",
@@ -1961,12 +2637,12 @@ class _ProgressionBarState extends State<ProgressionBar> {
                               hintText: "%",
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.white70,
-                                  )),
+                                color: Colors.white70,
+                              )),
                               focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: Colors.white70,
-                                  )),
+                                color: Colors.white70,
+                              )),
                             ),
                             style: TextStyle(
                               fontFamily: "OpenSans",
@@ -1975,11 +2651,11 @@ class _ProgressionBarState extends State<ProgressionBar> {
                             ),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 10.0),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
                           child: SizedBox(
-                            width: double.infinity,
-                            child: Divider(
+                            width: widget.progressionBarWidth,
+                            child: const Divider(
                               color: Colors.white70,
                               thickness: 1.0,
                             ),
@@ -1994,7 +2670,10 @@ class _ProgressionBarState extends State<ProgressionBar> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
                                 ),
-                                child: const Icon(Icons.save_outlined, color: Color(0xff151518),),
+                                child: const Icon(
+                                  Icons.save_outlined,
+                                  color: Color(0xff151518),
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -2007,7 +2686,10 @@ class _ProgressionBarState extends State<ProgressionBar> {
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.red,
                                 ),
-                                child: const Icon(Icons.delete_forever_outlined, color: Colors.white,),
+                                child: const Icon(
+                                  Icons.delete_forever_outlined,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
@@ -2062,7 +2744,6 @@ class _ProgressionBarState extends State<ProgressionBar> {
               ],
             );
           }
-        }
-    );
+        });
   }
 }

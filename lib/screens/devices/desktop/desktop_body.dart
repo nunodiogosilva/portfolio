@@ -54,13 +54,15 @@ class _DesktopBodyState extends State<DesktopBody> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    SectionTitle(
+                                    /*SectionTitle(
                                         title: "PERSONAL INFORMATION",
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
-                                        spacerSize: desktopSpacerSize),
+                                        spacerSize: desktopSpacerSize),*/
                                     PersonalInfo(
+                                        titleSize: desktopSectionTitleSize,
+                                        titleUnderlineSize: desktopSectionTitleUnderlineSize,
                                         iconSize: desktopIconSize,
                                         nationality: person[0]["nationality"],
                                         email: person[0]["email"],
@@ -69,12 +71,12 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         phoneNumber: person[0]["phoneNumber"],
                                         locationLabel: person[0]["location"]["label"],
                                         locationUrl: person[0]["location"]["url"],
-                                        labelFontSize: desktopLabelFontSize),
+                                        labelFontSize: desktopLabelFontSize,
+                                        spacerSize: desktopSpacerSize),
                                     const SizedBox(
                                       height: 40.0,
                                     ),
-                                    SectionTitle(
-                                        title: "SKILLS",
+                                    SkillsSectionTitle(
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
@@ -89,8 +91,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     const SizedBox(
                                       height: 40.0,
                                     ),
-                                    SectionTitle(
-                                        title: "LANGUAGES",
+                                    LanguagesSectionTitle(
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
@@ -118,13 +119,9 @@ class _DesktopBodyState extends State<DesktopBody> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SectionTitle(
-                                        title: "PROFILE",
-                                        titleSize: desktopSectionTitleSize,
-                                        titleUnderlineSize:
-                                            desktopSectionTitleUnderlineSize,
-                                        spacerSize: desktopSpacerSize),
                                     Profile(
+                                      titleSize: desktopSectionTitleSize,
+                                      titleUnderlineSize: desktopSectionTitleUnderlineSize,
                                       profile: person[0]["profile"],
                                       labelFontSize: desktopLabelFontSize,
                                       spacerSize: desktopSpacerSize,
@@ -132,8 +129,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     const SizedBox(
                                       height: 40.0,
                                     ),
-                                    SectionTitle(
-                                        title: "PROFESSIONAL EXPERIENCE",
+                                    JobSectionTitle(
+                                        iconButtonSize: desktopHeaderIconButtonSize,
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
@@ -150,8 +147,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     const SizedBox(
                                       height: 40.0,
                                     ),
-                                    SectionTitle(
-                                        title: "EDUCATION",
+                                    EducationSectionTitle(
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,

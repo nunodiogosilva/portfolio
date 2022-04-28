@@ -49,13 +49,9 @@ class PhabletBody extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      SectionTitle(
-                                          title: "PERSONAL INFORMATION",
-                                          titleSize: mobileSectionTitleSize,
-                                          titleUnderlineSize:
-                                          mobileSectionTitleUnderlineSize,
-                                          spacerSize: mobileSpacerSize),
                                       PersonalInfo(
+                                          titleSize: mobileSectionTitleSize,
+                                          titleUnderlineSize: mobileSectionTitleUnderlineSize,
                                           iconSize: desktopIconSize,
                                           nationality: person[0]["nationality"],
                                           email: person[0]["email"],
@@ -64,12 +60,12 @@ class PhabletBody extends StatelessWidget {
                                           phoneNumber: person[0]["phoneNumber"],
                                           locationLabel: person[0]["location"]["label"],
                                           locationUrl: person[0]["location"]["url"],
-                                          labelFontSize: mobileLabelFontSize),
+                                          labelFontSize: mobileLabelFontSize,
+                                          spacerSize: mobileSpacerSize),
                                       const SizedBox(
                                         height: 20.0,
                                       ),
-                                      SectionTitle(
-                                          title: "SKILLS",
+                                      SkillsSectionTitle(
                                           titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
                                           mobileSectionTitleUnderlineSize,
@@ -83,8 +79,7 @@ class PhabletBody extends StatelessWidget {
                                       const SizedBox(
                                         height: 20.0,
                                       ),
-                                      SectionTitle(
-                                          title: "LANGUAGES",
+                                      LanguagesSectionTitle(
                                           titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
                                           mobileSectionTitleUnderlineSize,
@@ -111,13 +106,9 @@ class PhabletBody extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      SectionTitle(
-                                          title: "PROFILE",
-                                          titleSize: mobileSectionTitleSize,
-                                          titleUnderlineSize:
-                                          mobileSectionTitleUnderlineSize,
-                                          spacerSize: mobileSpacerSize),
                                       Profile(
+                                        titleSize: mobileSectionTitleSize,
+                                        titleUnderlineSize: mobileSectionTitleUnderlineSize,
                                         profile: person[0]["profile"],
                                         labelFontSize: mobileLabelFontSize,
                                         spacerSize: mobileSpacerSize,
@@ -125,8 +116,8 @@ class PhabletBody extends StatelessWidget {
                                       const SizedBox(
                                         height: 20.0,
                                       ),
-                                      SectionTitle(
-                                          title: "PROFESSIONAL EXPERIENCE",
+                                      JobSectionTitle(
+                                          iconButtonSize: mobileHeaderIconButtonSize,
                                           titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
                                           mobileSectionTitleUnderlineSize,
@@ -142,8 +133,7 @@ class PhabletBody extends StatelessWidget {
                                       const SizedBox(
                                         height: 20.0,
                                       ),
-                                      SectionTitle(
-                                          title: "EDUCATION",
+                                      EducationSectionTitle(
                                           titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
                                           mobileSectionTitleUnderlineSize,
