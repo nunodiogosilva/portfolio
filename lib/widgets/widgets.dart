@@ -108,140 +108,165 @@ class _HeaderState extends State<Header> {
 
     Future signInDialog() => showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: const Color(0xff0d0d0f),
-        title: Column(
-          children: [
-            Row(
+      builder: (context) => Center(
+        child: SingleChildScrollView(
+          child: AlertDialog(
+            backgroundColor: const Color(0xff0d0d0f),
+            title: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Image.asset("images/admin_unlocked.png",
-                      height: widget.iconButtonSize),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Image.asset("images/admin_unlocked.png",
+                          height: widget.iconButtonSize),
+                    ),
+                    const Text(
+                      "Sign In",
+                      style: TextStyle(
+                        fontFamily: "Righteous",
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
-                const Text(
-                  "Sign In",
-                  style: TextStyle(
-                    fontFamily: "Righteous",
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                const SizedBox(
+                  width: double.infinity,
+                  child: Divider(
+                    color: Colors.white70,
+                    thickness: 1.0,
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              width: double.infinity,
-              child: Divider(
-                color: Colors.white70,
-                thickness: 1.0,
+            content: SizedBox(
+              height: 350,
+              width: 300,
+              child: Column(
+                children: [
+                  Column(
+                    children: const [
+                      Text(
+                        "If you're not Nuno Silva, you shouldn't be here!",
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          color: Colors.white70,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Curious on what's behind this? Here is a sneak peak!",
+                        style: TextStyle(
+                          fontFamily: "OpenSans",
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    controller: emailController,
+                    cursorColor: Colors.white70,
+                    textInputAction: TextInputAction.next,
+                    autofocus: true,
+                    decoration: const InputDecoration(
+                      fillColor: Color(0xff151518),
+                      filled: true,
+                      hintText: "Email",
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Colors.white70,
+                      )),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Colors.white70,
+                      )),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: "Righteous",
+                      color: Colors.white70,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  TextField(
+                    controller: passwordController,
+                    cursorColor: Colors.white70,
+                    textInputAction: TextInputAction.done,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    decoration: const InputDecoration(
+                      fillColor: Color(0xff151518),
+                      filled: true,
+                      hintText: "Password",
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Colors.white70,
+                      )),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Colors.white70,
+                      )),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: "Righteous",
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-        content: SizedBox(
-          height: 210,
-          child: Column(
-            children: [
-              SizedBox(
-                width: 300,
-                child: Column(
-                  children: const [
-                    Text(
-                      "If you're not Nuno Silva, you shouldn't be here!",
-                      style: TextStyle(
-                        fontFamily: "OpenSans",
-                        color: Colors.white70,
+            actions: [
+              const SizedBox(
+                width: double.infinity,
+                child: Divider(
+                  color: Colors.white70,
+                  thickness: 1.0,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white70,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Icon(
+                        Icons.cancel_outlined,
+                        color: Color(0xff151518),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
+                    const SizedBox(
+                      width: 10,
                     ),
-                    Text(
-                      "Curious on what's behind this? Here is a sneak peak!",
-                      style: TextStyle(
-                        fontFamily: "OpenSans",
-                        color: Colors.white70,
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                      ),
+                      onPressed: signIn,
+                      child: const Icon(
+                        Icons.input_outlined,
+                        color: Color(0xff151518),
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextField(
-                controller: emailController,
-                cursorColor: Colors.white70,
-                textInputAction: TextInputAction.next,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  fillColor: Color(0xff151518),
-                  filled: true,
-                  hintText: "Email",
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Colors.white70,
-                  )),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Colors.white70,
-                  )),
-                ),
-                style: const TextStyle(
-                  fontFamily: "Righteous",
-                  color: Colors.white70,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              TextField(
-                controller: passwordController,
-                cursorColor: Colors.white70,
-                textInputAction: TextInputAction.done,
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                decoration: const InputDecoration(
-                  fillColor: Color(0xff151518),
-                  filled: true,
-                  hintText: "Password",
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Colors.white70,
-                  )),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Colors.white70,
-                  )),
-                ),
-                style: const TextStyle(
-                  fontFamily: "Righteous",
-                  color: Colors.white70,
-                ),
-              ),
             ],
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-              ),
-              onPressed: signIn,
-              child: const Text(
-                "Sign In",
-                style: TextStyle(
-                  fontFamily: "Righteous",
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff151518),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
 
@@ -520,6 +545,7 @@ class PersonalInfo extends StatefulWidget {
   final String locationUrl;
   final double labelFontSize;
   final double spacerSize;
+  final double widgetSpacerSize;
 
   const PersonalInfo(
       {Key? key,
@@ -534,7 +560,8 @@ class PersonalInfo extends StatefulWidget {
       required this.locationLabel,
       required this.locationUrl,
       required this.labelFontSize,
-      required this.spacerSize})
+      required this.spacerSize,
+      required this.widgetSpacerSize})
       : super(key: key);
 
   @override
@@ -676,30 +703,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             ),
                             Flexible(
                               flex: 1,
-                              child: SizedBox(
-                                width: 350,
-                                child: TextField(
-                                  controller: nationalityController,
-                                  cursorColor: Colors.white,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: const InputDecoration(
-                                    fillColor: Color(0xff151518),
-                                    filled: true,
-                                    hintText: "Nationality",
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                  ),
-                                  style: TextStyle(
-                                    fontFamily: "OpenSans",
-                                    fontSize: widget.labelFontSize,
+                              child: TextField(
+                                controller: nationalityController,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Nationality",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                     color: Colors.white70,
-                                  ),
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "OpenSans",
+                                  fontSize: widget.labelFontSize,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -726,30 +750,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             ),
                             Flexible(
                               flex: 1,
-                              child: SizedBox(
-                                width: 350,
-                                child: TextField(
-                                  controller: emailController,
-                                  cursorColor: Colors.white,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: const InputDecoration(
-                                    fillColor: Color(0xff151518),
-                                    filled: true,
-                                    hintText: "Email",
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                  ),
-                                  style: TextStyle(
-                                    fontFamily: "OpenSans",
-                                    fontSize: widget.labelFontSize,
+                              child: TextField(
+                                controller: emailController,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Email",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                     color: Colors.white70,
-                                  ),
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "OpenSans",
+                                  fontSize: widget.labelFontSize,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -776,30 +797,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             ),
                             Flexible(
                               flex: 1,
-                              child: SizedBox(
-                                width: 175,
-                                child: TextField(
-                                  controller: linkedInLabelController,
-                                  cursorColor: Colors.white,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: const InputDecoration(
-                                    fillColor: Color(0xff151518),
-                                    filled: true,
-                                    hintText: "Label",
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                  ),
-                                  style: TextStyle(
-                                    fontFamily: "OpenSans",
-                                    fontSize: widget.labelFontSize,
+                              child: TextField(
+                                controller: linkedInLabelController,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Label",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                     color: Colors.white70,
-                                  ),
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "OpenSans",
+                                  fontSize: widget.labelFontSize,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -808,30 +826,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             ),
                             Flexible(
                               flex: 1,
-                              child: SizedBox(
-                                width: 175,
-                                child: TextField(
-                                  controller: linkedInUrlController,
-                                  cursorColor: Colors.white,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: const InputDecoration(
-                                    fillColor: Color(0xff151518),
-                                    filled: true,
-                                    hintText: "Url",
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                  ),
-                                  style: TextStyle(
-                                    fontFamily: "OpenSans",
-                                    fontSize: widget.labelFontSize,
+                              child: TextField(
+                                controller: linkedInUrlController,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Url",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                     color: Colors.white70,
-                                  ),
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "OpenSans",
+                                  fontSize: widget.labelFontSize,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -858,30 +873,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             ),
                             Flexible(
                               flex: 1,
-                              child: SizedBox(
-                                width: 350,
-                                child: TextField(
-                                  controller: phoneNumberController,
-                                  cursorColor: Colors.white,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: const InputDecoration(
-                                    fillColor: Color(0xff151518),
-                                    filled: true,
-                                    hintText: "Phone Number",
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                  ),
-                                  style: TextStyle(
-                                    fontFamily: "OpenSans",
-                                    fontSize: widget.labelFontSize,
+                              child: TextField(
+                                controller: phoneNumberController,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Phone Number",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                     color: Colors.white70,
-                                  ),
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "OpenSans",
+                                  fontSize: widget.labelFontSize,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -908,30 +920,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             ),
                             Flexible(
                               flex: 1,
-                              child: SizedBox(
-                                width: 175,
-                                child: TextField(
-                                  controller: locationLabelController,
-                                  cursorColor: Colors.white,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: const InputDecoration(
-                                    fillColor: Color(0xff151518),
-                                    filled: true,
-                                    hintText: "Label",
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                  ),
-                                  style: TextStyle(
-                                    fontFamily: "OpenSans",
-                                    fontSize: widget.labelFontSize,
+                              child: TextField(
+                                controller: locationLabelController,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Label",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                     color: Colors.white70,
-                                  ),
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "OpenSans",
+                                  fontSize: widget.labelFontSize,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -940,30 +949,27 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             ),
                             Flexible(
                               flex: 1,
-                              child: SizedBox(
-                                width: 175,
-                                child: TextField(
-                                  controller: locationUrlController,
-                                  cursorColor: Colors.white,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: const InputDecoration(
-                                    fillColor: Color(0xff151518),
-                                    filled: true,
-                                    hintText: "Url",
-                                    border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                      color: Colors.white70,
-                                    )),
-                                  ),
-                                  style: TextStyle(
-                                    fontFamily: "OpenSans",
-                                    fontSize: widget.labelFontSize,
+                              child: TextField(
+                                controller: locationUrlController,
+                                cursorColor: Colors.white,
+                                textInputAction: TextInputAction.next,
+                                decoration: const InputDecoration(
+                                  fillColor: Color(0xff151518),
+                                  filled: true,
+                                  hintText: "Url",
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
                                     color: Colors.white70,
-                                  ),
+                                  )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: Colors.white70,
+                                  )),
+                                ),
+                                style: TextStyle(
+                                  fontFamily: "OpenSans",
+                                  fontSize: widget.labelFontSize,
+                                  color: Colors.white70,
                                 ),
                               ),
                             ),
@@ -1004,6 +1010,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       ],
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: widget.widgetSpacerSize,
                 ),
               ],
             );
@@ -1239,6 +1248,9 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 const SizedBox(
                   height: 10.0,
                 ),
+                SizedBox(
+                  height: widget.widgetSpacerSize,
+                ),
               ],
             );
           }
@@ -1253,6 +1265,7 @@ class Profile extends StatefulWidget {
   final String profile;
   final double labelFontSize;
   final double spacerSize;
+  final double widgetSpacerSize;
 
   const Profile(
       {Key? key,
@@ -1260,7 +1273,8 @@ class Profile extends StatefulWidget {
       required this.titleUnderlineSize,
       required this.profile,
       required this.labelFontSize,
-      required this.spacerSize})
+      required this.spacerSize,
+      required this.widgetSpacerSize})
       : super(key: key);
 
   @override
@@ -1381,7 +1395,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                                 child: const Icon(
                                   Icons.delete_forever_outlined,
-                                  color: Colors.white,
+                                  color: Color(0xff151518),
                                 ),
                               ),
                             ),
@@ -1392,56 +1406,60 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 SizedBox(
-                  height: widget.spacerSize,
+                  height: widget.widgetSpacerSize,
                 ),
               ],
             );
           } else {
-            // Normal View
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "PROFILE",
-                  style: TextStyle(
-                    fontFamily: "OpenSans",
-                    fontSize: widget.titleSize,
-                    color: Colors.white70,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    width: widget.titleUnderlineSize,
-                    child: const Divider(
+            if (widget.profile != "") {
+              // Normal View
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "PROFILE",
+                    style: TextStyle(
+                      fontFamily: "OpenSans",
+                      fontSize: widget.titleSize,
                       color: Colors.white70,
-                      thickness: 1.0,
-                    )),
-                SizedBox(
-                  height: widget.spacerSize,
-                ),
-                Text(
-                  widget.profile,
-                  style: TextStyle(
-                    fontFamily: "OpenSans",
-                    fontSize: widget.labelFontSize,
-                    color: Colors.white70,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 10.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Divider(
-                      color: Colors.white70,
-                      thickness: 1.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: widget.spacerSize,
-                ),
-              ],
-            );
+                  SizedBox(
+                      width: widget.titleUnderlineSize,
+                      child: const Divider(
+                        color: Colors.white70,
+                        thickness: 1.0,
+                      )),
+                  SizedBox(
+                    height: widget.spacerSize,
+                  ),
+                  Text(
+                    widget.profile,
+                    style: TextStyle(
+                      fontFamily: "OpenSans",
+                      fontSize: widget.labelFontSize,
+                      color: Colors.white70,
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Divider(
+                        color: Colors.white70,
+                        thickness: 1.0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: widget.widgetSpacerSize,
+                  ),
+                ],
+              );
+            } else {
+              return Column();
+            }
           }
         });
   }
@@ -1468,16 +1486,12 @@ class JobSectionTitle extends StatefulWidget {
 
 class _JobSectionTitleState extends State<JobSectionTitle> {
   final titleController = TextEditingController();
-  final startController = TextEditingController();
-  final endController = TextEditingController();
   final descriptionController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     titleController.text = "";
-    startController.text = "";
-    endController.text = "";
     descriptionController.text = "";
   }
 
@@ -1507,131 +1521,313 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
     ));
   }
 
+  DateTime startDate = DateTime.now();
+  DateTime endDate = DateTime.now();
+
+  Future<void> selectStartDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: startDate,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null && datePicker != startDate) {
+      setState(() {
+        startDate = datePicker;
+      });
+    }
+  }
+
+  Future<void> selectEndDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: endDate,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null && datePicker != endDate) {
+      setState(() {
+        endDate = datePicker;
+      });
+    }
+  }
+
   Future addJobDialog() => showDialog(
     context: context,
-    builder: (context) => AlertDialog(
-      backgroundColor: const Color(0xff0d0d0f),
-      title: Column(
-        children: [
-          Row(
+    builder: (context) => Center(
+      child: SingleChildScrollView(
+        child: AlertDialog(
+          backgroundColor: const Color(0xff0d0d0f),
+          title: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Icon(
-                  Icons.work_outline,
-                  color: Colors.white,
-                  size: widget.iconButtonSize,
-                ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.work_outline,
+                      color: Colors.white,
+                      size: widget.iconButtonSize,
+                    ),
+                  ),
+                  const Text(
+                    "Add Job",
+                    style: TextStyle(
+                      fontFamily: "Righteous",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
-              const Text(
-                "Add Job",
-                style: TextStyle(
-                  fontFamily: "Righteous",
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              const SizedBox(
+                width: double.infinity,
+                child: Divider(
+                  color: Colors.white70,
+                  thickness: 1.0,
                 ),
               ),
             ],
           ),
-          const SizedBox(
-            width: double.infinity,
-            child: Divider(
-              color: Colors.white70,
-              thickness: 1.0,
+          content: SizedBox(
+            height: 350,
+            width: 300,
+            child: Column(
+              children: [
+                TextField(
+                  controller: titleController,
+                  maxLines: 3,
+                  cursorColor: Colors.white70,
+                  textInputAction: TextInputAction.next,
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    fillColor: Color(0xff151518),
+                    filled: true,
+                    hintText: "Job Title",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: "Righteous",
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${startDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${startDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                            style: const TextStyle(
+                              fontFamily: "OpenSans",
+                              color: Colors.white70,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                selectStartDate(context);
+                              });
+                            },
+                            child: const Icon(
+                              Icons.today_outlined,
+                              color: Color(0xff151518),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${endDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${endDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                            style: const TextStyle(
+                              fontFamily: "OpenSans",
+                              color: Colors.white70,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                selectEndDate(context);
+                              });
+                            },
+                            child: const Icon(
+                              Icons.event_outlined,
+                              color: Color(0xff151518),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: descriptionController,
+                  maxLines: 6,
+                  cursorColor: Colors.white70,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    fillColor: Color(0xff151518),
+                    filled: true,
+                    hintText: "Job Description",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: "OpenSans",
+                    color: Colors.white70,
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
-      content: SizedBox(
-        height: 210,
-        child: Column(
-          children: [
-            TextField(
-              controller: titleController,
-              cursorColor: Colors.white70,
-              textInputAction: TextInputAction.next,
-              autofocus: true,
-              decoration: const InputDecoration(
-                fillColor: Color(0xff151518),
-                filled: true,
-                hintText: "Job Title",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white70,
-                    )),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white70,
-                    )),
-              ),
-              style: const TextStyle(
-                fontFamily: "Righteous",
-                color: Colors.white70,
-              ),
-            ),
+          actions: [
             const SizedBox(
-              height: 5,
-            ),
-            TextField(
-              controller: descriptionController,
-              cursorColor: Colors.white70,
-              textInputAction: TextInputAction.done,
-              decoration: const InputDecoration(
-                fillColor: Color(0xff151518),
-                filled: true,
-                hintText: "Job Description",
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white70,
-                    )),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white70,
-                    )),
-              ),
-              style: const TextStyle(
-                fontFamily: "Righteous",
+              width: double.infinity,
+              child: Divider(
                 color: Colors.white70,
+                thickness: 1.0,
               ),
             ),
-            const SizedBox(
-              height: 5,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white70,
+                    ),
+                    onPressed: () {
+                      titleController.text = "";
+                      startDate = DateTime.now();
+                      endDate = DateTime.now();
+                      descriptionController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.cancel_outlined,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    onPressed: () async{
+                      List<dynamic> job = [
+                        {
+                          'title': titleController.text,
+                          'time':
+                          {
+                            'start': startDate,
+                            'end': endDate
+                          },
+                          'description': descriptionController.text
+                        }
+                      ];
+                      addJob(job);
+                      titleController.text = "";
+                      startDate = DateTime.now();
+                      endDate = DateTime.now();
+                      descriptionController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-            ),
-            onPressed: () async{
-              List<dynamic> job = [
-                {
-                  'title': titleController.text,
-                  'time':
-                  {
-                    'start': "02/1999",
-                    'end': "02/1999"
-                  },
-                  'description': descriptionController.text
-                }
-              ];
-              addJob(job);
-            },
-            child: const Text(
-              "Add",
-              style: TextStyle(
-                fontFamily: "Righteous",
-                fontWeight: FontWeight.bold,
-                color: Color(0xff151518),
-              ),
-            ),
-          ),
-        ),
-      ],
     ),
   );
 
@@ -1718,7 +1914,8 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
 class Job extends StatefulWidget {
   final double iconSize;
   final String title;
-  final String time;
+  final DateTime timeStart;
+  final DateTime timeEnd;
   final String description;
   final double labelFontSize;
   final double spacerSize;
@@ -1727,7 +1924,8 @@ class Job extends StatefulWidget {
       {Key? key,
       required this.iconSize,
       required this.title,
-      required this.time,
+      required this.timeStart,
+      required this.timeEnd,
       required this.description,
       required this.labelFontSize,
       required this.spacerSize})
@@ -1739,15 +1937,133 @@ class Job extends StatefulWidget {
 
 class _JobState extends State<Job> {
   final titleController = TextEditingController();
-  final timeController = TextEditingController();
+  final startController = TextEditingController();
+  final endController = TextEditingController();
   final descriptionController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     titleController.text = widget.title;
-    timeController.text = widget.time;
+    startController.text = "${widget.timeStart}";
+    endController.text = "${widget.timeEnd}";
     descriptionController.text = widget.description;
+  }
+
+  Future<void> selectStartDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: widget.timeStart,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null) {
+      setState(() {
+        startController.text = "$datePicker";
+      });
+    }
+  }
+
+  Future<void> selectEndDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: widget.timeEnd,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null) {
+      setState(() {
+        endController.text = "$datePicker";
+      });
+    }
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> updateJob(job) {
+    return person
+        .doc('personDetails')
+        .update({
+      'jobs': FieldValue.arrayUnion(job),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Professional Experience successfully updated!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to update Professional Experience!",
+        ),
+      ),
+    ));
+  }
+
+  Future<void> deleteJob(job) {
+    return person
+        .doc('personDetails')
+        .update({
+      'jobs': FieldValue.arrayRemove(job),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Professional Experience successfully deleted!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to delete Professional Experience!",
+        ),
+      ),
+    ));
   }
 
   @override
@@ -1820,13 +2136,73 @@ class _JobState extends State<Job> {
                         const SizedBox(
                           height: 5.0,
                         ),
-                        Text(
-                          widget.time,
-                          style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white70,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${DateTime.parse(startController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${DateTime.parse(startController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      selectStartDate(context);
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.today_outlined,
+                                    color: Color(0xff151518),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: widget.spacerSize,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${DateTime.parse(endController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${DateTime.parse(endController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      selectEndDate(context);
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.event_outlined,
+                                    color: Color(0xff151518),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: widget.labelFontSize,
@@ -1870,7 +2246,35 @@ class _JobState extends State<Job> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (titleController.text != widget.title || DateTime.parse(startController.text) != widget.timeStart || DateTime.parse(endController.text) != widget.timeEnd || descriptionController.text != widget.description) {
+                                    List<dynamic> updatedJob = [
+                                      {
+                                        'title': titleController.text,
+                                        'time':
+                                        {
+                                          'start': DateTime.parse(startController.text),
+                                          'end': DateTime.parse(endController.text)
+                                        },
+                                        'description': descriptionController.text
+                                      }
+                                    ];
+                                    updateJob(updatedJob);
+
+                                    List<dynamic> outdatedJob = [
+                                      {
+                                        'title': widget.title,
+                                        'time':
+                                        {
+                                          'start': widget.timeStart,
+                                          'end': widget.timeEnd
+                                        },
+                                        'description': widget.description
+                                      }
+                                    ];
+                                    deleteJob(outdatedJob);
+                                  }
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
                                 ),
@@ -1886,13 +2290,26 @@ class _JobState extends State<Job> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  List<dynamic> job = [
+                                    {
+                                      'title': widget.title,
+                                      'time':
+                                      {
+                                        'start': widget.timeStart,
+                                        'end': widget.timeEnd
+                                      },
+                                      'description': widget.description
+                                    }
+                                  ];
+                                  deleteJob(job);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.red,
                                 ),
                                 child: const Icon(
                                   Icons.delete_forever_outlined,
-                                  color: Colors.white,
+                                  color: Color(0xff151518),
                                 ),
                               ),
                             ),
@@ -1940,8 +2357,15 @@ class _JobState extends State<Job> {
                 const SizedBox(
                   height: 5.0,
                 ),
-                Text(
-                  widget.time,
+                widget.timeStart == widget.timeEnd ? Text(
+                  "(${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()} - at the moment)",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white70,
+                  ),
+                ) : Text(
+                  "(${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()} - ${widget.timeEnd.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeEnd.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()})",
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.labelFontSize,
@@ -2029,7 +2453,8 @@ class _EducationSectionTitleState extends State<EducationSectionTitle> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
                     ),
@@ -2250,7 +2675,7 @@ class _EducationState extends State<Education> {
                                 ),
                                 child: const Icon(
                                   Icons.delete_forever_outlined,
-                                  color: Colors.white,
+                                  color: Color(0xff151518),
                                 ),
                               ),
                             ),
@@ -2339,12 +2764,14 @@ class _EducationState extends State<Education> {
 
 /// Skills Section Title
 class SkillsSectionTitle extends StatefulWidget {
+  final double iconButtonSize;
   final double titleSize;
   final double titleUnderlineSize;
   final double spacerSize;
 
   const SkillsSectionTitle(
       {Key? key,
+        required this.iconButtonSize,
         required this.titleSize,
         required this.titleUnderlineSize,
         required this.spacerSize})
@@ -2355,6 +2782,198 @@ class SkillsSectionTitle extends StatefulWidget {
 }
 
 class _SkillsSectionTitleState extends State<SkillsSectionTitle> {
+  final skillController = TextEditingController();
+  final percentageController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    skillController.text = "";
+    percentageController.text = "";
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> addSkill(skill) {
+    return person
+        .doc('personDetails')
+        .set({
+      'skills': FieldValue.arrayUnion(skill),
+    },
+      SetOptions(merge: true),
+    )
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Skill successfully added!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to add Skill!",
+        ),
+      ),
+    ));
+  }
+
+  Future addSkillDialog() => showDialog(
+    context: context,
+    builder: (context) => Center(
+      child: SingleChildScrollView(
+        child: AlertDialog(
+          backgroundColor: const Color(0xff0d0d0f),
+          title: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.star_outline,
+                      color: Colors.white,
+                      size: widget.iconButtonSize,
+                    ),
+                  ),
+                  const Text(
+                    "Add Skill",
+                    style: TextStyle(
+                      fontFamily: "Righteous",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: double.infinity,
+                child: Divider(
+                  color: Colors.white70,
+                  thickness: 1.0,
+                ),
+              ),
+            ],
+          ),
+          content: SizedBox(
+            height: 350,
+            width: 300,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: skillController,
+                  cursorColor: Colors.white70,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    fillColor: Color(0xff151518),
+                    filled: true,
+                    hintText: "Skill",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: "OpenSans",
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: 60,
+                  child: TextField(
+                    controller: percentageController,
+                    cursorColor: Colors.white70,
+                    textInputAction: TextInputAction.done,
+                    decoration: const InputDecoration(
+                      fillColor: Color(0xff151518),
+                      filled: true,
+                      hintText: "%",
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white70,
+                          )),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white70,
+                          )),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: "OpenSans",
+                      color: Colors.white70,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            const SizedBox(
+              width: double.infinity,
+              child: Divider(
+                color: Colors.white70,
+                thickness: 1.0,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white70,
+                    ),
+                    onPressed: () {
+                      skillController.text = "";
+                      percentageController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.cancel_outlined,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    onPressed: () async{
+                      List<dynamic> skill = [
+                        {
+                          'skill': skillController.text,
+                          'percentage': percentageController.text
+                        }
+                      ];
+                      addSkill(skill);
+                      skillController.text = "";
+                      percentageController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -2387,7 +3006,9 @@ class _SkillsSectionTitleState extends State<SkillsSectionTitle> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      addSkillDialog();
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
                     ),
@@ -2434,12 +3055,14 @@ class _SkillsSectionTitleState extends State<SkillsSectionTitle> {
 
 /// Languages Section Title
 class LanguagesSectionTitle extends StatefulWidget {
+  final double iconButtonSize;
   final double titleSize;
   final double titleUnderlineSize;
   final double spacerSize;
 
   const LanguagesSectionTitle(
       {Key? key,
+        required this.iconButtonSize,
         required this.titleSize,
         required this.titleUnderlineSize,
         required this.spacerSize})
@@ -2450,6 +3073,214 @@ class LanguagesSectionTitle extends StatefulWidget {
 }
 
 class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
+  final languageController = TextEditingController();
+  final percentageController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    languageController.text = "";
+    percentageController.text = "";
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> addLanguage(language) {
+    return person
+        .doc('personDetails')
+        .set({
+      'languages': FieldValue.arrayUnion(language),
+    },
+      SetOptions(merge: true),
+    )
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Language successfully added!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to add Language!",
+        ),
+      ),
+    ));
+  }
+
+  Future addLanguageDialog() => showDialog(
+    context: context,
+    builder: (context) => Center(
+      child: SingleChildScrollView(
+        child: AlertDialog(
+          backgroundColor: const Color(0xff0d0d0f),
+          title: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.language,
+                      color: Colors.white,
+                      size: widget.iconButtonSize,
+                    ),
+                  ),
+                  const Text(
+                    "Add Language",
+                    style: TextStyle(
+                      fontFamily: "Righteous",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: double.infinity,
+                child: Divider(
+                  color: Colors.white70,
+                  thickness: 1.0,
+                ),
+              ),
+            ],
+          ),
+          content: SizedBox(
+            height: 350,
+            width: 300,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: languageController,
+                  cursorColor: Colors.white70,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    fillColor: Color(0xff151518),
+                    filled: true,
+                    hintText: "Language",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white70,
+                        )),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: "OpenSans",
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: 60,
+                  child: TextField(
+                    controller: percentageController,
+                    cursorColor: Colors.white70,
+                    textInputAction: TextInputAction.done,
+                    decoration: const InputDecoration(
+                      fillColor: Color(0xff151518),
+                      filled: true,
+                      hintText: "%",
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white70,
+                          )),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white70,
+                          )),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: "OpenSans",
+                      color: Colors.white70,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            const SizedBox(
+              width: double.infinity,
+              child: Divider(
+                color: Colors.white70,
+                thickness: 1.0,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white70,
+                    ),
+                    onPressed: () {
+                      languageController.text = "";
+                      percentageController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.cancel_outlined,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    onPressed: () async{
+                      String fluency = "";
+
+                      if (double.parse(percentageController.text) >= 0.96) {
+                        fluency = "C2";
+                      } else if (double.parse(percentageController.text) >= 0.80) {
+                        fluency = "C1";
+                      } else if (double.parse(percentageController.text) >= 0.64) {
+                        fluency = "B2";
+                      } else if (double.parse(percentageController.text) >= 0.48) {
+                        fluency = "B1";
+                      } else if (double.parse(percentageController.text) >= 0.32) {
+                        fluency = "A2";
+                      } else if (double.parse(percentageController.text) <= 0.16) {
+                        fluency = "A1";
+                      }
+                      List<dynamic> language = [
+                        {
+                          'language': languageController.text,
+                          'fluency': fluency,
+                          'percentage': percentageController.text
+                        }
+                      ];
+                      addLanguage(language);
+                      languageController.text = "";
+                      percentageController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -2482,7 +3313,9 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      addLanguageDialog();
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
                     ),
@@ -2533,13 +3366,15 @@ class ProgressionBar extends StatefulWidget {
   final double progressionBarWidth;
   final double labelFontSize;
   final String progression;
+  final double spacerSize;
 
   const ProgressionBar(
       {Key? key,
       required this.label,
       required this.progressionBarWidth,
       required this.labelFontSize,
-      required this.progression})
+      required this.progression,
+      required this.spacerSize})
       : super(key: key);
 
   @override
@@ -2584,30 +3419,27 @@ class _ProgressionBarState extends State<ProgressionBar> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          width: widget.progressionBarWidth,
-                          child: TextField(
-                            controller: labelController,
-                            cursorColor: Colors.white,
-                            textInputAction: TextInputAction.next,
-                            decoration: const InputDecoration(
-                              fillColor: Color(0xff151518),
-                              filled: true,
-                              hintText: "Label",
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.white70,
-                              )),
-                            ),
-                            style: TextStyle(
-                              fontFamily: "OpenSans",
-                              fontSize: widget.labelFontSize,
+                        TextField(
+                          controller: labelController,
+                          cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                            fillColor: Color(0xff151518),
+                            filled: true,
+                            hintText: "Label",
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
                               color: Colors.white70,
-                            ),
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.white70,
+                            )),
+                          ),
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white70,
                           ),
                         ),
                         const SizedBox(
@@ -2688,7 +3520,7 @@ class _ProgressionBarState extends State<ProgressionBar> {
                                 ),
                                 child: const Icon(
                                   Icons.delete_forever_outlined,
-                                  color: Colors.white,
+                                  color: Color(0xff151518),
                                 ),
                               ),
                             ),
@@ -2698,8 +3530,8 @@ class _ProgressionBarState extends State<ProgressionBar> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 30.0,
+                SizedBox(
+                  height: widget.spacerSize,
                 ),
               ],
             );
@@ -2738,8 +3570,8 @@ class _ProgressionBarState extends State<ProgressionBar> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 30.0,
+                SizedBox(
+                  height: widget.spacerSize,
                 ),
               ],
             );

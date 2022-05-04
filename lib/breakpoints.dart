@@ -53,6 +53,10 @@ double desktopLabelFontSize = 19.0;
 double tabletLabelFontSize = 17.0;
 double mobileLabelFontSize = 15.0;
 
-double desktopSpacerSize = 25.0;
-double tabletSpacerSize = 20.0;
-double mobileSpacerSize = 15.0;
+double desktopSpacerSize = 20.0;
+double tabletSpacerSize = 15.0;
+double mobileSpacerSize = 10.0;
+
+double desktopWidgetSpacerSize = 40.0;
+double tabletWidgetSpacerSize = 30.0;
+double mobileWidgetSpacerSize = 20.0;

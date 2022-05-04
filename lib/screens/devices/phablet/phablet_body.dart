@@ -17,7 +17,12 @@ class PhabletBody extends StatelessWidget {
                     child: CircularProgressIndicator(color: Colors.white70)));
           } else {
             List<dynamic>? person =
-            snapshot.data?.docs.map((document) => document.data()).toList();
+              snapshot.data?.docs.map((document) => document.data()).toList();
+
+            person![0]["jobs"].sort((a, b) {
+              return DateTime.parse(b["time"]["start"].toDate().toString()).compareTo(DateTime.parse(a["time"]["start"].toDate().toString()));
+            });
+
             return Background(
               child: Scaffold(
                 backgroundColor: Colors.transparent,
@@ -31,7 +36,7 @@ class PhabletBody extends StatelessWidget {
                           Header(
                               image: "images/nunosilva.jpg",
                               imageSize: mobileHeaderImageSize,
-                              name: person![0]["name"],
+                              name: person[0]["name"],
                               nameSize: mobileHeaderNameSize,
                               jobTitle: person[0]["jobTitle"].toUpperCase(),
                               jobTitleSize: mobileHeaderJobTitleSize,
@@ -61,11 +66,10 @@ class PhabletBody extends StatelessWidget {
                                           locationLabel: person[0]["location"]["label"],
                                           locationUrl: person[0]["location"]["url"],
                                           labelFontSize: mobileLabelFontSize,
-                                          spacerSize: mobileSpacerSize),
-                                      const SizedBox(
-                                        height: 20.0,
-                                      ),
+                                          spacerSize: mobileSpacerSize,
+                                          widgetSpacerSize: mobileWidgetSpacerSize),
                                       SkillsSectionTitle(
+                                          iconButtonSize: mobileHeaderIconButtonSize,
                                           titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
                                           mobileSectionTitleUnderlineSize,
@@ -75,11 +79,13 @@ class PhabletBody extends StatelessWidget {
                                             label: skill["skill"],
                                             progressionBarWidth: mobileProgressionBarWidth,
                                             labelFontSize: mobileLabelFontSize,
-                                            progression: skill["percentage"]),
-                                      const SizedBox(
-                                        height: 20.0,
+                                            progression: skill["percentage"],
+                                            spacerSize: mobileSpacerSize),
+                                      SizedBox(
+                                        height: mobileSpacerSize,
                                       ),
                                       LanguagesSectionTitle(
+                                          iconButtonSize: mobileHeaderIconButtonSize,
                                           titleSize: mobileSectionTitleSize,
                                           titleUnderlineSize:
                                           mobileSectionTitleUnderlineSize,
@@ -90,7 +96,11 @@ class PhabletBody extends StatelessWidget {
                                             "${language["language"]} (${language["fluency"]})",
                                             progressionBarWidth: mobileProgressionBarWidth,
                                             labelFontSize: mobileLabelFontSize,
-                                            progression: language["percentage"]),
+                                            progression: language["percentage"],
+                                            spacerSize: mobileSpacerSize),
+                                      SizedBox(
+                                        height: mobileSpacerSize,
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -112,9 +122,7 @@ class PhabletBody extends StatelessWidget {
                                         profile: person[0]["profile"],
                                         labelFontSize: mobileLabelFontSize,
                                         spacerSize: mobileSpacerSize,
-                                      ),
-                                      const SizedBox(
-                                        height: 20.0,
+                                        widgetSpacerSize: mobileWidgetSpacerSize
                                       ),
                                       JobSectionTitle(
                                           iconButtonSize: mobileHeaderIconButtonSize,
@@ -126,12 +134,13 @@ class PhabletBody extends StatelessWidget {
                                         Job(
                                             iconSize: mobileIconSize,
                                             title: job["title"],
-                                            time: "(${job["time"]["start"]} - ${job["time"]["end"]})",
+                                            timeStart: DateTime.parse(job["time"]["start"].toDate().toString()),
+                                            timeEnd: DateTime.parse(job["time"]["end"].toDate().toString()),
                                             description: job["description"],
                                             labelFontSize: mobileLabelFontSize,
                                             spacerSize: mobileSpacerSize),
-                                      const SizedBox(
-                                        height: 20.0,
+                                      SizedBox(
+                                        height: mobileSpacerSize,
                                       ),
                                       EducationSectionTitle(
                                           titleSize: mobileSectionTitleSize,
@@ -146,6 +155,9 @@ class PhabletBody extends StatelessWidget {
                                             time: "(${education["time"]["start"]} - ${education["time"]["end"]})",
                                             labelFontSize: mobileLabelFontSize,
                                             spacerSize: mobileSpacerSize),
+                                      SizedBox(
+                                        height: mobileSpacerSize,
+                                      ),
                                     ],
                                   ),
                                 ),

@@ -23,6 +23,11 @@ class _DesktopBodyState extends State<DesktopBody> {
           } else {
             List<dynamic>? person =
                 snapshot.data?.docs.map((document) => document.data()).toList();
+
+            person![0]["jobs"].sort((a, b) {
+              return DateTime.parse(b["time"]["start"].toDate().toString()).compareTo(DateTime.parse(a["time"]["start"].toDate().toString()));
+            });
+
             return Background(
               child: Scaffold(
                 backgroundColor: Colors.transparent,
@@ -33,7 +38,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Header(
-                            image: person![0]["image"],
+                            image: person[0]["image"],
                             imageSize: desktopHeaderImageSize,
                             name: person[0]["name"],
                             nameSize: desktopHeaderNameSize,
@@ -54,12 +59,6 @@ class _DesktopBodyState extends State<DesktopBody> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    /*SectionTitle(
-                                        title: "PERSONAL INFORMATION",
-                                        titleSize: desktopSectionTitleSize,
-                                        titleUnderlineSize:
-                                            desktopSectionTitleUnderlineSize,
-                                        spacerSize: desktopSpacerSize),*/
                                     PersonalInfo(
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize: desktopSectionTitleUnderlineSize,
@@ -72,11 +71,10 @@ class _DesktopBodyState extends State<DesktopBody> {
                                         locationLabel: person[0]["location"]["label"],
                                         locationUrl: person[0]["location"]["url"],
                                         labelFontSize: desktopLabelFontSize,
-                                        spacerSize: desktopSpacerSize),
-                                    const SizedBox(
-                                      height: 40.0,
-                                    ),
+                                        spacerSize: desktopSpacerSize,
+                                        widgetSpacerSize: desktopWidgetSpacerSize),
                                     SkillsSectionTitle(
+                                        iconButtonSize: desktopHeaderIconButtonSize,
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
@@ -87,11 +85,13 @@ class _DesktopBodyState extends State<DesktopBody> {
                                           progressionBarWidth:
                                               desktopProgressionBarWidth,
                                           labelFontSize: desktopLabelFontSize,
-                                          progression: skill["percentage"]),
-                                    const SizedBox(
-                                      height: 40.0,
+                                          progression: skill["percentage"],
+                                          spacerSize: desktopSpacerSize),
+                                    SizedBox(
+                                      height: desktopSpacerSize,
                                     ),
                                     LanguagesSectionTitle(
+                                        iconButtonSize: desktopHeaderIconButtonSize,
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
@@ -103,7 +103,11 @@ class _DesktopBodyState extends State<DesktopBody> {
                                           progressionBarWidth:
                                               desktopProgressionBarWidth,
                                           labelFontSize: desktopLabelFontSize,
-                                          progression: language["percentage"]),
+                                          progression: language["percentage"],
+                                          spacerSize: desktopSpacerSize),
+                                    SizedBox(
+                                      height: desktopSpacerSize,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -125,9 +129,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                       profile: person[0]["profile"],
                                       labelFontSize: desktopLabelFontSize,
                                       spacerSize: desktopSpacerSize,
-                                    ),
-                                    const SizedBox(
-                                      height: 40.0,
+                                      widgetSpacerSize: desktopWidgetSpacerSize
                                     ),
                                     JobSectionTitle(
                                         iconButtonSize: desktopHeaderIconButtonSize,
@@ -139,13 +141,13 @@ class _DesktopBodyState extends State<DesktopBody> {
                                       Job(
                                           iconSize: desktopIconSize,
                                           title: job["title"],
-                                          time:
-                                              "(${job["time"]["start"]} - ${job["time"]["end"]})",
+                                          timeStart: DateTime.parse(job["time"]["start"].toDate().toString()),
+                                          timeEnd: DateTime.parse(job["time"]["end"].toDate().toString()),
                                           description: job["description"],
                                           labelFontSize: desktopLabelFontSize,
                                           spacerSize: desktopSpacerSize),
-                                    const SizedBox(
-                                      height: 40.0,
+                                    SizedBox(
+                                      height: desktopSpacerSize,
                                     ),
                                     EducationSectionTitle(
                                         titleSize: desktopSectionTitleSize,
@@ -162,6 +164,9 @@ class _DesktopBodyState extends State<DesktopBody> {
                                               "(${education["time"]["start"]} - ${education["time"]["end"]})",
                                           labelFontSize: desktopLabelFontSize,
                                           spacerSize: desktopSpacerSize),
+                                    SizedBox(
+                                      height: desktopSpacerSize,
+                                    ),
                                   ],
                                 ),
                               ),

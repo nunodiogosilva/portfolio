@@ -17,7 +17,12 @@ class TabletBody extends StatelessWidget {
                     child: CircularProgressIndicator(color: Colors.white70)));
           } else {
             List<dynamic>? person =
-            snapshot.data?.docs.map((document) => document.data()).toList();
+              snapshot.data?.docs.map((document) => document.data()).toList();
+
+            person![0]["jobs"].sort((a, b) {
+              return DateTime.parse(b["time"]["start"].toDate().toString()).compareTo(DateTime.parse(a["time"]["start"].toDate().toString()));
+            });
+
             return Background(
               child: Scaffold(
                 backgroundColor: Colors.transparent,
@@ -31,7 +36,7 @@ class TabletBody extends StatelessWidget {
                           Header(
                               image: "images/nunosilva.jpg",
                               imageSize: tabletHeaderImageSize,
-                              name: person![0]["name"],
+                              name: person[0]["name"],
                               nameSize: tabletHeaderNameSize,
                               jobTitle: person[0]["jobTitle"].toUpperCase(),
                               jobTitleSize: tabletHeaderJobTitleSize,
@@ -48,12 +53,6 @@ class TabletBody extends StatelessWidget {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      /*SectionTitle(
-                                          title: "PERSONAL INFORMATION",
-                                          titleSize: tabletSectionTitleSize,
-                                          titleUnderlineSize:
-                                          tabletSectionTitleUnderlineSize,
-                                          spacerSize: tabletSpacerSize),*/
                                       PersonalInfo(
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize: tabletSectionTitleUnderlineSize,
@@ -66,11 +65,10 @@ class TabletBody extends StatelessWidget {
                                           locationLabel: person[0]["location"]["label"],
                                           locationUrl: person[0]["location"]["url"],
                                           labelFontSize: tabletLabelFontSize,
-                                          spacerSize: tabletSpacerSize),
-                                      const SizedBox(
-                                        height: 30.0,
-                                      ),
+                                          spacerSize: tabletSpacerSize,
+                                          widgetSpacerSize: tabletWidgetSpacerSize),
                                       SkillsSectionTitle(
+                                          iconButtonSize: tabletHeaderIconButtonSize,
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
@@ -80,11 +78,13 @@ class TabletBody extends StatelessWidget {
                                             label: skill["skill"],
                                             progressionBarWidth: tabletProgressionBarWidth,
                                             labelFontSize: tabletLabelFontSize,
-                                            progression: skill["percentage"]),
-                                      const SizedBox(
-                                        height: 30.0,
+                                            progression: skill["percentage"],
+                                            spacerSize: tabletSpacerSize),
+                                      SizedBox(
+                                        height: tabletSpacerSize,
                                       ),
                                       LanguagesSectionTitle(
+                                          iconButtonSize: mobileHeaderIconButtonSize,
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
@@ -95,9 +95,10 @@ class TabletBody extends StatelessWidget {
                                             "${language["language"]} (${language["fluency"]})",
                                             progressionBarWidth: tabletProgressionBarWidth,
                                             labelFontSize: tabletLabelFontSize,
-                                            progression: language["percentage"]),
-                                      const SizedBox(
-                                        height: 30.0,
+                                            progression: language["percentage"],
+                                            spacerSize: tabletSpacerSize),
+                                      SizedBox(
+                                        height: tabletSpacerSize,
                                       ),
                                     ],
                                   ),
@@ -120,9 +121,7 @@ class TabletBody extends StatelessWidget {
                                         profile: person[0]["profile"],
                                         labelFontSize: tabletLabelFontSize,
                                         spacerSize: tabletSpacerSize,
-                                      ),
-                                      const SizedBox(
-                                        height: 30.0,
+                                        widgetSpacerSize: tabletWidgetSpacerSize
                                       ),
                                       JobSectionTitle(
                                           iconButtonSize: tabletHeaderIconButtonSize,
@@ -134,12 +133,13 @@ class TabletBody extends StatelessWidget {
                                         Job(
                                             iconSize: tabletIconSize,
                                             title: job["title"],
-                                            time: "(${job["time"]["start"]} - ${job["time"]["end"]})",
+                                            timeStart: DateTime.parse(job["time"]["start"].toDate().toString()),
+                                            timeEnd: DateTime.parse(job["time"]["end"].toDate().toString()),
                                             description: job["description"],
                                             labelFontSize: tabletLabelFontSize,
                                             spacerSize: tabletSpacerSize),
-                                      const SizedBox(
-                                        height: 30.0,
+                                      SizedBox(
+                                        height: tabletSpacerSize,
                                       ),
                                       EducationSectionTitle(
                                           titleSize: tabletSectionTitleSize,
@@ -154,6 +154,9 @@ class TabletBody extends StatelessWidget {
                                             time: "(${education["time"]["start"]} - ${education["time"]["end"]})",
                                             labelFontSize: tabletLabelFontSize,
                                             spacerSize: tabletSpacerSize),
+                                      SizedBox(
+                                        height: tabletSpacerSize,
+                                      ),
                                     ],
                                   ),
                                 ),
