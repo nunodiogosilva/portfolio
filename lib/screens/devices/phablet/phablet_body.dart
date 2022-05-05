@@ -93,8 +93,15 @@ class PhabletBody extends StatelessWidget {
                                             labelFontSize: mobileLabelFontSize,
                                             progression: skill["percentage"],
                                             spacerSize: mobileSpacerSize),
+                                      const SizedBox(
+                                        width: double.infinity,
+                                        child: Divider(
+                                          color: Colors.white,
+                                          thickness: 1.0,
+                                        ),
+                                      ),
                                       SizedBox(
-                                        height: mobileSpacerSize,
+                                        height: mobileWidgetSpacerSize,
                                       ),
                                       LanguagesSectionTitle(
                                           iconButtonSize: mobileHeaderIconButtonSize,
@@ -110,8 +117,15 @@ class PhabletBody extends StatelessWidget {
                                             labelFontSize: mobileLabelFontSize,
                                             progression: language["percentage"],
                                             spacerSize: mobileSpacerSize),
+                                      const SizedBox(
+                                        width: double.infinity,
+                                        child: Divider(
+                                          color: Colors.white,
+                                          thickness: 1.0,
+                                        ),
+                                      ),
                                       SizedBox(
-                                        height: mobileSpacerSize,
+                                        height: mobileWidgetSpacerSize,
                                       ),
                                     ],
                                   ),

@@ -99,8 +99,15 @@ class _DesktopBodyState extends State<DesktopBody> {
                                           labelFontSize: desktopLabelFontSize,
                                           progression: skill["percentage"],
                                           spacerSize: desktopSpacerSize),
+                                    const SizedBox(
+                                      width: double.infinity,
+                                      child: Divider(
+                                        color: Colors.white,
+                                        thickness: 1.0,
+                                      ),
+                                    ),
                                     SizedBox(
-                                      height: desktopSpacerSize,
+                                      height: desktopWidgetSpacerSize,
                                     ),
                                     LanguagesSectionTitle(
                                         iconButtonSize: desktopHeaderIconButtonSize,
@@ -117,8 +124,15 @@ class _DesktopBodyState extends State<DesktopBody> {
                                           labelFontSize: desktopLabelFontSize,
                                           progression: language["percentage"],
                                           spacerSize: desktopSpacerSize),
+                                    const SizedBox(
+                                      width: double.infinity,
+                                      child: Divider(
+                                        color: Colors.white,
+                                        thickness: 1.0,
+                                      ),
+                                    ),
                                     SizedBox(
-                                      height: desktopSpacerSize,
+                                      height: desktopWidgetSpacerSize,
                                     ),
                                   ],
                                 ),

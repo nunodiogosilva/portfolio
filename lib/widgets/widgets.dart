@@ -426,10 +426,9 @@ class _HeaderState extends State<Header> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: widget.spacerSize,
+                const SizedBox(
                   width: double.infinity,
-                  child: const Divider(
+                  child: Divider(
                     color: Colors.white,
                     thickness: 1.0,
                   ),
@@ -447,8 +446,15 @@ class _HeaderState extends State<Header> {
                   iconSize: widget.iconButtonSize,
                   tooltip: "Admin View",
                 ),
+                const SizedBox(
+                  width: double.infinity,
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 1.0,
+                  ),
+                ),
                 SizedBox(
-                  height: widget.spacerSize,
+                  height: widget.spacerSize + widget.spacerSize,
                 ),
               ],
             );
@@ -480,10 +486,9 @@ class _HeaderState extends State<Header> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
-                  height: widget.spacerSize,
+                const SizedBox(
                   width: double.infinity,
-                  child: const Divider(
+                  child: Divider(
                     color: Colors.white,
                     thickness: 1.0,
                   ),
@@ -521,8 +526,15 @@ class _HeaderState extends State<Header> {
                     ),
                   ],
                 ),
+                const SizedBox(
+                  width: double.infinity,
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 1.0,
+                  ),
+                ),
                 SizedBox(
-                  height: widget.spacerSize,
+                  height: widget.spacerSize + widget.spacerSize,
                 ),
               ],
             );

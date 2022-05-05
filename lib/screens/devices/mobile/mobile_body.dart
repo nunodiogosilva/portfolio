@@ -91,8 +91,15 @@ class MobileBody extends StatelessWidget {
                                 labelFontSize: mobileLabelFontSize,
                                 progression: skill["percentage"],
                                 spacerSize: mobileSpacerSize),
+                          const SizedBox(
+                            width: double.infinity,
+                            child: Divider(
+                              color: Colors.white,
+                              thickness: 1.0,
+                            ),
+                          ),
                           SizedBox(
-                            height: mobileSpacerSize,
+                            height: mobileWidgetSpacerSize,
                           ),
                           JobSectionTitle(
                               iconButtonSize: mobileHeaderIconButtonSize,
@@ -144,6 +151,13 @@ class MobileBody extends StatelessWidget {
                                 labelFontSize: mobileLabelFontSize,
                                 progression: language["percentage"],
                                 spacerSize: mobileSpacerSize),
+                          const SizedBox(
+                            width: double.infinity,
+                            child: Divider(
+                              color: Colors.white,
+                              thickness: 1.0,
+                            ),
+                          ),
                           const SizedBox(
                             height: 50.0,
                           ),
