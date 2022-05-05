@@ -14,13 +14,25 @@ class TabletBody extends StatelessWidget {
           if (!snapshot.hasData) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else {
             List<dynamic>? person =
               snapshot.data?.docs.map((document) => document.data()).toList();
 
-            person![0]["jobs"].sort((a, b) {
-              return DateTime.parse(b["time"]["start"].toDate().toString()).compareTo(DateTime.parse(a["time"]["start"].toDate().toString()));
+            person![0]["skills"].sort((a, b) {
+              return double.parse(b["percentage"]).compareTo(double.parse(a["percentage"]));
+            });
+
+            person[0]["jobs"].sort((a, b) {
+              return DateTime.parse(b["time"]["end"].toDate().toString()).compareTo(DateTime.parse(a["time"]["end"].toDate().toString()));
+            });
+
+            person[0]["education"].sort((a, b) {
+              return DateTime.parse(b["time"]["end"].toDate().toString()).compareTo(DateTime.parse(a["time"]["end"].toDate().toString()));
+            });
+
+            person[0]["languages"].sort((a, b) {
+              return double.parse(b["percentage"]).compareTo(double.parse(a["percentage"]));
             });
 
             return Background(
@@ -74,7 +86,7 @@ class TabletBody extends StatelessWidget {
                                           tabletSectionTitleUnderlineSize,
                                           spacerSize: tabletSpacerSize),
                                       for (var skill in person[0]["skills"])
-                                        ProgressionBar(
+                                        Skills(
                                             label: skill["skill"],
                                             progressionBarWidth: tabletProgressionBarWidth,
                                             labelFontSize: tabletLabelFontSize,
@@ -90,9 +102,9 @@ class TabletBody extends StatelessWidget {
                                           tabletSectionTitleUnderlineSize,
                                           spacerSize: tabletSpacerSize),
                                       for (var language in person[0]["languages"])
-                                        ProgressionBar(
-                                            label:
-                                            "${language["language"]} (${language["fluency"]})",
+                                        Languages(
+                                            label: language["language"],
+                                            fluency: language["fluency"],
                                             progressionBarWidth: tabletProgressionBarWidth,
                                             labelFontSize: tabletLabelFontSize,
                                             progression: language["percentage"],
@@ -104,10 +116,10 @@ class TabletBody extends StatelessWidget {
                                   ),
                                 ),
                                 const Padding(
-                                  padding: EdgeInsets.only(right: 10.0),
+                                  padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
                                   child: VerticalDivider(
                                     thickness: 1,
-                                    color: Colors.white70,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Expanded(
@@ -142,6 +154,7 @@ class TabletBody extends StatelessWidget {
                                         height: tabletSpacerSize,
                                       ),
                                       EducationSectionTitle(
+                                          iconButtonSize: tabletHeaderIconButtonSize,
                                           titleSize: tabletSectionTitleSize,
                                           titleUnderlineSize:
                                           tabletSectionTitleUnderlineSize,
@@ -151,7 +164,8 @@ class TabletBody extends StatelessWidget {
                                             iconSize: tabletIconSize,
                                             academy: education["academy"],
                                             course: education["course"],
-                                            time: "(${education["time"]["start"]} - ${education["time"]["end"]})",
+                                            timeStart: DateTime.parse(education["time"]["start"].toDate().toString()),
+                                            timeEnd: DateTime.parse(education["time"]["end"].toDate().toString()),
                                             labelFontSize: tabletLabelFontSize,
                                             spacerSize: tabletSpacerSize),
                                       SizedBox(

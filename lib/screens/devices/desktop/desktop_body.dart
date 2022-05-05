@@ -19,13 +19,25 @@ class _DesktopBodyState extends State<DesktopBody> {
           if (!snapshot.hasData) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else {
             List<dynamic>? person =
                 snapshot.data?.docs.map((document) => document.data()).toList();
 
-            person![0]["jobs"].sort((a, b) {
-              return DateTime.parse(b["time"]["start"].toDate().toString()).compareTo(DateTime.parse(a["time"]["start"].toDate().toString()));
+            person![0]["skills"].sort((a, b) {
+              return double.parse(b["percentage"]).compareTo(double.parse(a["percentage"]));
+            });
+
+            person[0]["jobs"].sort((a, b) {
+              return DateTime.parse(b["time"]["end"].toDate().toString()).compareTo(DateTime.parse(a["time"]["end"].toDate().toString()));
+            });
+
+            person[0]["education"].sort((a, b) {
+              return DateTime.parse(b["time"]["end"].toDate().toString()).compareTo(DateTime.parse(a["time"]["end"].toDate().toString()));
+            });
+
+            person[0]["languages"].sort((a, b) {
+              return double.parse(b["percentage"]).compareTo(double.parse(a["percentage"]));
             });
 
             return Background(
@@ -80,7 +92,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             desktopSectionTitleUnderlineSize,
                                         spacerSize: desktopSpacerSize),
                                     for (var skill in person[0]["skills"])
-                                      ProgressionBar(
+                                      Skills(
                                           label: skill["skill"],
                                           progressionBarWidth:
                                               desktopProgressionBarWidth,
@@ -97,9 +109,9 @@ class _DesktopBodyState extends State<DesktopBody> {
                                             desktopSectionTitleUnderlineSize,
                                         spacerSize: desktopSpacerSize),
                                     for (var language in person[0]["languages"])
-                                      ProgressionBar(
-                                          label:
-                                              "${language["language"]} (${language["fluency"]})",
+                                      Languages(
+                                          label: language["language"],
+                                          fluency: language["fluency"],
                                           progressionBarWidth:
                                               desktopProgressionBarWidth,
                                           labelFontSize: desktopLabelFontSize,
@@ -112,10 +124,10 @@ class _DesktopBodyState extends State<DesktopBody> {
                                 ),
                               ),
                               const Padding(
-                                padding: EdgeInsets.only(right: 10.0),
+                                padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
                                 child: VerticalDivider(
-                                  thickness: 2,
-                                  color: Colors.white70,
+                                  thickness: 1,
+                                  color: Colors.white,
                                 ),
                               ),
                               Expanded(
@@ -150,6 +162,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                                       height: desktopSpacerSize,
                                     ),
                                     EducationSectionTitle(
+                                        iconButtonSize: desktopHeaderIconButtonSize,
                                         titleSize: desktopSectionTitleSize,
                                         titleUnderlineSize:
                                             desktopSectionTitleUnderlineSize,
@@ -160,8 +173,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                                           iconSize: desktopIconSize,
                                           academy: education["academy"],
                                           course: education["course"],
-                                          time:
-                                              "(${education["time"]["start"]} - ${education["time"]["end"]})",
+                                          timeStart: DateTime.parse(education["time"]["start"].toDate().toString()),
+                                          timeEnd: DateTime.parse(education["time"]["end"].toDate().toString()),
                                           labelFontSize: desktopLabelFontSize,
                                           spacerSize: desktopSpacerSize),
                                     SizedBox(

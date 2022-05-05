@@ -134,7 +134,7 @@ class _HeaderState extends State<Header> {
                 const SizedBox(
                   width: double.infinity,
                   child: Divider(
-                    color: Colors.white70,
+                    color: Colors.white,
                     thickness: 1.0,
                   ),
                 ),
@@ -151,7 +151,7 @@ class _HeaderState extends State<Header> {
                         "If you're not Nuno Silva, you shouldn't be here!",
                         style: TextStyle(
                           fontFamily: "OpenSans",
-                          color: Colors.white70,
+                          color: Colors.white54,
                         ),
                       ),
                       SizedBox(
@@ -161,7 +161,7 @@ class _HeaderState extends State<Header> {
                         "Curious on what's behind this? Here is a sneak peak!",
                         style: TextStyle(
                           fontFamily: "OpenSans",
-                          color: Colors.white70,
+                          color: Colors.white54,
                         ),
                       ),
                     ],
@@ -171,7 +171,7 @@ class _HeaderState extends State<Header> {
                   ),
                   TextField(
                     controller: emailController,
-                    cursorColor: Colors.white70,
+                    cursorColor: Colors.white54,
                     textInputAction: TextInputAction.next,
                     autofocus: true,
                     decoration: const InputDecoration(
@@ -180,16 +180,16 @@ class _HeaderState extends State<Header> {
                       hintText: "Email",
                       border: OutlineInputBorder(
                           borderSide: BorderSide(
-                        color: Colors.white70,
+                        color: Colors.white54,
                       )),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                        color: Colors.white70,
+                        color: Colors.white54,
                       )),
                     ),
                     style: const TextStyle(
                       fontFamily: "Righteous",
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                   ),
                   const SizedBox(
@@ -197,7 +197,7 @@ class _HeaderState extends State<Header> {
                   ),
                   TextField(
                     controller: passwordController,
-                    cursorColor: Colors.white70,
+                    cursorColor: Colors.white54,
                     textInputAction: TextInputAction.done,
                     obscureText: true,
                     enableSuggestions: false,
@@ -208,16 +208,16 @@ class _HeaderState extends State<Header> {
                       hintText: "Password",
                       border: OutlineInputBorder(
                           borderSide: BorderSide(
-                        color: Colors.white70,
+                        color: Colors.white54,
                       )),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                        color: Colors.white70,
+                        color: Colors.white54,
                       )),
                     ),
                     style: const TextStyle(
                       fontFamily: "Righteous",
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                   ),
                 ],
@@ -227,7 +227,7 @@ class _HeaderState extends State<Header> {
               const SizedBox(
                 width: double.infinity,
                 child: Divider(
-                  color: Colors.white70,
+                  color: Colors.white,
                   thickness: 1.0,
                 ),
               ),
@@ -238,7 +238,7 @@ class _HeaderState extends State<Header> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white70,
+                        primary: Colors.white54,
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -276,7 +276,7 @@ class _HeaderState extends State<Header> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -286,7 +286,7 @@ class _HeaderState extends State<Header> {
                   decoration: BoxDecoration(
                     color: const Color(0xff0d0d0f),
                     border: Border.all(
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -358,11 +358,11 @@ class _HeaderState extends State<Header> {
                             hintText: "Name",
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                           ),
                           style: TextStyle(
@@ -377,7 +377,7 @@ class _HeaderState extends State<Header> {
                         ),
                         TextField(
                           controller: jobTitleController,
-                          cursorColor: Colors.white70,
+                          cursorColor: Colors.white54,
                           textInputAction: TextInputAction.next,
                           decoration: const InputDecoration(
                             fillColor: Color(0xff151518),
@@ -389,14 +389,14 @@ class _HeaderState extends State<Header> {
                             )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                           ),
                           style: TextStyle(
                             fontFamily: "Righteous",
                             fontSize: widget.jobTitleSize,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white70,
+                            color: Colors.white54,
                           ),
                         ),
                         const Padding(
@@ -404,7 +404,7 @@ class _HeaderState extends State<Header> {
                           child: SizedBox(
                             width: double.infinity,
                             child: Divider(
-                              color: Colors.white70,
+                              color: Colors.white,
                               thickness: 1.0,
                             ),
                           ),
@@ -430,7 +430,7 @@ class _HeaderState extends State<Header> {
                   height: widget.spacerSize,
                   width: double.infinity,
                   child: const Divider(
-                    color: Colors.white70,
+                    color: Colors.white,
                     thickness: 1.0,
                   ),
                 ),
@@ -484,7 +484,7 @@ class _HeaderState extends State<Header> {
                   height: widget.spacerSize,
                   width: double.infinity,
                   child: const Divider(
-                    color: Colors.white70,
+                    color: Colors.white,
                     thickness: 1.0,
                   ),
                 ),
@@ -648,7 +648,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -659,14 +659,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 SizedBox(
@@ -676,7 +676,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   decoration: BoxDecoration(
                     color: const Color(0xff0d0d0f),
                     border: Border.all(
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -690,14 +690,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             Padding(
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(Icons.flag_outlined,
-                                  color: Colors.white, size: widget.iconSize),
+                                  color: Colors.white70, size: widget.iconSize),
                             ),
                             Text(
                               "Nationality: ",
                               style: TextStyle(
                                 fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white,
+                                color: Colors.white70,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -713,17 +713,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   hintText: "Nationality",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "OpenSans",
                                   fontSize: widget.labelFontSize,
-                                  color: Colors.white70,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
@@ -737,14 +737,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             Padding(
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(Icons.email_outlined,
-                                  color: Colors.white, size: widget.iconSize),
+                                  color: Colors.white70, size: widget.iconSize),
                             ),
                             Text(
                               "Email: ",
                               style: TextStyle(
                                 fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white,
+                                color: Colors.white70,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -760,17 +760,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   hintText: "Email",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "OpenSans",
                                   fontSize: widget.labelFontSize,
-                                  color: Colors.white70,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
@@ -784,14 +784,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             Padding(
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(Icons.people_outline,
-                                  color: Colors.white, size: widget.iconSize),
+                                  color: Colors.white70, size: widget.iconSize),
                             ),
                             Text(
                               "LinkedIn: ",
                               style: TextStyle(
                                 fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white,
+                                color: Colors.white70,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -807,17 +807,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   hintText: "Label",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "OpenSans",
                                   fontSize: widget.labelFontSize,
-                                  color: Colors.white70,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
@@ -836,17 +836,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   hintText: "Url",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "OpenSans",
                                   fontSize: widget.labelFontSize,
-                                  color: Colors.white70,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
@@ -860,14 +860,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             Padding(
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(Icons.phone_outlined,
-                                  color: Colors.white, size: widget.iconSize),
+                                  color: Colors.white70, size: widget.iconSize),
                             ),
                             Text(
                               "Phone Number: ",
                               style: TextStyle(
                                 fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white,
+                                color: Colors.white70,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -883,17 +883,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   hintText: "Phone Number",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "OpenSans",
                                   fontSize: widget.labelFontSize,
-                                  color: Colors.white70,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
@@ -907,14 +907,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                             Padding(
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(Icons.room_outlined,
-                                  color: Colors.white, size: widget.iconSize),
+                                  color: Colors.white70, size: widget.iconSize),
                             ),
                             Text(
                               "Location: ",
                               style: TextStyle(
                                 fontFamily: "Righteous",
                                 fontSize: widget.labelFontSize,
-                                color: Colors.white,
+                                color: Colors.white70,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -930,17 +930,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   hintText: "Label",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "OpenSans",
                                   fontSize: widget.labelFontSize,
-                                  color: Colors.white70,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
@@ -959,17 +959,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                   hintText: "Url",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "OpenSans",
                                   fontSize: widget.labelFontSize,
-                                  color: Colors.white70,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
@@ -980,7 +980,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           child: SizedBox(
                             width: double.infinity,
                             child: Divider(
-                              color: Colors.white70,
+                              color: Colors.white,
                               thickness: 1.0,
                             ),
                           ),
@@ -1026,14 +1026,14 @@ class _PersonalInfoState extends State<PersonalInfo> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 SizedBox(
@@ -1046,7 +1046,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
                           child: Icon(Icons.flag_outlined,
-                              color: Colors.white, size: widget.iconSize),
+                              color: Colors.white70, size: widget.iconSize),
                         ),
                       ),
                       WidgetSpan(
@@ -1055,7 +1055,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           style: TextStyle(
                             fontFamily: "Righteous",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white,
+                            color: Colors.white70,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -1066,7 +1066,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           style: TextStyle(
                             fontFamily: "OpenSans",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white70,
+                            color: Colors.white54,
                           ),
                         ),
                       ),
@@ -1083,7 +1083,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
                           child: Icon(Icons.email_outlined,
-                              color: Colors.white, size: widget.iconSize),
+                              color: Colors.white70, size: widget.iconSize),
                         ),
                       ),
                       WidgetSpan(
@@ -1092,7 +1092,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           style: TextStyle(
                             fontFamily: "Righteous",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white,
+                            color: Colors.white70,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -1108,7 +1108,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               decoration: TextDecoration.underline,
                               fontFamily: "OpenSans",
                               fontSize: widget.labelFontSize,
-                              color: Colors.white70,
+                              color: Colors.white54,
                             ),
                           ),
                         ),
@@ -1126,7 +1126,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
                           child: Icon(Icons.people_outline,
-                              color: Colors.white, size: widget.iconSize),
+                              color: Colors.white70, size: widget.iconSize),
                         ),
                       ),
                       WidgetSpan(
@@ -1135,7 +1135,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           style: TextStyle(
                             fontFamily: "Righteous",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white,
+                            color: Colors.white70,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -1151,7 +1151,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               decoration: TextDecoration.underline,
                               fontFamily: "OpenSans",
                               fontSize: widget.labelFontSize,
-                              color: Colors.white70,
+                              color: Colors.white54,
                             ),
                           ),
                         ),
@@ -1169,7 +1169,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
                           child: Icon(Icons.phone_outlined,
-                              color: Colors.white, size: widget.iconSize),
+                              color: Colors.white70, size: widget.iconSize),
                         ),
                       ),
                       WidgetSpan(
@@ -1178,7 +1178,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           style: TextStyle(
                             fontFamily: "Righteous",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white,
+                            color: Colors.white70,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -1194,7 +1194,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               decoration: TextDecoration.underline,
                               fontFamily: "OpenSans",
                               fontSize: widget.labelFontSize,
-                              color: Colors.white70,
+                              color: Colors.white54,
                             ),
                           ),
                         ),
@@ -1212,7 +1212,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10.0),
                           child: Icon(Icons.room_outlined,
-                              color: Colors.white, size: widget.iconSize),
+                              color: Colors.white70, size: widget.iconSize),
                         ),
                       ),
                       WidgetSpan(
@@ -1221,7 +1221,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                           style: TextStyle(
                             fontFamily: "Righteous",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white,
+                            color: Colors.white70,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -1237,7 +1237,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               decoration: TextDecoration.underline,
                               fontFamily: "OpenSans",
                               fontSize: widget.labelFontSize,
-                              color: Colors.white70,
+                              color: Colors.white54,
                             ),
                           ),
                         ),
@@ -1245,8 +1245,15 @@ class _PersonalInfoState extends State<PersonalInfo> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 10.0,
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Divider(
+                      color: Colors.white,
+                      thickness: 1.0,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: widget.widgetSpacerSize,
@@ -1290,6 +1297,30 @@ class _ProfileState extends State<Profile> {
     profileController.text = widget.profile;
   }
 
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> updateProfile(profile) {
+    return person
+        .doc('personDetails')
+        .update({
+      'profile': profile
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Profile successfully updated!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to update Profile!",
+        ),
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -1298,7 +1329,7 @@ class _ProfileState extends State<Profile> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -1309,14 +1340,14 @@ class _ProfileState extends State<Profile> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 SizedBox(
@@ -1326,13 +1357,14 @@ class _ProfileState extends State<Profile> {
                   decoration: BoxDecoration(
                     color: const Color(0xff0d0d0f),
                     border: Border.all(
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextField(
                           controller: profileController,
@@ -1345,17 +1377,17 @@ class _ProfileState extends State<Profile> {
                             hintText: "Profile description",
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                           ),
                           style: TextStyle(
                             fontFamily: "OpenSans",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white70,
+                            color: Colors.white54,
                           ),
                         ),
                         const Padding(
@@ -1363,9 +1395,553 @@ class _ProfileState extends State<Profile> {
                           child: SizedBox(
                             width: double.infinity,
                             child: Divider(
-                              color: Colors.white70,
+                              color: Colors.white,
                               thickness: 1.0,
                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (profileController.text != widget.profile) {
+                                updateProfile(profileController.text);
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            child: const Icon(
+                              Icons.save_outlined,
+                              color: Color(0xff151518),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.widgetSpacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "PROFILE",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+                Text(
+                  widget.profile,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white54,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Divider(
+                      color: Colors.white,
+                      thickness: 1.0,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.widgetSpacerSize,
+                ),
+              ],
+            );
+          }
+        });
+  }
+}
+
+/// Skills Section Title
+class SkillsSectionTitle extends StatefulWidget {
+  final double iconButtonSize;
+  final double titleSize;
+  final double titleUnderlineSize;
+  final double spacerSize;
+
+  const SkillsSectionTitle(
+      {Key? key,
+        required this.iconButtonSize,
+        required this.titleSize,
+        required this.titleUnderlineSize,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  State<SkillsSectionTitle> createState() => _SkillsSectionTitleState();
+}
+
+class _SkillsSectionTitleState extends State<SkillsSectionTitle> {
+  final skillController = TextEditingController();
+  final percentageController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    skillController.text = "";
+    percentageController.text = "";
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> addSkill(skill) {
+    return person
+        .doc('personDetails')
+        .set({
+      'skills': FieldValue.arrayUnion(skill),
+    },
+      SetOptions(merge: true),
+    )
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Skill successfully added!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to add Skill!",
+        ),
+      ),
+    ));
+  }
+
+  Future addSkillDialog() => showDialog(
+    context: context,
+    builder: (context) => Center(
+      child: SingleChildScrollView(
+        child: AlertDialog(
+          backgroundColor: const Color(0xff0d0d0f),
+          title: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.star_outline,
+                      color: Colors.white,
+                      size: widget.iconButtonSize,
+                    ),
+                  ),
+                  const Text(
+                    "Add Skill",
+                    style: TextStyle(
+                      fontFamily: "Righteous",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: double.infinity,
+                child: Divider(
+                  color: Colors.white,
+                  thickness: 1.0,
+                ),
+              ),
+            ],
+          ),
+          content: SizedBox(
+            height: 150,
+            width: 300,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextField(
+                  controller: skillController,
+                  cursorColor: Colors.white54,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    fillColor: Color(0xff151518),
+                    filled: true,
+                    hintText: "Skill",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white54,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white54,
+                        )),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: "OpenSans",
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  width: 60,
+                  child: TextField(
+                    controller: percentageController,
+                    cursorColor: Colors.white54,
+                    textInputAction: TextInputAction.done,
+                    decoration: const InputDecoration(
+                      fillColor: Color(0xff151518),
+                      filled: true,
+                      hintText: "%",
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white54,
+                          )),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.white54,
+                          )),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: "OpenSans",
+                      color: Colors.white54,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            const SizedBox(
+              width: double.infinity,
+              child: Divider(
+                color: Colors.white,
+                thickness: 1.0,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white54,
+                    ),
+                    onPressed: () {
+                      skillController.text = "";
+                      percentageController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.cancel_outlined,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    onPressed: () async{
+                      List<dynamic> skill = [
+                        {
+                          'skill': skillController.text,
+                          'percentage': percentageController.text
+                        }
+                      ];
+                      addSkill(skill);
+                      skillController.text = "";
+                      percentageController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white54)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "SKILLS",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white,
+                      thickness: 1.0,
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      addSkillDialog();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          } else {
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "SKILLS",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.titleSize,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                    width: widget.titleUnderlineSize,
+                    child: const Divider(
+                      color: Colors.white,
+                      thickness: 1.0,
+                    )),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
+          }
+        });
+  }
+}
+
+/// Skills
+class Skills extends StatefulWidget {
+  final String label;
+  final double progressionBarWidth;
+  final double labelFontSize;
+  final String progression;
+  final double spacerSize;
+
+  const Skills(
+      {Key? key,
+        required this.label,
+        required this.progressionBarWidth,
+        required this.labelFontSize,
+        required this.progression,
+        required this.spacerSize})
+      : super(key: key);
+
+  @override
+  State<Skills> createState() => _SkillsState();
+}
+
+class _SkillsState extends State<Skills> {
+  final labelController = TextEditingController();
+  final progressionController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    labelController.text = widget.label;
+    progressionController.text = widget.progression;
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> updateSkill(skill) {
+    return person
+        .doc('personDetails')
+        .update({
+      'skills': FieldValue.arrayUnion(skill),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Skills successfully updated!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to update Skills!",
+        ),
+      ),
+    ));
+  }
+
+  Future<void> deleteSkill(skill) {
+    return person
+        .doc('personDetails')
+        .update({
+      'skills': FieldValue.arrayRemove(skill),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Skills successfully deleted!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to delete Skills!",
+        ),
+      ),
+    ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Background(
+                child: Center(
+                    child: CircularProgressIndicator(color: Colors.white54)));
+          } else if (snapshot.hasData) {
+            // Admin View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff0d0d0f),
+                    border: Border.all(
+                      color: Colors.white54,
+                    ),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextField(
+                          controller: labelController,
+                          cursorColor: Colors.white,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                            fillColor: Color(0xff151518),
+                            filled: true,
+                            hintText: "Label",
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white54,
+                                )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.white54,
+                                )),
+                          ),
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: widget.labelFontSize,
+                            color: Colors.white70,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        SizedBox(
+                          width: widget.progressionBarWidth,
+                          child: LinearProgressIndicator(
+                            backgroundColor: Colors.white30,
+                            color: Colors.white70,
+                            minHeight: widget.labelFontSize,
+                            value: double.parse(progressionController.text),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        SizedBox(
+                          width: 60,
+                          child: TextField(
+                            controller: progressionController,
+                            cursorColor: Colors.white,
+                            textInputAction: TextInputAction.next,
+                            decoration: const InputDecoration(
+                              fillColor: Color(0xff151518),
+                              filled: true,
+                              hintText: "%",
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white54,
+                                  )),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.white54,
+                                  )),
+                            ),
+                            style: TextStyle(
+                              fontFamily: "OpenSans",
+                              fontSize: widget.labelFontSize,
+                              color: Colors.white54,
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0),
+                          child: Divider(
+                            color: Colors.white,
+                            thickness: 1.0,
                           ),
                         ),
                         Row(
@@ -1373,7 +1949,25 @@ class _ProfileState extends State<Profile> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (labelController.text != widget.label  || progressionController.text != widget.progression) {
+                                    List<dynamic> updatedSkill = [
+                                      {
+                                        'skill': labelController.text,
+                                        'percentage': progressionController.text
+                                      }
+                                    ];
+                                    updateSkill(updatedSkill);
+
+                                    List<dynamic> outdatedSkill = [
+                                      {
+                                        'skill': widget.label,
+                                        'percentage': widget.progression
+                                      }
+                                    ];
+                                    deleteSkill(outdatedSkill);
+                                  }
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
                                 ),
@@ -1389,7 +1983,15 @@ class _ProfileState extends State<Profile> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  List<dynamic> skill = [
+                                    {
+                                      'skill': widget.label,
+                                      'percentage': widget.progression
+                                    }
+                                  ];
+                                  deleteSkill(skill);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.red,
                                 ),
@@ -1406,60 +2008,43 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 SizedBox(
-                  height: widget.widgetSpacerSize,
+                  height: widget.spacerSize,
                 ),
               ],
             );
           } else {
-            if (widget.profile != "") {
-              // Normal View
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "PROFILE",
-                    style: TextStyle(
-                      fontFamily: "OpenSans",
-                      fontSize: widget.titleSize,
-                      color: Colors.white70,
-                      fontWeight: FontWeight.bold,
-                    ),
+            // Normal View
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.label,
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white70,
                   ),
-                  SizedBox(
-                      width: widget.titleUnderlineSize,
-                      child: const Divider(
-                        color: Colors.white70,
-                        thickness: 1.0,
-                      )),
-                  SizedBox(
-                    height: widget.spacerSize,
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                SizedBox(
+                  width: widget.progressionBarWidth,
+                  child: LinearProgressIndicator(
+                    backgroundColor: Colors.white30,
+                    color: Colors.white70,
+                    minHeight: widget.labelFontSize,
+                    value: double.parse(widget.progression),
                   ),
-                  Text(
-                    widget.profile,
-                    style: TextStyle(
-                      fontFamily: "OpenSans",
-                      fontSize: widget.labelFontSize,
-                      color: Colors.white70,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Divider(
-                        color: Colors.white70,
-                        thickness: 1.0,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: widget.widgetSpacerSize,
-                  ),
-                ],
-              );
-            } else {
-              return Column();
-            }
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                SizedBox(
+                  height: widget.spacerSize,
+                ),
+              ],
+            );
           }
         });
   }
@@ -1535,12 +2120,13 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
       selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
       builder: (context, child) {
         return Theme(
-          data: Theme.of(context).copyWith(
+          data: ThemeData.dark().copyWith(
             colorScheme: const ColorScheme.dark(
               primary: Color(0xff151518), // header background color
               onPrimary: Colors.white, // header text color
               onSurface: Colors.white, // body text color
             ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
                 primary: Colors.white, // button text color
@@ -1570,12 +2156,13 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
       selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
       builder: (context, child) {
         return Theme(
-          data: Theme.of(context).copyWith(
+          data: ThemeData.dark().copyWith(
             colorScheme: const ColorScheme.dark(
               primary: Color(0xff151518), // header background color
               onPrimary: Colors.white, // header text color
               onSurface: Colors.white, // body text color
             ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
                 primary: Colors.white, // button text color
@@ -1625,7 +2212,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
               const SizedBox(
                 width: double.infinity,
                 child: Divider(
-                  color: Colors.white70,
+                  color: Colors.white,
                   thickness: 1.0,
                 ),
               ),
@@ -1639,7 +2226,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                 TextField(
                   controller: titleController,
                   maxLines: 3,
-                  cursorColor: Colors.white70,
+                  cursorColor: Colors.white54,
                   textInputAction: TextInputAction.next,
                   autofocus: true,
                   decoration: const InputDecoration(
@@ -1648,17 +2235,17 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                     hintText: "Job Title",
                     border: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.white70,
+                          color: Colors.white54,
                         )),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.white70,
+                          color: Colors.white54,
                         )),
                   ),
                   style: const TextStyle(
                     fontFamily: "Righteous",
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.white70,
                   ),
                 ),
                 const SizedBox(
@@ -1676,7 +2263,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                             "${startDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${startDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
                             style: const TextStyle(
                               fontFamily: "OpenSans",
-                              color: Colors.white70,
+                              color: Colors.white54,
                             ),
                           ),
                           const SizedBox(
@@ -1708,7 +2295,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                             "${endDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${endDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
                             style: const TextStyle(
                               fontFamily: "OpenSans",
-                              color: Colors.white70,
+                              color: Colors.white54,
                             ),
                           ),
                           const SizedBox(
@@ -1739,7 +2326,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                 TextField(
                   controller: descriptionController,
                   maxLines: 6,
-                  cursorColor: Colors.white70,
+                  cursorColor: Colors.white54,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
                     fillColor: Color(0xff151518),
@@ -1747,16 +2334,16 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                     hintText: "Job Description",
                     border: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.white70,
+                          color: Colors.white54,
                         )),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.white70,
+                          color: Colors.white54,
                         )),
                   ),
                   style: const TextStyle(
                     fontFamily: "OpenSans",
-                    color: Colors.white70,
+                    color: Colors.white54,
                   ),
                 ),
               ],
@@ -1766,7 +2353,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
             const SizedBox(
               width: double.infinity,
               child: Divider(
-                color: Colors.white70,
+                color: Colors.white,
                 thickness: 1.0,
               ),
             ),
@@ -1777,7 +2364,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white70,
+                      primary: Colors.white54,
                     ),
                     onPressed: () {
                       titleController.text = "";
@@ -1839,7 +2426,7 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -1850,14 +2437,14 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 Padding(
@@ -1890,14 +2477,14 @@ class _JobSectionTitleState extends State<JobSectionTitle> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 SizedBox(
@@ -1961,12 +2548,13 @@ class _JobState extends State<Job> {
       selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
       builder: (context, child) {
         return Theme(
-          data: Theme.of(context).copyWith(
+          data: ThemeData.dark().copyWith(
             colorScheme: const ColorScheme.dark(
               primary: Color(0xff151518), // header background color
               onPrimary: Colors.white, // header text color
               onSurface: Colors.white, // body text color
             ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
                 primary: Colors.white, // button text color
@@ -1996,12 +2584,13 @@ class _JobState extends State<Job> {
       selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
       builder: (context, child) {
         return Theme(
-          data: Theme.of(context).copyWith(
+          data: ThemeData.dark().copyWith(
             colorScheme: const ColorScheme.dark(
               primary: Color(0xff151518), // header background color
               onPrimary: Colors.white, // header text color
               onSurface: Colors.white, // body text color
             ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
                 primary: Colors.white, // button text color
@@ -2074,7 +2663,7 @@ class _JobState extends State<Job> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -2084,7 +2673,7 @@ class _JobState extends State<Job> {
                   decoration: BoxDecoration(
                     color: const Color(0xff0d0d0f),
                     border: Border.all(
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -2099,7 +2688,7 @@ class _JobState extends State<Job> {
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(
                                 Icons.work_outline,
-                                color: Colors.white,
+                                color: Colors.white70,
                                 size: widget.iconSize,
                               ),
                             ),
@@ -2116,17 +2705,17 @@ class _JobState extends State<Job> {
                                   hintText: "Job Title",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "Righteous",
                                   fontSize: widget.iconSize,
-                                  color: Colors.white,
+                                  color: Colors.white70,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -2147,7 +2736,7 @@ class _JobState extends State<Job> {
                                   style: TextStyle(
                                     fontFamily: "OpenSans",
                                     fontSize: widget.labelFontSize,
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   ),
                                 ),
                                 const SizedBox(
@@ -2180,7 +2769,7 @@ class _JobState extends State<Job> {
                                   style: TextStyle(
                                     fontFamily: "OpenSans",
                                     fontSize: widget.labelFontSize,
-                                    color: Colors.white70,
+                                    color: Colors.white54,
                                   ),
                                 ),
                                 const SizedBox(
@@ -2218,17 +2807,17 @@ class _JobState extends State<Job> {
                             hintText: "Job description",
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                           ),
                           style: TextStyle(
                             fontFamily: "OpenSans",
                             fontSize: widget.labelFontSize,
-                            color: Colors.white70,
+                            color: Colors.white54,
                           ),
                         ),
                         const Padding(
@@ -2236,7 +2825,7 @@ class _JobState extends State<Job> {
                           child: SizedBox(
                             width: double.infinity,
                             child: Divider(
-                              color: Colors.white70,
+                              color: Colors.white,
                               thickness: 1.0,
                             ),
                           ),
@@ -2337,7 +2926,7 @@ class _JobState extends State<Job> {
                           padding: const EdgeInsets.only(right: 10.0),
                           child: Icon(
                             Icons.work_outline,
-                            color: Colors.white,
+                            color: Colors.white70,
                             size: widget.iconSize,
                           ),
                         ),
@@ -2347,7 +2936,7 @@ class _JobState extends State<Job> {
                         style: TextStyle(
                           fontFamily: "Righteous",
                           fontSize: widget.iconSize,
-                          color: Colors.white,
+                          color: Colors.white70,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -2362,14 +2951,14 @@ class _JobState extends State<Job> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.labelFontSize,
-                    color: Colors.white70,
+                    color: Colors.white54,
                   ),
                 ) : Text(
                   "(${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()} - ${widget.timeEnd.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeEnd.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()})",
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.labelFontSize,
-                    color: Colors.white70,
+                    color: Colors.white54,
                   ),
                 ),
                 SizedBox(
@@ -2380,7 +2969,7 @@ class _JobState extends State<Job> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.labelFontSize,
-                    color: Colors.white70,
+                    color: Colors.white54,
                   ),
                 ),
                 const Padding(
@@ -2388,7 +2977,7 @@ class _JobState extends State<Job> {
                   child: SizedBox(
                     width: double.infinity,
                     child: Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     ),
                   ),
@@ -2405,12 +2994,14 @@ class _JobState extends State<Job> {
 
 /// Education Section Title
 class EducationSectionTitle extends StatefulWidget {
+  final double iconButtonSize;
   final double titleSize;
   final double titleUnderlineSize;
   final double spacerSize;
 
   const EducationSectionTitle(
       {Key? key,
+        required this.iconButtonSize,
         required this.titleSize,
         required this.titleUnderlineSize,
         required this.spacerSize})
@@ -2421,6 +3012,355 @@ class EducationSectionTitle extends StatefulWidget {
 }
 
 class _EducationSectionTitleState extends State<EducationSectionTitle> {
+  final academyController = TextEditingController();
+  final courseController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    academyController.text = "";
+    courseController.text = "";
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> addEducation(education) {
+    return person
+        .doc('personDetails')
+        .set({
+      'education': FieldValue.arrayUnion(education),
+    },
+      SetOptions(merge: true),
+    )
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Education successfully added!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to add Education!",
+        ),
+      ),
+    ));
+  }
+
+  DateTime startDate = DateTime.now();
+  DateTime endDate = DateTime.now();
+
+  Future<void> selectStartDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: startDate,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null && datePicker != startDate) {
+      setState(() {
+        startDate = datePicker;
+      });
+    }
+  }
+
+  Future<void> selectEndDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: endDate,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null && datePicker != endDate) {
+      setState(() {
+        endDate = datePicker;
+      });
+    }
+  }
+
+  Future addEducationDialog() => showDialog(
+    context: context,
+    builder: (context) => Center(
+      child: SingleChildScrollView(
+        child: AlertDialog(
+          backgroundColor: const Color(0xff0d0d0f),
+          title: Column(
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.domain_outlined,
+                      color: Colors.white,
+                      size: widget.iconButtonSize,
+                    ),
+                  ),
+                  const Text(
+                    "Add Education",
+                    style: TextStyle(
+                      fontFamily: "Righteous",
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: double.infinity,
+                child: Divider(
+                  color: Colors.white,
+                  thickness: 1.0,
+                ),
+              ),
+            ],
+          ),
+          content: SizedBox(
+            height: 350,
+            width: 300,
+            child: Column(
+              children: [
+                TextField(
+                  controller: academyController,
+                  maxLines: 2,
+                  cursorColor: Colors.white54,
+                  textInputAction: TextInputAction.next,
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    fillColor: Color(0xff151518),
+                    filled: true,
+                    hintText: "Academy",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white54,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white54,
+                        )),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: "Righteous",
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: courseController,
+                  maxLines: 2,
+                  cursorColor: Colors.white54,
+                  textInputAction: TextInputAction.done,
+                  decoration: const InputDecoration(
+                    fillColor: Color(0xff151518),
+                    filled: true,
+                    hintText: "Course",
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white54,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white54,
+                        )),
+                  ),
+                  style: const TextStyle(
+                    fontFamily: "OpenSans",
+                    color: Colors.white54,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${startDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${startDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                            style: const TextStyle(
+                              fontFamily: "OpenSans",
+                              color: Colors.white54,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                selectStartDate(context);
+                              });
+                            },
+                            child: const Icon(
+                              Icons.today_outlined,
+                              color: Color(0xff151518),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Flexible(
+                      flex: 2,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${endDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${endDate.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                            style: const TextStyle(
+                              fontFamily: "OpenSans",
+                              color: Colors.white54,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                selectEndDate(context);
+                              });
+                            },
+                            child: const Icon(
+                              Icons.event_outlined,
+                              color: Color(0xff151518),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            const SizedBox(
+              width: double.infinity,
+              child: Divider(
+                color: Colors.white,
+                thickness: 1.0,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white54,
+                    ),
+                    onPressed: () {
+                      academyController.text = "";
+                      courseController.text = "";
+                      startDate = DateTime.now();
+                      endDate = DateTime.now();
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.cancel_outlined,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
+                    onPressed: () async{
+                      List<dynamic> education = [
+                        {
+                          'academy': academyController.text,
+                          'course': courseController.text,
+                          'time':
+                          {
+                            'start': startDate,
+                            'end': endDate
+                          },
+
+                        }
+                      ];
+                      addEducation(education);
+                      academyController.text = "";
+                      courseController.text = "";
+                      startDate = DateTime.now();
+                      endDate = DateTime.now();
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.add_circle_outline,
+                      color: Color(0xff151518),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -2429,7 +3369,7 @@ class _EducationSectionTitleState extends State<EducationSectionTitle> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -2440,20 +3380,21 @@ class _EducationSectionTitleState extends State<EducationSectionTitle> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: ElevatedButton(
                     onPressed: () {
+                      addEducationDialog();
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.white,
@@ -2479,14 +3420,14 @@ class _EducationSectionTitleState extends State<EducationSectionTitle> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 SizedBox(
@@ -2504,18 +3445,20 @@ class Education extends StatefulWidget {
   final double iconSize;
   final String academy;
   final String course;
-  final String time;
+  final DateTime timeStart;
+  final DateTime timeEnd;
   final double labelFontSize;
   final double spacerSize;
 
   const Education(
       {Key? key,
-      required this.iconSize,
-      required this.academy,
-      required this.course,
-      required this.time,
-      required this.labelFontSize,
-      required this.spacerSize})
+        required this.iconSize,
+        required this.academy,
+        required this.course,
+        required this.timeStart,
+        required this.timeEnd,
+        required this.labelFontSize,
+        required this.spacerSize})
       : super(key: key);
 
   @override
@@ -2525,12 +3468,134 @@ class Education extends StatefulWidget {
 class _EducationState extends State<Education> {
   final academyController = TextEditingController();
   final courseController = TextEditingController();
+  final startController = TextEditingController();
+  final endController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     academyController.text = widget.academy;
     courseController.text = widget.course;
+    startController.text = "${widget.timeStart}";
+    endController.text = "${widget.timeEnd}";
+  }
+
+  Future<void> selectStartDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: widget.timeStart,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null) {
+      setState(() {
+        startController.text = "$datePicker";
+      });
+    }
+  }
+
+  Future<void> selectEndDate(BuildContext context) async {
+    DateTime? datePicker = await showDatePicker(
+      context: context,
+      initialDate: widget.timeEnd,
+      firstDate: DateTime(1970),
+      lastDate: DateTime(2100),
+      textDirection: TextDirection.ltr,
+      initialDatePickerMode: DatePickerMode.day,
+      selectableDayPredicate: (DateTime val) => val.weekday == 6 || val.weekday == 7 ? false : true,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.dark().copyWith(
+            colorScheme: const ColorScheme.dark(
+              primary: Color(0xff151518), // header background color
+              onPrimary: Colors.white, // header text color
+              onSurface: Colors.white, // body text color
+            ),
+            dialogBackgroundColor: const Color(0xff0d0d0f),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.white, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (datePicker != null) {
+      setState(() {
+        endController.text = "$datePicker";
+      });
+    }
+  }
+
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> updateEducation(education) {
+    return person
+        .doc('personDetails')
+        .update({
+      'education': FieldValue.arrayUnion(education),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Education successfully updated!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to update Education!",
+        ),
+      ),
+    ));
+  }
+
+  Future<void> deleteEducation(education) {
+    return person
+        .doc('personDetails')
+        .update({
+      'education': FieldValue.arrayRemove(education),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Education successfully deleted!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to delete Education!",
+        ),
+      ),
+    ));
   }
 
   @override
@@ -2541,7 +3606,7 @@ class _EducationState extends State<Education> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -2551,7 +3616,7 @@ class _EducationState extends State<Education> {
                   decoration: BoxDecoration(
                     color: const Color(0xff0d0d0f),
                     border: Border.all(
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -2566,7 +3631,7 @@ class _EducationState extends State<Education> {
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(
                                 Icons.domain_outlined,
-                                color: Colors.white,
+                                color: Colors.white70,
                                 size: widget.iconSize,
                               ),
                             ),
@@ -2583,17 +3648,17 @@ class _EducationState extends State<Education> {
                                   hintText: "Academy",
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
-                                  )),
+                                        color: Colors.white54,
+                                      )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                    color: Colors.white70,
-                                  )),
+                                        color: Colors.white54,
+                                      )),
                                 ),
                                 style: TextStyle(
                                   fontFamily: "Righteous",
                                   fontSize: widget.iconSize,
-                                  color: Colors.white,
+                                  color: Colors.white70,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -2614,36 +3679,96 @@ class _EducationState extends State<Education> {
                             hintText: "Course",
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
-                            )),
+                                  color: Colors.white54,
+                                )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
-                            )),
+                                  color: Colors.white54,
+                                )),
                           ),
                           style: TextStyle(
                             fontFamily: "OpenSans",
                             fontSize: widget.iconSize,
-                            color: Colors.white70,
+                            color: Colors.white54,
                           ),
                         ),
                         const SizedBox(
                           height: 5.0,
                         ),
-                        Text(
-                          widget.time,
-                          style: TextStyle(
-                            fontFamily: "OpenSans",
-                            fontSize: widget.labelFontSize,
-                            color: Colors.white70,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${DateTime.parse(startController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${DateTime.parse(startController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white54,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      selectStartDate(context);
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.today_outlined,
+                                    color: Color(0xff151518),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: widget.spacerSize,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${DateTime.parse(endController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${DateTime.parse(endController.text).toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()}",
+                                  style: TextStyle(
+                                    fontFamily: "OpenSans",
+                                    fontSize: widget.labelFontSize,
+                                    color: Colors.white54,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.white,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      selectEndDate(context);
+                                    });
+                                  },
+                                  child: const Icon(
+                                    Icons.event_outlined,
+                                    color: Color(0xff151518),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                         const Padding(
                           padding: EdgeInsets.only(top: 10.0),
                           child: SizedBox(
                             width: double.infinity,
                             child: Divider(
-                              color: Colors.white70,
+                              color: Colors.white,
                               thickness: 1.0,
                             ),
                           ),
@@ -2653,7 +3778,35 @@ class _EducationState extends State<Education> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (academyController.text != widget.academy || courseController.text != widget.course || DateTime.parse(startController.text) != widget.timeStart || DateTime.parse(endController.text) != widget.timeEnd) {
+                                    List<dynamic> updatedEducation = [
+                                      {
+                                        'academy': academyController.text,
+                                        'course': courseController.text,
+                                        'time':
+                                        {
+                                          'start': DateTime.parse(startController.text),
+                                          'end': DateTime.parse(endController.text)
+                                        },
+                                      }
+                                    ];
+                                    updateEducation(updatedEducation);
+
+                                    List<dynamic> outdatedEducation = [
+                                      {
+                                        'academy': widget.academy,
+                                        'course': widget.course,
+                                        'time':
+                                        {
+                                          'start': widget.timeStart,
+                                          'end': widget.timeEnd
+                                        },
+                                      }
+                                    ];
+                                    deleteEducation(outdatedEducation);
+                                  }
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
                                 ),
@@ -2669,7 +3822,20 @@ class _EducationState extends State<Education> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  List<dynamic> education = [
+                                    {
+                                      'academy': widget.academy,
+                                      'course': widget.course,
+                                      'time':
+                                      {
+                                        'start': widget.timeStart,
+                                        'end': widget.timeEnd
+                                      },
+                                    }
+                                  ];
+                                  deleteEducation(education);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.red,
                                 ),
@@ -2703,7 +3869,7 @@ class _EducationState extends State<Education> {
                           padding: const EdgeInsets.only(right: 10.0),
                           child: Icon(
                             Icons.domain_outlined,
-                            color: Colors.white,
+                            color: Colors.white70,
                             size: widget.iconSize,
                           ),
                         ),
@@ -2713,7 +3879,7 @@ class _EducationState extends State<Education> {
                         style: TextStyle(
                           fontFamily: "Righteous",
                           fontSize: widget.iconSize,
-                          color: Colors.white,
+                          color: Colors.white70,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -2728,18 +3894,25 @@ class _EducationState extends State<Education> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.iconSize,
-                    color: Colors.white70,
+                    color: Colors.white54,
                   ),
                 ),
                 const SizedBox(
                   height: 5.0,
                 ),
-                Text(
-                  widget.time,
+                widget.timeStart == widget.timeEnd ? Text(
+                  "(${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()} - at the moment)",
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.labelFontSize,
-                    color: Colors.white70,
+                    color: Colors.white54,
+                  ),
+                ) : Text(
+                  "(${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeStart.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()} - ${widget.timeEnd.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[1].toString()}/${widget.timeEnd.toIso8601String().split('T').first.replaceAll("-", "/").substring(0, 7).split("/")[0].toString()})",
+                  style: TextStyle(
+                    fontFamily: "OpenSans",
+                    fontSize: widget.labelFontSize,
+                    color: Colors.white54,
                   ),
                 ),
                 const Padding(
@@ -2747,302 +3920,11 @@ class _EducationState extends State<Education> {
                   child: SizedBox(
                     width: double.infinity,
                     child: Divider(
-                      color: Colors.white70,
-                      thickness: 1.0,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: widget.spacerSize,
-                ),
-              ],
-            );
-          }
-        });
-  }
-}
-
-/// Skills Section Title
-class SkillsSectionTitle extends StatefulWidget {
-  final double iconButtonSize;
-  final double titleSize;
-  final double titleUnderlineSize;
-  final double spacerSize;
-
-  const SkillsSectionTitle(
-      {Key? key,
-        required this.iconButtonSize,
-        required this.titleSize,
-        required this.titleUnderlineSize,
-        required this.spacerSize})
-      : super(key: key);
-
-  @override
-  State<SkillsSectionTitle> createState() => _SkillsSectionTitleState();
-}
-
-class _SkillsSectionTitleState extends State<SkillsSectionTitle> {
-  final skillController = TextEditingController();
-  final percentageController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    skillController.text = "";
-    percentageController.text = "";
-  }
-
-  CollectionReference person = FirebaseFirestore.instance.collection('Person');
-
-  Future<void> addSkill(skill) {
-    return person
-        .doc('personDetails')
-        .set({
-      'skills': FieldValue.arrayUnion(skill),
-    },
-      SetOptions(merge: true),
-    )
-        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          "Skill successfully added!",
-        ),
-      ),
-    ))
-        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          "Unable to add Skill!",
-        ),
-      ),
-    ));
-  }
-
-  Future addSkillDialog() => showDialog(
-    context: context,
-    builder: (context) => Center(
-      child: SingleChildScrollView(
-        child: AlertDialog(
-          backgroundColor: const Color(0xff0d0d0f),
-          title: Column(
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Icon(
-                      Icons.star_outline,
                       color: Colors.white,
-                      size: widget.iconButtonSize,
-                    ),
-                  ),
-                  const Text(
-                    "Add Skill",
-                    style: TextStyle(
-                      fontFamily: "Righteous",
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                width: double.infinity,
-                child: Divider(
-                  color: Colors.white70,
-                  thickness: 1.0,
-                ),
-              ),
-            ],
-          ),
-          content: SizedBox(
-            height: 350,
-            width: 300,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  controller: skillController,
-                  cursorColor: Colors.white70,
-                  textInputAction: TextInputAction.done,
-                  decoration: const InputDecoration(
-                    fillColor: Color(0xff151518),
-                    filled: true,
-                    hintText: "Skill",
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white70,
-                        )),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white70,
-                        )),
-                  ),
-                  style: const TextStyle(
-                    fontFamily: "OpenSans",
-                    color: Colors.white70,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  width: 60,
-                  child: TextField(
-                    controller: percentageController,
-                    cursorColor: Colors.white70,
-                    textInputAction: TextInputAction.done,
-                    decoration: const InputDecoration(
-                      fillColor: Color(0xff151518),
-                      filled: true,
-                      hintText: "%",
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.white70,
-                          )),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.white70,
-                          )),
-                    ),
-                    style: const TextStyle(
-                      fontFamily: "OpenSans",
-                      color: Colors.white70,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            const SizedBox(
-              width: double.infinity,
-              child: Divider(
-                color: Colors.white70,
-                thickness: 1.0,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white70,
-                    ),
-                    onPressed: () {
-                      skillController.text = "";
-                      percentageController.text = "";
-                      Navigator.of(context).pop();
-                    },
-                    child: const Icon(
-                      Icons.cancel_outlined,
-                      color: Color(0xff151518),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                    ),
-                    onPressed: () async{
-                      List<dynamic> skill = [
-                        {
-                          'skill': skillController.text,
-                          'percentage': percentageController.text
-                        }
-                      ];
-                      addSkill(skill);
-                      skillController.text = "";
-                      percentageController.text = "";
-                      Navigator.of(context).pop();
-                    },
-                    child: const Icon(
-                      Icons.add_circle_outline,
-                      color: Color(0xff151518),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Background(
-                child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
-          } else if (snapshot.hasData) {
-            // Admin View
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "SKILLS",
-                  style: TextStyle(
-                    fontFamily: "OpenSans",
-                    fontSize: widget.titleSize,
-                    color: Colors.white70,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    width: widget.titleUnderlineSize,
-                    child: const Divider(
-                      color: Colors.white70,
                       thickness: 1.0,
-                    )),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      addSkillDialog();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                    ),
-                    child: const Icon(
-                      Icons.add_circle_outline,
-                      color: Color(0xff151518),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: widget.spacerSize,
-                ),
-              ],
-            );
-          } else {
-            // Normal View
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "SKILLS",
-                  style: TextStyle(
-                    fontFamily: "OpenSans",
-                    fontSize: widget.titleSize,
-                    color: Colors.white70,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                    width: widget.titleUnderlineSize,
-                    child: const Divider(
-                      color: Colors.white70,
-                      thickness: 1.0,
-                    )),
                 SizedBox(
                   height: widget.spacerSize,
                 ),
@@ -3140,21 +4022,21 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
               const SizedBox(
                 width: double.infinity,
                 child: Divider(
-                  color: Colors.white70,
+                  color: Colors.white,
                   thickness: 1.0,
                 ),
               ),
             ],
           ),
           content: SizedBox(
-            height: 350,
+            height: 150,
             width: 300,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
                   controller: languageController,
-                  cursorColor: Colors.white70,
+                  cursorColor: Colors.white54,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
                     fillColor: Color(0xff151518),
@@ -3162,11 +4044,11 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
                     hintText: "Language",
                     border: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.white70,
+                          color: Colors.white54,
                         )),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.white70,
+                          color: Colors.white54,
                         )),
                   ),
                   style: const TextStyle(
@@ -3181,7 +4063,7 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
                   width: 60,
                   child: TextField(
                     controller: percentageController,
-                    cursorColor: Colors.white70,
+                    cursorColor: Colors.white54,
                     textInputAction: TextInputAction.done,
                     decoration: const InputDecoration(
                       fillColor: Color(0xff151518),
@@ -3189,16 +4071,16 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
                       hintText: "%",
                       border: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white70,
+                            color: Colors.white54,
                           )),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: Colors.white70,
+                            color: Colors.white54,
                           )),
                     ),
                     style: const TextStyle(
                       fontFamily: "OpenSans",
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                   ),
                 ),
@@ -3209,7 +4091,7 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
             const SizedBox(
               width: double.infinity,
               child: Divider(
-                color: Colors.white70,
+                color: Colors.white,
                 thickness: 1.0,
               ),
             ),
@@ -3220,7 +4102,7 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white70,
+                      primary: Colors.white54,
                     ),
                     onPressed: () {
                       languageController.text = "";
@@ -3289,7 +4171,7 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -3300,14 +4182,14 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 Padding(
@@ -3340,14 +4222,14 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.titleSize,
-                    color: Colors.white70,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
                     width: widget.titleUnderlineSize,
                     child: const Divider(
-                      color: Colors.white70,
+                      color: Colors.white,
                       thickness: 1.0,
                     )),
                 SizedBox(
@@ -3360,17 +4242,19 @@ class _LanguagesSectionTitleState extends State<LanguagesSectionTitle> {
   }
 }
 
-/// Skills / Languages
-class ProgressionBar extends StatefulWidget {
+/// Languages
+class Languages extends StatefulWidget {
   final String label;
+  final String fluency;
   final double progressionBarWidth;
   final double labelFontSize;
   final String progression;
   final double spacerSize;
 
-  const ProgressionBar(
+  const Languages(
       {Key? key,
       required this.label,
+      required this.fluency,
       required this.progressionBarWidth,
       required this.labelFontSize,
       required this.progression,
@@ -3378,10 +4262,10 @@ class ProgressionBar extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<ProgressionBar> createState() => _ProgressionBarState();
+  State<Languages> createState() => _LanguagesState();
 }
 
-class _ProgressionBarState extends State<ProgressionBar> {
+class _LanguagesState extends State<Languages> {
   final labelController = TextEditingController();
   final progressionController = TextEditingController();
 
@@ -3392,6 +4276,52 @@ class _ProgressionBarState extends State<ProgressionBar> {
     progressionController.text = widget.progression;
   }
 
+  CollectionReference person = FirebaseFirestore.instance.collection('Person');
+
+  Future<void> updateLanguage(language) {
+    return person
+        .doc('personDetails')
+        .update({
+      'languages': FieldValue.arrayUnion(language),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Languages successfully updated!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to update Languages!",
+        ),
+      ),
+    ));
+  }
+
+  Future<void> deleteLanguage(language) {
+    return person
+        .doc('personDetails')
+        .update({
+      'languages': FieldValue.arrayRemove(language),
+    })
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Languages successfully deleted!",
+        ),
+      ),
+    ))
+        .catchError((error) => ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Unable to delete Languages!",
+        ),
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -3400,7 +4330,7 @@ class _ProgressionBarState extends State<ProgressionBar> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Background(
                 child: Center(
-                    child: CircularProgressIndicator(color: Colors.white70)));
+                    child: CircularProgressIndicator(color: Colors.white54)));
           } else if (snapshot.hasData) {
             // Admin View
             return Column(
@@ -3410,7 +4340,7 @@ class _ProgressionBarState extends State<ProgressionBar> {
                   decoration: BoxDecoration(
                     color: const Color(0xff0d0d0f),
                     border: Border.all(
-                      color: Colors.white70,
+                      color: Colors.white54,
                     ),
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -3429,11 +4359,11 @@ class _ProgressionBarState extends State<ProgressionBar> {
                             hintText: "Label",
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                             focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Colors.white70,
+                              color: Colors.white54,
                             )),
                           ),
                           style: TextStyle(
@@ -3449,7 +4379,7 @@ class _ProgressionBarState extends State<ProgressionBar> {
                           width: widget.progressionBarWidth,
                           child: LinearProgressIndicator(
                             backgroundColor: Colors.white30,
-                            color: Colors.white,
+                            color: Colors.white70,
                             minHeight: widget.labelFontSize,
                             value: double.parse(progressionController.text),
                           ),
@@ -3469,28 +4399,25 @@ class _ProgressionBarState extends State<ProgressionBar> {
                               hintText: "%",
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                color: Colors.white70,
+                                color: Colors.white54,
                               )),
                               focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                color: Colors.white70,
+                                color: Colors.white54,
                               )),
                             ),
                             style: TextStyle(
                               fontFamily: "OpenSans",
                               fontSize: widget.labelFontSize,
-                              color: Colors.white70,
+                              color: Colors.white54,
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: SizedBox(
-                            width: widget.progressionBarWidth,
-                            child: const Divider(
-                              color: Colors.white70,
-                              thickness: 1.0,
-                            ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 10.0),
+                          child: Divider(
+                            color: Colors.white,
+                            thickness: 1.0,
                           ),
                         ),
                         Row(
@@ -3498,7 +4425,43 @@ class _ProgressionBarState extends State<ProgressionBar> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (labelController.text != widget.label  || progressionController.text != widget.progression) {
+                                    String updatedFluency = "";
+
+                                    if (double.parse(progressionController.text) >= 0.96) {
+                                      updatedFluency = "C2";
+                                    } else if (double.parse(progressionController.text) >= 0.80) {
+                                      updatedFluency = "C1";
+                                    } else if (double.parse(progressionController.text) >= 0.64) {
+                                      updatedFluency = "B2";
+                                    } else if (double.parse(progressionController.text) >= 0.48) {
+                                      updatedFluency = "B1";
+                                    } else if (double.parse(progressionController.text) >= 0.32) {
+                                      updatedFluency = "A2";
+                                    } else if (double.parse(progressionController.text) <= 0.16) {
+                                      updatedFluency = "A1";
+                                    }
+
+                                    List<dynamic> updatedLanguage = [
+                                      {
+                                        'language': labelController.text,
+                                        'fluency': updatedFluency,
+                                        'percentage': progressionController.text
+                                      }
+                                    ];
+                                    updateLanguage(updatedLanguage);
+
+                                    List<dynamic> outdatedLanguage = [
+                                      {
+                                        'language': widget.label,
+                                        'fluency': widget.fluency,
+                                        'percentage': widget.progression
+                                      }
+                                    ];
+                                    deleteLanguage(outdatedLanguage);
+                                  }
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
                                 ),
@@ -3514,7 +4477,16 @@ class _ProgressionBarState extends State<ProgressionBar> {
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  List<dynamic> language = [
+                                    {
+                                      'language': widget.label,
+                                      'fluency': widget.fluency,
+                                      'percentage': widget.progression
+                                    }
+                                  ];
+                                  deleteLanguage(language);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.red,
                                 ),
@@ -3541,7 +4513,7 @@ class _ProgressionBarState extends State<ProgressionBar> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.label,
+                  "${widget.label} (${widget.fluency})",
                   style: TextStyle(
                     fontFamily: "OpenSans",
                     fontSize: widget.labelFontSize,
@@ -3555,20 +4527,13 @@ class _ProgressionBarState extends State<ProgressionBar> {
                   width: widget.progressionBarWidth,
                   child: LinearProgressIndicator(
                     backgroundColor: Colors.white30,
-                    color: Colors.white,
+                    color: Colors.white70,
                     minHeight: widget.labelFontSize,
                     value: double.parse(widget.progression),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: SizedBox(
-                    width: widget.progressionBarWidth,
-                    child: const Divider(
-                      color: Colors.white70,
-                      thickness: 1.0,
-                    ),
-                  ),
+                const SizedBox(
+                  height: 10.0,
                 ),
                 SizedBox(
                   height: widget.spacerSize,
